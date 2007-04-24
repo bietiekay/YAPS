@@ -1,0 +1,15 @@
+bin\EPGReader.exe
+bin\EPGReader.pdb
+bin\JMS.DVB.dll
+bin\JMS.DVB.EPG.dll
+bin\JMS.DVB.EPG.pdb
+bin\JMS.DVB.pdb
+bin\de\JMS.DVB.resources.dll
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\TSSplitter.App.ico
+obj\Debug\TSSplitter.EPGDisplay.resources
+obj\Debug\TSSplitter.Properties.Resources.resources
+obj\Debug\TSSplitter.ReaderMain.resources
+obj\Debug\EPGReader.csproj.GenerateResource.Cache
+obj\Debug\EPGReader.exe
+obj\Debug\EPGReader.pdb

@@ -1,0 +1,353 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5C2B8408-6616-444C-A808-A79C9A356111}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>JMS.DVB</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>JMS.DVB</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\Assemblies\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\Assemblies\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AudioInfo.cs" />
+    <Compile Include="BandwidthType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Cable\CableChannel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Cable\Qam.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Channel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IDeviceProfile.cs" />
+    <Compile Include="DeviceInformation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DeviceInformations.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DeviceSelector.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FrontendType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Identifier.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IDeviceProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IDeviceProviderFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IDisplayDeviceProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ProviderChooser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProviderFeatures.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ProviderMissingException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Satellite\DiSEqC.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Satellite\DiSEqCConfiguration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Satellite\DiSEqCMessage.cs" />
+    <Compile Include="Satellite\DiSEqCMulti.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Satellite\DiSEqCNone.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Satellite\DiSEqCSimple.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Satellite\LNBSettings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Satellite\PowerMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Satellite\SatelliteChannel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Satellite\Viterbi.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SignalStatus.cs" />
+    <Compile Include="SpectrumInversion.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Station.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Terrestrial\TerrestrialChannel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tools.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Transponder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Chooser.ico" />
+    <EmbeddedResource Include="ProviderChooser.de.resx">
+      <DependentUpon>ProviderChooser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProviderChooser.resx">
+      <DependentUpon>ProviderChooser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DVBNETProviders.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="help\assets\images\autogen\Anbindung_uber_BDA_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Aquivalente_Hardware_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Architektur_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\BDA_Hardware_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\BDA_Hli2.gif" />
+    <Content Include="help\assets\images\autogen\BDA_Karten_Hbuts1.gif" />
+    <Content Include="help\assets\images\autogen\BDA_Karten_Nbuts.gif" />
+    <Content Include="help\assets\images\autogen\BDA_Nli1.gif" />
+    <Content Include="help\assets\images\autogen\Betriebssystem_Hli2.gif" />
+    <Content Include="help\assets\images\autogen\Betriebssystem_Nli1.gif" />
+    <Content Include="help\assets\images\autogen\Betriebssytem_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\clearpixel.gif" />
+    <Content Include="help\assets\images\autogen\C___Kapselung_Hbuts1.gif" />
+    <Content Include="help\assets\images\autogen\C___Kapselung_Nbuts.gif" />
+    <Content Include="help\assets\images\autogen\C___Speicherstrukturen_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Details_Hli2.gif" />
+    <Content Include="help\assets\images\autogen\Details_Nli1.gif" />
+    <Content Include="help\assets\images\autogen\Details_zu_Profilen_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Download_Hbuts1.gif" />
+    <Content Include="help\assets\images\autogen\Download_Nbuts.gif" />
+    <Content Include="help\assets\images\autogen\Download_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Durchfuhrung_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\DVB.NET_3.0_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Einrichten_einer_Karte_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Einrichten_Hli2.gif" />
+    <Content Include="help\assets\images\autogen\Einrichten_Nli1.gif" />
+    <Content Include="help\assets\images\autogen\EPG_Hbuts1.gif" />
+    <Content Include="help\assets\images\autogen\EPG_Nbuts.gif" />
+    <Content Include="help\assets\images\autogen\EPG_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Favoritenverwaltung_Hbuts1.gif" />
+    <Content Include="help\assets\images\autogen\Favoritenverwaltung_Nbuts.gif" />
+    <Content Include="help\assets\images\autogen\Favoritenverwaltung_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Filter_Tester_Hbuts1.gif" />
+    <Content Include="help\assets\images\autogen\Filter_Tester_Nbuts.gif" />
+    <Content Include="help\assets\images\autogen\Filter_Tester_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Getestet_Hli2.gif" />
+    <Content Include="help\assets\images\autogen\Getestet_Nli1.gif" />
+    <Content Include="help\assets\images\autogen\Grundkonzepte_Hbuts1.gif" />
+    <Content Include="help\assets\images\autogen\Grundkonzepte_Nbuts.gif" />
+    <Content Include="help\assets\images\autogen\Hardwareunterstutzung_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Hardware_Abstraktion_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Hardware_Hbuts1.gif" />
+    <Content Include="help\assets\images\autogen\Hardware_im_Einsatz_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Hardware_Nbuts.gif" />
+    <Content Include="help\assets\images\autogen\Konfiguration_Hli2.gif" />
+    <Content Include="help\assets\images\autogen\Konfiguration_Nli1.gif" />
+    <Content Include="help\assets\images\autogen\Premium_Karten_Hbuts1.gif" />
+    <Content Include="help\assets\images\autogen\Premium_Karten_Nbuts.gif" />
+    <Content Include="help\assets\images\autogen\Profile_Hbuts1.gif" />
+    <Content Include="help\assets\images\autogen\Profile_Nbuts.gif" />
+    <Content Include="help\assets\images\autogen\Profile_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Quick_Record_Hbuts1.gif" />
+    <Content Include="help\assets\images\autogen\Quick_Record_Nbuts.gif" />
+    <Content Include="help\assets\images\autogen\Quick_Record_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Schnittstelle_zu_C___Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Senderlisten_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Senderliste_Hli2.gif" />
+    <Content Include="help\assets\images\autogen\Senderliste_Nli1.gif" />
+    <Content Include="help\assets\images\autogen\Sendersuchlauf_Hbuts1.gif" />
+    <Content Include="help\assets\images\autogen\Sendersuchlauf_Nbuts.gif" />
+    <Content Include="help\assets\images\autogen\Sendersuchlauf_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Senderverwaltung_Hli2.gif" />
+    <Content Include="help\assets\images\autogen\Senderverwaltung_Nli1.gif" />
+    <Content Include="help\assets\images\autogen\Senderverwaltung_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Speicher_Hli2.gif" />
+    <Content Include="help\assets\images\autogen\Speicher_Nli1.gif" />
+    <Content Include="help\assets\images\autogen\Stream_Manager_Hbuts1.gif" />
+    <Content Include="help\assets\images\autogen\Stream_Manager_Nbuts.gif" />
+    <Content Include="help\assets\images\autogen\Stream_Manager_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\TechnoTrend_Premium_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Transport_Streams_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Transport_Stream_Hbuts1.gif" />
+    <Content Include="help\assets\images\autogen\Transport_Stream_Nbuts.gif" />
+    <Content Include="help\assets\images\autogen\Ubersicht_Hbuts1.gif" />
+    <Content Include="help\assets\images\autogen\Ubersicht_Nbuts.gif" />
+    <Content Include="help\assets\images\autogen\Varianten_Hli2.gif" />
+    <Content Include="help\assets\images\autogen\Varianten_Nli1.gif" />
+    <Content Include="help\assets\images\autogen\Watch_TV_Pro_Hli2.gif" />
+    <Content Include="help\assets\images\autogen\Watch_TV_Pro_Kanaldatei_Nvisual-compbann.jpg" />
+    <Content Include="help\assets\images\autogen\Watch_TV_Pro_Nli1.gif" />
+    <Content Include="help\assets\images\backgrd.jpg" />
+    <Content Include="help\assets\images\BuiltWithNOF.gif" />
+    <Content Include="help\assets\images\ChooseProvider.jpg" />
+    <Content Include="help\assets\images\ConfirmDelete.jpg" />
+    <Content Include="help\assets\images\EditCapture.jpg" />
+    <Content Include="help\assets\images\EditFile.jpg" />
+    <Content Include="help\assets\images\EditFileChoose.jpg" />
+    <Content Include="help\assets\images\EditFlag.jpg" />
+    <Content Include="help\assets\images\EditIndex.jpg" />
+    <Content Include="help\assets\images\EditTuner.jpg" />
+    <Content Include="help\assets\images\EditType.jpg" />
+    <Content Include="help\assets\images\favbar.jpg" />
+    <Content Include="help\assets\images\favman.jpg" />
+    <Content Include="help\assets\images\FirstStart.jpg" />
+    <Content Include="help\assets\images\GenericBDA.jpg" />
+    <Content Include="help\assets\images\Language.jpg" />
+    <Content Include="help\assets\images\MixesSharingOption.jpg" />
+    <Content Include="help\assets\images\NewProfile.jpg" />
+    <Content Include="help\assets\images\Nexus.jpg" />
+    <Content Include="help\assets\images\NoProfiles.jpg" />
+    <Content Include="help\assets\images\psimarron.gif" />
+    <Content Include="help\assets\images\scan_cable.jpg" />
+    <Content Include="help\assets\images\scan_diseqc.jpg" />
+    <Content Include="help\assets\images\scan_lnb.jpg" />
+    <Content Include="help\assets\images\scan_menu.jpg" />
+    <Content Include="help\assets\images\scan_sat.jpg" />
+    <Content Include="help\assets\images\scan_save.jpg" />
+    <Content Include="help\assets\images\scan_source.jpg" />
+    <Content Include="help\assets\images\scan_start.jpg" />
+    <Content Include="help\assets\images\SharedChannels.jpg" />
+    <Content Include="help\assets\images\SharedProfiles.jpg" />
+    <Content Include="help\assets\images\UserProfileFinished.jpg" />
+    <Content Include="help\backgrd.jpg" />
+    <Content Include="help\html\bda.html" />
+    <Content Include="help\html\channelfaq.html" />
+    <Content Include="help\html\channels.html" />
+    <Content Include="help\html\download.html" />
+    <Content Include="help\html\dvb.html" />
+    <Content Include="help\html\epg.html" />
+    <Content Include="help\html\faqhardware.html" />
+    <Content Include="help\html\faqhardwarebda.html" />
+    <Content Include="help\html\faqhardwarereq.html" />
+    <Content Include="help\html\faqhardwarespecial.html" />
+    <Content Include="help\html\faqhardwaretested.html" />
+    <Content Include="help\html\favorites.html" />
+    <Content Include="help\html\filtertest.html" />
+    <Content Include="help\html\interop.html" />
+    <Content Include="help\html\principles.html" />
+    <Content Include="help\html\profilefaq.html" />
+    <Content Include="help\html\profiles.html" />
+    <Content Include="help\html\quickrecord.html" />
+    <Content Include="help\html\scanconfig.html" />
+    <Content Include="help\html\scanner.html" />
+    <Content Include="help\html\simpleprofile.html" />
+    <Content Include="help\html\sizereport.html" />
+    <Content Include="help\html\streamman.html" />
+    <Content Include="help\html\ts.html" />
+    <Content Include="help\html\ttpremium.html" />
+    <Content Include="help\html\watchtv.html" />
+    <Content Include="help\index.html" />
+    <Content Include="help\streamman_ci.jpg" />
+    <Content Include="help\streamman_record.jpg" />
+    <Content Include="help\streamman_sit.jpg" />
+    <Content Include="help\UserProfileManager.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

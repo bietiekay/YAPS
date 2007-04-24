@@ -1,0 +1,5 @@
+obj\Debug\ResolveAssemblyReference.cache
+bin\Debug\stripRTPHeader.exe
+bin\Debug\stripRTPHeader.pdb
+obj\Debug\stripRTPHeader.exe
+obj\Debug\stripRTPHeader.pdb

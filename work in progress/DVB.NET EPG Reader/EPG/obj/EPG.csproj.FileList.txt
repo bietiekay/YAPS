@@ -1,0 +1,5 @@
+..\Assemblies\JMS.DVB.EPG.dll
+..\Assemblies\JMS.DVB.EPG.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\JMS.DVB.EPG.dll
+obj\Debug\JMS.DVB.EPG.pdb

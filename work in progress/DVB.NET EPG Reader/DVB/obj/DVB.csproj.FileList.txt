@@ -1,0 +1,12 @@
+..\Assemblies\JMS.DVB.dll
+..\Assemblies\JMS.DVB.pdb
+..\Assemblies\de\JMS.DVB.resources.dll
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\JMS.DVB.Chooser.ico
+obj\Debug\JMS.DVB.DVBNETProviders.xml
+obj\Debug\JMS.DVB.ProviderChooser.resources
+obj\Debug\DVB.csproj.GenerateResource.Cache
+obj\Debug\JMS.DVB.ProviderChooser.de.resources
+obj\Debug\de\JMS.DVB.resources.dll
+obj\Debug\JMS.DVB.dll
+obj\Debug\JMS.DVB.pdb

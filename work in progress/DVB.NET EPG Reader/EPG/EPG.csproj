@@ -1,0 +1,210 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{90D05FCC-70F9-4423-A79F-B8D31BFBC228}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>JMS.DVB.EPG</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>JMS.DVB.EPG</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\Assemblies\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\Assemblies\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AudioTypes.cs" />
+    <Compile Include="CableModulations.cs" />
+    <Compile Include="Descriptors\CableDelivery.cs" />
+    <Compile Include="Descriptors\ServiceList.cs" />
+    <Compile Include="Descriptors\SatelliteDelivery.cs" />
+    <Compile Include="Descriptors\NetworkName.cs" />
+    <Compile Include="InnerFECs.cs" />
+    <Compile Include="NetworkEntry.cs" />
+    <Compile Include="Descriptors\AC3.cs" />
+    <Compile Include="Descriptors\Teletext.cs" />
+    <Compile Include="Descriptors\DataBroadcast.cs" />
+    <Compile Include="Descriptors\ISOLanguage.cs" />
+    <Compile Include="Descriptors\Service.cs" />
+    <Compile Include="Descriptors\StreamIdentifier.cs" />
+    <Compile Include="ExtendedSITScanner.cs" />
+    <Compile Include="LanguageItem.cs" />
+    <Compile Include="OuterFECs.cs" />
+    <Compile Include="PATScanner.cs" />
+    <Compile Include="PMTManager.cs" />
+    <Compile Include="PMTScanner.cs" />
+    <Compile Include="Polarizations.cs" />
+    <Compile Include="ProgramEntry.cs" />
+    <Compile Include="IDescriptorContainer.cs" />
+    <Compile Include="CRC32.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Descriptor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Descriptors\Component.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Descriptors\Content.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Descriptors\ExtendedEvent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Descriptors\Generic.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Descriptors\Linkage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Descriptors\ParentalRating.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Descriptors\PDCDescriptor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Descriptors\PrivateData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Descriptors\ShortEvent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DescriptorTags.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EntryBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventEntry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventStatus.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Parser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SDTScanner.cs" />
+    <Compile Include="Section.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServiceEntry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServiceParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServiceTypes.cs" />
+    <Compile Include="SITScanner.cs" />
+    <Compile Include="StreamTypes.cs" />
+    <Compile Include="Table.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TableConstructor.cs" />
+    <Compile Include="Tables\NIT.cs" />
+    <Compile Include="Tables\PMT.cs" />
+    <Compile Include="Tables\PAT.cs" />
+    <Compile Include="Tables\EIT.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tables\Generic.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tables\SDT.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TeletextItem.cs" />
+    <Compile Include="TeletextTypes.cs" />
+    <Compile Include="Tools.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DVB\DVB.csproj">
+      <Project>{5C2B8408-6616-444C-A808-A79C9A356111}</Project>
+      <Name>DVB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

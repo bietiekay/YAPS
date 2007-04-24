@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="Windows-1252" ?>
+<DVBNETProviders SchemaVersion="2.6">
+  <DVBNETProvider id="TechnoTrend Premium (PCIe/KS)">
+    <CardNames>
+      <CardName>TechnoTrend Premium DVB-S</CardName>
+      <CardName>TechnoTrend Premium DVB-C</CardName>
+    </CardNames>
+    <Driver>JMS.DVB.Provider.TTPremium.TTDirectShowProvider, JMS.DVB.Provider.TTPremium</Driver>
+    <Trigger>ttdvbacc.dll</Trigger>
+    <FilterLimit>8</FilterLimit>
+    <RecordingFormats>
+      <MPEG-2 />
+      <PVA />
+    </RecordingFormats>
+    <Decryption />
+    <VideoDisplay>
+      <AsChild>true</AsChild>
+    </VideoDisplay>
+    <Parameters>
+      <Device editor="JMS.ChannelManagement.Editors.DeviceIndex, JMS.ChannelManagement">0</Device>
+      <Network editor="JMS.ChannelManagement.Editors.Flag, JMS.ChannelManagement">false</Network>
+      <Graph editor="JMS.ChannelManagement.Editors.AnyPath, JMS.ChannelManagement">.\Graphs\TTPremium.grf</Graph>
+    </Parameters>
+  </DVBNETProvider>
+  <DVBNETProvider id="TechnoTrend Premium">
+    <CardNames>
+      <CardName>TechnoTrend Premium DVB-S</CardName>
+      <CardName>TechnoTrend Premium DVB-C</CardName>
+    </CardNames>
+    <Driver>JMS.DVB.Provider.TTPremium.TTDeviceProvider, JMS.DVB.Provider.TTPremium</Driver>
+    <Trigger>ttdvbacc.dll</Trigger>
+    <FilterLimit>8</FilterLimit>
+    <RecordingFormats>
+      <MPEG-2 />
+      <PVA />
+    </RecordingFormats>
+    <Decryption />
+    <VideoDisplay>
+      <DisplayModes>true</DisplayModes>
+    </VideoDisplay>
+    <Parameters>
+      <Device editor="JMS.ChannelManagement.Editors.DeviceIndex, JMS.ChannelManagement">0</Device>
+      <Network editor="JMS.ChannelManagement.Editors.Flag, JMS.ChannelManagement">false</Network>
+    </Parameters>
+  </DVBNETProvider>
+  <DVBNETProvider id="TechnoTrend Premium (Secondary)">
+    <CardNames>
+      <CardName>TechnoTrend Premium DVB-S</CardName>
+      <CardName>TechnoTrend Premium DVB-C</CardName>
+    </CardNames>
+    <Driver>JMS.DVB.Provider.TTPremium.TTDeviceProvider, JMS.DVB.Provider.TTPremium</Driver>
+    <Trigger>ttdvbacc.dll</Trigger>
+    <FilterLimit>8</FilterLimit>
+    <RecordingFormats>
+      <MPEG-2 />
+      <PVA />
+    </RecordingFormats>
+    <Decryption />
+    <VideoDisplay>
+      <DisplayModes>true</DisplayModes>
+    </VideoDisplay>
+    <Parameters>
+      <Device>1</Device>
+      <Network editor="JMS.ChannelManagement.Editors.Flag, JMS.ChannelManagement">false</Network>
+    </Parameters>
+  </DVBNETProvider>
+  <DVBNETProvider id="Hauppauge Nova-SE2">
+    <CardNames>
+      <CardName>Hauppauge Nova-SE2</CardName>
+      <CardName>Hauppauge Nova-S Plus</CardName>
+    </CardNames>
+    <Driver>JMS.DVB.Provider.BDA.NovaSE2Provider, JMS.DVB.Provider.BDA</Driver>
+    <FilterLimit>200</FilterLimit>
+    <VideoDisplay>
+      <AsChild>true</AsChild>
+    </VideoDisplay>
+    <Parameters>
+    </Parameters>
+  </DVBNETProvider>
+  <DVBNETProvider id="TechnoTrend Budget (BDA) DVB-S">
+    <CardNames>
+      <CardName>TechnoTrend Budget PCI DVB-S2</CardName>
+      <CardName>TechnoTrend Budget PCI DVB-S</CardName>
+    </CardNames>
+    <Driver>JMS.DVB.Provider.BDA.ProviderWithStandardDiSEqC, JMS.DVB.Provider.BDA</Driver>
+    <FilterLimit>200</FilterLimit>
+    <VideoDisplay>
+      <AsChild>true</AsChild>
+    </VideoDisplay>
+    <Parameters>
+      <Tuner>TechnoTrend BDA/DVB-S Tuner</Tuner>
+      <Capture>TechnoTrend BDA/DVB Capture</Capture>
+      <ResetAfterWakeup>true</ResetAfterWakeup>
+    </Parameters>
+  </DVBNETProvider>
+  <DVBNETProvider id="TechnoTrend Budget (BDA) DVB-T">
+    <CardNames>
+      <CardName>TechnoTrend Budget PCI DVB-T</CardName>
+    </CardNames>
+    <Driver>JMS.DVB.Provider.BDA.Provider, JMS.DVB.Provider.BDA</Driver>
+    <FilterLimit>200</FilterLimit>
+    <VideoDisplay>
+      <AsChild>true</AsChild>
+    </VideoDisplay>
+    <Parameters>
+      <Tuner>TechnoTrend BDA/DVB-T Tuner</Tuner>
+      <Capture>TechnoTrend BDA/DVB Capture</Capture>
+      <Type>Terrestrial</Type>
+      <ResetAfterWakeup>true</ResetAfterWakeup>
+    </Parameters>
+  </DVBNETProvider>
+  <DVBNETProvider id="Twinhan DTV VP-7049A">
+    <CardNames>
+      <CardName>Twinhan DTV VP-7049A</CardName>
+      <CardName>Digital TV DVB-T USB</CardName>
+    </CardNames>
+    <Driver>JMS.DVB.Provider.BDA.Provider, JMS.DVB.Provider.BDA</Driver>
+    <FilterLimit>200</FilterLimit>
+    <VideoDisplay>
+      <AsChild>true</AsChild>
+    </VideoDisplay>
+    <Parameters>
+      <Tuner>DTV-DVB 7049A Digital Tuner</Tuner>
+      <Capture>DTV-DVB 7049A Digital Capture</Capture>
+      <Type>Terrestrial</Type>
+    </Parameters>
+  </DVBNETProvider>
+  <DVBNETProvider id="TechnoTrend Budget (PCI)">
+    <CardNames>
+      <CardName>TechnoTrend Budget PCI DVB-S2</CardName>
+      <CardName>TechnoTrend Budget PCI DVB-S</CardName>
+      <CardName>TechnoTrend Budget PCI DVB-C</CardName>
+      <CardName>TechnoTrend Budget PCI DVB-T</CardName>
+    </CardNames>
+    <Driver>JMS.DVB.Provider.TTBudget.BudgetProvider, JMS.DVB.Provider.TTBudget</Driver>
+    <Trigger>ttlcdacc.dll</Trigger>
+    <FilterLimit>200</FilterLimit>
+    <VideoDisplay>
+      <AsChild>true</AsChild>
+    </VideoDisplay>
+    <Decryption />
+    <Parameters>
+      <Device editor="JMS.ChannelManagement.Editors.DeviceIndex, JMS.ChannelManagement">0</Device>
+    </Parameters>
+  </DVBNETProvider>
+  <DVBNETProvider id="Hauppauge DVB-T BDA">
+    <CardNames>
+      <CardName>DVB-T BDA</CardName>
+    </CardNames>
+    <Driver>JMS.DVB.Provider.BDA.Provider, JMS.DVB.Provider.BDA</Driver>
+    <FilterLimit>200</FilterLimit>
+    <VideoDisplay>
+      <AsChild>true</AsChild>
+    </VideoDisplay>
+    <Parameters>
+      <Tuner>Hauppauge WinTV 88x DVB-T Tuner/Demod</Tuner>
+      <Capture>Hauppauge WinTV 88x TS Capture</Capture>
+      <Type>Terrestrial</Type>
+    </Parameters>
+  </DVBNETProvider>
+  <DVBNETProvider id="Generic BDA DVB-S Device with Standard DiSEqC">
+    <CardNames>
+    </CardNames>
+    <Driver>JMS.DVB.Provider.BDA.ProviderWithStandardDiSEqC, JMS.DVB.Provider.BDA</Driver>
+    <FilterLimit>200</FilterLimit>
+    <VideoDisplay>
+      <AsChild>true</AsChild>
+    </VideoDisplay>
+    <Parameters>
+      <Tuner editor="JMS.DVB.Provider.BDA.Editors.Tuner, JMS.DVB.Provider.BDA"></Tuner>
+      <Capture editor="JMS.DVB.Provider.BDA.Editors.Capture, JMS.DVB.Provider.BDA"></Capture>
+      <ResetAfterWakeup editor="JMS.ChannelManagement.Editors.Flag, JMS.ChannelManagement">false</ResetAfterWakeup>
+    </Parameters>
+  </DVBNETProvider>
+  <DVBNETProvider id="Generic BDA Device">
+    <CardNames>
+    </CardNames>
+    <Driver>JMS.DVB.Provider.BDA.Provider, JMS.DVB.Provider.BDA</Driver>
+    <FilterLimit>200</FilterLimit>
+    <VideoDisplay>
+      <AsChild>true</AsChild>
+    </VideoDisplay>
+    <Parameters>
+      <Tuner editor="JMS.DVB.Provider.BDA.Editors.Tuner, JMS.DVB.Provider.BDA"></Tuner>
+      <Capture editor="JMS.DVB.Provider.BDA.Editors.Capture, JMS.DVB.Provider.BDA"></Capture>
+      <Type editor="JMS.DVB.Provider.BDA.Editors.Frontend, JMS.DVB.Provider.BDA"></Type>
+      <ResetAfterWakeup editor="JMS.ChannelManagement.Editors.Flag, JMS.ChannelManagement">false</ResetAfterWakeup>
+    </Parameters>
+  </DVBNETProvider>
+</DVBNETProviders>
