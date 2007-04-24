@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de">
+<head>
+<title>Yet Another Proxy Server | Recordings</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="audience" content="All"/>
+<meta name="Language" content="English"/>
+<meta name="Content-Language" content="en"/>
+
+<link href="skins/%skin%/css/default.css" rel="stylesheet" type="text/css"/>
+<!--[if lte IE 7]>
+<link href="skins/%skin%/css/explorer/iehacks_2col_left_vlines.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+
+<body>
+<div id="page_margins">
+<div id="page" class="hold_floats">
+
+%include(include/header.inc)%
+
+<div id="nav">
+<a id="navigation" title="navigation"></a>
+<div id="nav_main" >
+	<ul>
+		<li><a href="index.html">Home</a></li>
+		<li><a href="addrecording.html">Add Recording</a></li>
+		<li id="current"><a href="recordings.html">Recordings</a></li>
+		<li><a href="console.html">Console</a></li>
+		<li><a href="settings.html">Settings</a></li>
+		<li><a href="help.html">Help</a></li>
+	</ul>
+</div>
+</div>
+<!-- 3-Spalten-Hauptteil -->
+<div id="main">
+<!-- #col1: Links Spalte des Inhaltsbereiches -->
+<!--
+    <div id="col1">
+      <div id="col1_content" class="clearfix">      
+      </div>
+    </div>
+ -->
+<!-- Left - Ende -->
+
+<!-- #col2: Rechte Spalte des Inhaltsbereiches -->
+
+    
+<!-- #col2 - Rechts - Ende -->
+
+<!-- #col3: Hauptteil des Inhaltesbereiches -->
+<div id="space-usage-bar">%space_usage_bar%</div>
+<div id="block1" class="clearfix">
+<a id="A1" title="content"></a>
+       <div id="recordings">
+	        <table id="recordings_table">
+                <tr>
+                    <th>playcount</th>
+                    <th><a href="/recordings.html?SortAscending">recorded at</a></th>
+                    <th>duration</th>
+                    <th>channel</th>
+                    <th>name</th>
+                    <th>category</th>
+                    <th>user</th>
+                    <th></th>
+            </tr>
+            %render_recorded_table(recorded_line.template)%
+	        </table>
+	   </div>
+</div>
+    <div id="col3" class="single_colum">
+      
+      <div id="col3_content" class="clearfix">
+       
+	  <a id="content" title="content"></a>
+  
+	  </div>
+	</div>
+
+		  
+      <!-- IE Column Clearing -->
+         <div id="ie_clearing">&nbsp;</div>
+      <!-- Ende: IE Column Clearing -->
+</div>
+<!-- Content - Ende -->
+</div>
+%include(include/footer.inc)%
+</div>
+</body>
+</html>

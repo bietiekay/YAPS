@@ -1,0 +1,347 @@
+24.04.2007
++ added %rendertransformation($input_url,$xslt_url)% keyword to the TemplateProcessor
+
+21.04.2007
+* fixed a memory leak in the rss generator
++ added TuxBoxServices data structure
++ added tuxbox /xml/services call handler to http processor
+* changed the MulticastEPG source data handling so that the multicastEPG Sources are now stored in the settings.dat.xml (misc settings) file
+* fixed a bug in the EPGProcessor that caused an empty CurrentlyPlayingList
++ added small testing portion
+* fixed some bugs in http server
+* rewrote tuxbox services data structure and handling (helping hand: Andreas Heil)
+
+18.04.2007
+* reimplemented the whole Channel-Name-Picture-ServiceID-MulticastIP-MulticastPort Mapping and created a new data structure and XML file that holds that data
++ added filtering functionality to the EPG Processor that filters only known channel EPG data and discards data for unkown channels
+* fixed the XBMCSyncProcessor bug; I had the file deletion functionality disabled....
+
+17.04.2007
++ added the multicastedEPGProcessor Implementation, does maintain a CurrentlyRunning List but is not used yet
+  (Implementation just for leak and stability testing)
++ added new Channel/StationID mapping data structure
+
+13.04.2007
+- removed JMS/DVB subproject
+* several changes to the JMS/EPG subproject to make JMS/DVB obsolete
+* working EPG implementation (not yet activated) -- need to get working 
+
+02.04.2007
++ now displaying associated username instead of IP address in the http logfile
++ added EPG Processor startup to YAPS.cs
+
+01.04.2007
+* fixed a design bug in console_output.html
+* fixed a false css reference in all templates
++ added JMS Namespace DVB.NET Libraries (http://www.psimarron.net/DVBNET/html/download.html)
++ added EPGProcessor
+
+30.03.2007
+* fixed a bug in the XBMC Playlist File branch; XBMC Playlistfiles respect now a port number setting != default port 80
+
+29.03.2007
+* changed multicast behaviour: we don't use RTP from now on; there's just plain UDP
+* added new EPG test data
+* fixed a bug in multicast_vcr
+* fixed DeleteRecordings; did not work for several versions - you can now delete scheduled recordings
+* fixed a bug in the ConsoleOutputLogger that leads to a "Collection was modified after the enumerator was instantiated." exception when 
+  the logoutput is accessed while it's written
+
+23.03.2007
++ added YAPS.XMLtv Namespace
++ added XMLTVProcessor
++ added XMLTV DateTime Parser
++ added configurable port and ip settings to the http server (+default settings)
+	    !ATTENTION: YOU *HAVE TO* CONFIGURE THIS!
+! from this build on until it is changed(if actually needed) you can bind yaps only to ONE ip adress
++ added Check Methods to the SettingsProcessor --> if settings are loaded they can now be checked for errors
+
+20.03.2007
++ added XMLtv scheme and data structures
+
+19.03.2007
++ added Tuxbox data structures for future use
++ added Tuxbox /xml/ handling path to http server
++ added CanAccessTuxbox to Authentification handling
+
+18.03.2007
+* fixed some bugs in the recording table
+* changed all templates to make use of the skin-setting
+
+17.03.2007
+* changed the layout based on YAML (www.yaml.de)
+* changed the default design
+* fixed some layout bugs, everything should be conform to W3C standards now
+* changed some minor issues in footer and help section
++ added new options for add recording form
+
+15.03.2007
+* changed the settings data structures do actually do something
+* changed the multicast processor to use the multicast prefix stored in settings
+i you define the prefix like this: "239.255.2." - YAPS now adds the last number which is the channel number (23 for example) and then the port number 50 + channel number = 5023
+  this leads to the multicast adress 239.255.2.23:5023
+
+14.03.2007
+* changed copyright notice
+- removed binary SaveSettings() functionality
++ added new setting element to Recording Data structure (createdby)
++ extended authentification data structures and HTTPAuthProcessor code to allow mapping of usernames to ip adresses
++ added Authentification XML settings file
++ added new capability "CanDeleteOwnRecordings"
+* changed capabilty "CanDeleteRecordings" to "CanDeleteAllRecordings"
+* changed RemoveRecording/RemoveRecordingFile/Deleterecording behavious according to the new capabilities
++ added "CreatedBy" handling to the AddRecording HTTP Server method
++ added "%createdby%" Template Keyword for Recording-Listings
+
+12.03.2007
++ added XML based configuration files (replacing the old binary ones)
+* changed the logfile behaviour so that when YAPS is restarted everything is appended to the logfile instead of overwritten
++ authed another client
+* fixed a bug that leads to the corruption of the xml files...
+
+11.03.2007
+! there's a remaining bug in the html encoding --> leads to corrupted letters in browser
+* added some todos
+
+11.02.2007
+* fixed an encoding bug in the http server that caused firefox and other browsers to corrupt the html
+
+04.02.2007
+* fixed a bug in the http servers file accessing module - a CurrentlyRecording could only be watched to the point it reached while the watching started
+* added a MPEG TS (Transport Stream) Processor to determine on the fly if something in the recording is corrupt or not
+
+01.02.2007
++ added CurrentlyRecording Playlists to the XBMCSyncProcessor (added XBMCPlaylistFilesHelper class for that matter)
+* changed http server so that it now displays the accessing IP
++ added disk based logging (ConsoleOutputLogger.WriteLogfile)
++ added checking for .log file extension in http server to prohibit access
+* changed started to optimize settings pages
+* fixed a bug in the logfile writer that was triggered when multithreaded logging was done
+
+31.01.2007
++ added TimeShiftProcessor which implements a circular buffer in memory (working on a buffer which is stored on disk)
+* fixed a bug where you could not watch a recording while it has been recorded; you can now watch it even if it was
+  not recorded completely...when you fastforward through the movie, be careful: it'll say EOF if you reach the end 
+  of what has been written (thanks to Matthias Raacke)
+
+30.01.2007
+* fixed XBMCSyncProcessor bug that caused constant checks on currently running recordings
++ added AuthentificationEntry - capability based permission settings
++ added capability based persmission settings - canAccessLiveStream,canAccessRecordings,canAccessThisServer,canCreateRecordings,canDeleteRecordings,isAdministrator
+* fixed minor bug in LiveStream permission testing
+
+29.01.2007
++ added XBMCSyncProcessor to sync the playlist files on the harddrive to the YAPS recordings - means: delete the playlist file and the recording is deleted as well
++ added RecordingsManager for playlist filename creation and correct recordings deletes
+* changed filename - added some more whitespaces
+
+23.01.2007
+* fixed a bug in the XBMC Playlist creation process (if a recording name was used more than once only the last one got a playlist file)
+* corrected some minor bugs in the REMOVERECORDINGFILE http server command
+* some cosmetic changes to the playlist filenames
+
+22.01.2007
++ added XBMC compatible .strm playlist file creation and removal (in ./Playlists directory)
+
+16.12.2006
+* increased the ThreadedCacheWriter cache size by the factor 5 - in the past on very fragmented harddisks 
+  the recordings were corrupted by lost packets
+* fixed the %played_percentage% bug, the value is now displayed correctly and in all cases
+
+10.12.2006
+* corrected a spelling error in the "Reset PlayCount" section of the HTTP server
+
+08.12.2006
++ added line template for recorded listing
+
+07.12.2006
+* fixed some minor design issues
+* converted recordings.html to new template
+* fixed spelling in help.html
+
+12.11.2006
++ added FileSize to the recording info
++ added played_percentage placeholder to the "One-Line-Rendering"-Engine
+
+08.11.2006
++ added "ResetRecording" functionality to the /vcr/ path: resets the current play position "rewinds the tape"
+
+07.11.2006
++ added the long awaited Recording/Recorded Listing Placeholders
+  %render_recorded_table(templatefilename)% and %render_recording_table(templatefilename)%
++ added according placeholders for the Listing Templates: %playcount%, %starts_at%, %ends_at%, %runtime%, %channel%, %recording_name%, %categories%, %recording_id%, %recording_status%
+* some minor changes to the index.html and recordings.html
++ added recording_line.template and recorded_line.template files
+
+02.11.2006
++ added recorded at column to the PlayList Manager
+
+01.11.2006
++ added sorting to the XML feed (newest recording is first entry in XML feed)
+
+26.10.2006
+* fixed some loop bugs in PlayListManager
+* added click-and-start-playing functionality to PlayListManager
+
+25.10.2006
++ added %render_recorded_table()%; not yet functional
++ added application "PlaylistManager", based upon the Recordings RSS Feed a MPlayer playlist can be generated...
+* fixed a resizing bug in PlayListManager
+
+18.10.2006
++ added demo-settings containing donerecordings, categories and recordings...
+
+15.10.2006
+* changed the settings pages to use the footer and header templates, prepared for XHTML1.1
+
+12.10.2006
++ added skins-subfolder, containing default-subfolder with images and stylesheet for the default-design
++ changed index.html-template to use skins-folder and moved all design-related stuff into stylesheet
++ changed rewrite of index.html in XHTML 1.1 with div-based layout
+* updated the YAPS toolbar graphics in the CorelDraw! file
++ added YAPS_logo_complete.png
++ added correct mime-type handling to the HTTP Server (text/css, text/html, text/jpeg....)
+* changed the <pre> tag in TemplateProcessor ConsoleOutput placeholder
++ changed console, help and addrecording templates to validate as XHTML 1.1
++ fixed some design issues with new css-styles
+* fixed a encoding bug in the http html handler which now outputs UTF8 which was UTF-16LE
++ added HTTPAuthProcessor and IPAuth frame
++ added validIPAdresses and AccessFromThisIPAllowed to the HTTP server; ATTENTION: only localhost and some of my private IPs are allowed, 
+  you can change that in the YAPS.CS (see inline comments)
+
+11.10.2006
++ added %include(filename)% keyword to the template parser
++ added Loop-Detection for %include(filename)% keyword
+
+10.10.2006
++ added the %settings_*% keywords to the TemplateProcessor
++ changed the MapNames Class to ChannelMapper
++ added ChannelAddress Settings, Settingsfile
++ added %buildversion% template keyword
++ added Misc Settings and Channel Adress Mapping Settings Icon
++ added Misc and Channel Settings to the Settings HTML Page
+* some cosmetic changes to index.html and the LoadSettings console output
++ added automatic categories to the To-Be-Recorded Listing
++ added RSS functionality to the recordings list
+* fixed a bug that caused a crash when the binding to port 80 failed (HTTP Server)
+
+09.10.2006
+* changed the HTTP Servers file buffer size to 20480 bytes; increased the HTTP performance by factor 4
+* changed the Multicast Cached Reader/Writer buffer size to 150 RTP packets per run
+
+07.10.2006
++ implemented AddSearchTerm and DelSearchTerm functionality
++ added editcategory_step4.html for Searchterm deletion (changing that in future versions!!!)
++ added AutomaticCategoriesForRecording functionality to the CategoryProcessor
++ added Category Listing to the RecordedListing Template Processor
++ added RenderOneLine Method to the RecordedListing Template Processor
++ added CategoryFilter functionality, just click on the category in the Recorded Listing to filter
++ added SortAscending/SortDescending Keywords to recordings.html handling - you can now switch between those sorting schemes; default is Descending
++ added Querystring.cs
+! known bug -> when CategoryFilter is active SortAscending/SortDescending wouldn't work; currently fixing
+
+03.10.2006
+* fixed a bug in the http method calling tree
+
+29.09.2006
+* fixed a bug in the Managerecording-Deleterecording methods
+* changed the RemoveRecordingFile Forwarder to the /recordings.html instead of the last page in browser history
+* fixed a bug in the ForwardToPage method
+* updated the TV Browser Capture Plugin Configuration (/Documentation and Misc/TV Browser Capture Plugin)
++ added settings page
++ added settings_categories page
++ added settings category and addcategory icons
+* changed Design Vector file format to CorelDraw! X3
++ added Category Adding functionality
++ added Category deleting functionality
++ added Searchterm adding functionality (partly)
+
+28.09.2006
++ added the deleterecording functionality for managerecordings (delete recording without knowing the ID)
+* changes to the Category data structure
++ added category.cs to the repository
++ added CategoryProcessor
++ added AddCategory HTML Page
++ added EditCategory HTML Pages
++ added Category listing Template Processor
++ added ForwardToLastPage HTTP Response
++ added ForwardToPage HTTP Response
+
+21.09.2006
++ changed the Settings data structures
+* fixed a spelling error in the DoneRecordings table
++ added category listing to the RecordedListing table
++ added channel image for german br
++ added several category management specific changes
+
+04.09.2006
+* fixed a PlayCount bug
+- removed unnecessary files for Daily Build support
+
+03.09.2006
+* changed all text messages and web-templates to english
++ added correct mimetype handling to the http server
+* fixed a bug in the 404 error handling when a file was not found
++ added a verbose mode to the ConsoleOutputLogger - disabled by default; only logging to console html page
+* fixed a bug that caused a complete crash when a wrong/unknown adress/channel was requested for streaming
++ added more error handling to the http server (streaming and vcr)
++ added license.txt (BSD license)
++ added Settings Loading and Saving (to be extended...)
+
+01.09.2006
+* fixed a bug in the Usage_Bar HTML Template Processor that could cause a lockup in the HTML page rendering process
+* fixed a bug in the HTTP Server error handling that caused "Saving Settings" everytime a 404 occured...
++ added a startup check to the VCRScheduler that sets unfinished recordings after a YAPS restart to done
+
+31.08.2006
+* fixed a bug in the HTTP Processor where only lower case AddRecording calls were accepted
++ added ManageRecording function call to the HTTP Processor to allow better TVBrowser Integration (remove should work now)
+  (added type=add or type=del)
+* fixed a bug in the HTTP Server error handling code that caused a crash
+* fixed a bug in the SettingsProcessor that could lead to a crash because of concurrent events that tryed to save settings 
+
+30.08.2006
+* fixed a bug that caused the HTTP server to malfunction
+
+29.08.2006
++ added Recording PlayCounter which shows how many times each recording was downloaded or streamed directly from the YAPS server
+* fixed a bug that caused a crash when a wrong formated URL was requested...
+* changed the default port to 80
+* fixed a bug in the RecordedList TemplateProcessor which produced not working Streaming URLs
+* fixed some of the html templates
++ added some more data fields to the recording data structure (activated)
++ added a simple sorting algorithm (Sorter.cs) used for RecordingTable and DoneRecordingTable HTML Template Processor Rendering
++ added a resume-streaming feature: Once you started streaming and stopped, YAPS resumes at the last position you stopped it; the next time it starts at the beginning of the recording
+ 
+25.08.2006
+* changed file information of the YAPS assemblies...
++ added addrecording.html (new design)
++ added default page when / is requested
++ added some commented-out extensions to the Recording Data structure; to be activated when a Recording File Converter is available
+
+23.08.2006
++ added addrecording.html to the Design Project (to be updated soon)
++ added TVBrowser (tvbrowser.org) Capture Plugin Definition File (YAPS.tcf)
+? note: the TVBrowser Capture Plugins delete functionality is not working yet 
+* mono compatibility in TemplateProcessor.cs via Mono.Unix.UnixDriveInfo
+* better recognition of the mountpoint for the videodirectory
+* fixed some bugs in HTML Templates where Firefox had some issues with the top toolbar of all pages (ello)
++ added live-streaming support for recordings, should be possible now to read recordings while recording...
++ added blue bar to space usage bar - blue bar shows how much space would be used when all recordings are done successfully
++ added blue bar and exclamation mark graphics
+* minor todo addition to TemplateProcessor.cs
+
+22.08.2006
++ first checkin
++ import in MonoDevelop
+* fixed path-bug in http.cs
++ added MonoSocket.cs for better compatibility betwenn mono and microsoft
+* modified multicast_vdr.cs to use the MonoSocket class in case of mono (define preprocessorvariable "MONO" in case of 
+
+compiling for mono)
+* fixed the /vcr/AddRecording Encoding bug which created some weird recording names
+* fixed the warning in MonoSocket
++ added console page
++ added help page
++ added percentage bar template keyword and html generator
+* finally fixed the UTF8 URL Handling

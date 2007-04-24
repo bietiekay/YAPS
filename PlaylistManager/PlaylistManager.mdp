@@ -1,0 +1,39 @@
+<Project name="PlaylistManager" fileversion="2.0" language="C#" clr-version="Net_2_0" ctype="DotNetProject">
+  <Configurations active="Debug">
+    <Configuration name="Debug" ctype="DotNetProjectConfiguration">
+      <Output directory="./bin/Debug" assembly="PlaylistManager" />
+      <Build debugmode="True" target="Exe" />
+      <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_2_0" />
+      <CodeGeneration compiler="Csc" warninglevel="4" optimize="False" unsafecodeallowed="False" generateoverflowchecks="True" mainclass="YAPS.PlaylistManager" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
+    </Configuration>
+    <Configuration name="Release" ctype="DotNetProjectConfiguration">
+      <Output directory="./bin/Release" assembly="PlaylistManager" />
+      <Build debugmode="False" target="Exe" />
+      <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_2_0" />
+      <CodeGeneration compiler="Csc" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" mainclass="YAPS.PlaylistManager" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
+    </Configuration>
+  </Configurations>
+  <Contents>
+    <File name="./Properties/AssemblyInfo.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Properties/Resources.Designer.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Properties/Settings.Designer.cs" subtype="Code" buildaction="Compile" />
+    <File name="./MainWindow.cs" subtype="Code" buildaction="Compile" />
+    <File name="./MainWindow.Designer.cs" subtype="Code" buildaction="Compile" />
+    <File name="./PlaylistManager.cs" subtype="Code" buildaction="Compile" />
+    <File name="./rss_utilities/RSS_Config.cs" subtype="Code" buildaction="Compile" />
+    <File name="./rss_utilities/RSSChannel.cs" subtype="Code" buildaction="Compile" />
+    <File name="./rss_utilities/RSSEnums.cs" subtype="Code" buildaction="Compile" />
+    <File name="./rss_utilities/RSSImage.cs" subtype="Code" buildaction="Compile" />
+    <File name="./rss_utilities/RSSItem.cs" subtype="Code" buildaction="Compile" />
+    <File name="./rss_utilities/RSSItemCollection.cs" subtype="Code" buildaction="Compile" />
+    <File name="./rss_utilities/RSSRoot.cs" subtype="Code" buildaction="Compile" />
+    <File name="./rss_utilities/RSSUtilities.cs" subtype="Code" buildaction="Compile" />
+  </Contents>
+  <References>
+    <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <ProjectReference type="Gac" localcopy="True" refto="System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <ProjectReference type="Gac" localcopy="True" refto="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <ProjectReference type="Gac" localcopy="True" refto="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <ProjectReference type="Gac" localcopy="True" refto="System.Xml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  </References>
+</Project>

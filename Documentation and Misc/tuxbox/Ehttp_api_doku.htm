@@ -1,0 +1,587 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" dir="ltr" lang="de"><head>
+
+  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="KEYWORDS" content="Ehttp api doku">
+<meta name="robots" content="index,follow">
+<link rel="shortcut icon" href="http://wiki.godofgta.de/favicon.ico">
+<link title="Creative Commons" type="application/rdf+xml" href="http://wiki.godofgta.de/index.php?title=Ehttp_api_doku&amp;action=creativecommons" rel="meta">
+<link rel="copyright" href="http://www.gnu.org/copyleft/fdl.html"><title>Ehttp api doku - Wiki</title>
+    
+    <style type="text/css" media="screen,projection">/*<![CDATA[*/ @import "/stylesheets/monobook/main.css"; /*]]>*/</style>
+    <link rel="stylesheet" type="text/css" media="print" href="Ehttp_api_doku-Dateien/commonPrint.css"><!--[if lt IE 5.5000]><style type="text/css">@import "/stylesheets/monobook/IE50Fixes.css";</style><![endif]--><!--[if IE 5.5000]><style type="text/css">@import "/stylesheets/monobook/IE55Fixes.css";</style><![endif]--><!--[if IE 6]><style type="text/css">@import "/stylesheets/monobook/IE60Fixes.css";</style><![endif]--><!--[if IE]><script type="text/javascript" src="/stylesheets/common/IEFixes.js"></script>
+    <meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+    
+    
+    
+    
+    <script type="text/javascript" src="Ehttp_api_doku-Dateien/index.php"></script>    <script type="text/javascript" src="Ehttp_api_doku-Dateien/wikibits.js"></script>
+    <style type="text/css">/*<![CDATA[*/
+@import "/index.php?title=MediaWiki:Monobook.css&action=raw&ctype=text/css&smaxage=18000";
+@import "/index.php?title=-&action=raw&gen=css";
+/*]]>*/</style></head><body style="cursor: auto ! important;" class="ns-0">
+    <div id="globalWrapper">
+      <div id="column-content">
+	<div id="content">
+	  <a name="top" id="contentTop"></a>
+	  	  <h1 class="firstHeading">Ehttp api doku</h1>
+	  <div id="bodyContent">
+	    <h3 id="siteSub">aus Wiki, der freien Wissensdatenbank</h3>
+	    <div id="contentSub"></div>
+	    	    	    <!-- start content -->
+	    <table id="toc" border="0"><tbody><tr id="toctitle"><td align="center">
+<b>Inhaltsverzeichnis</b> <script type="text/javascript">showTocToggle("Anzeigen","Verbergen")</script><span class="toctoggle">[<a href="javascript:toggleToc()" class="internal"><span id="showlink" style="display: none;">Anzeigen</span><span id="hidelink">Verbergen</span></a>]</span>
+</td></tr><tr id="tocinside"><td>
+<div class="tocline"><a href="#Allgemeines">1 Allgemeines</a><br></div>
+<div class="tocline"><a href="#API-Dokumentation">2 API-Dokumentation</a><br></div>
+<div class="tocindent">
+<p><a href="#Lautst.C3.A4rke_setzen_.28Bereich_0...63.29">2.1 Lautstärke setzen (Bereich 0...63)</a><br>
+<a href="#Lautst.C3.A4rke_setzen_.28Bereich_63...0.29">2.2 Lautstärke setzen (Bereich 63...0)</a><br>
+<a href="#Ton_Stumm_schalten">2.3 Ton Stumm schalten</a><br>
+<a href="#Ton_Stumm_schalten_.282.29">2.4 Ton Stumm schalten (2)</a><br>
+<a href="#liefert_die_TV_User-Bouquets_inklusive_Sender">2.5 liefert die TV User-Bouquets inklusive Sender</a><br>
+<a href="#liefert_die_Radio_User-Bouquets_inklusive_Sender">2.6 liefert die Radio User-Bouquets inklusive Sender</a><br>
+<a href="#liefert_die_Movies-Liste">2.7 liefert die Movies-Liste</a><br>
+<a href="#liefert_die_Services_.28Sender.29_des_aktuellen_Transponders">2.8 liefert die Services (Sender) des aktuellen Transponders</a><br>
+<a href="#liefert_die_subchannels_.28Unterkan.C3.A4le.29_eines_Services_.28Senders.29">2.9 liefert die subchannels (Unterkanäle) eines Services (Senders)</a><br>
+<a href="#liefert_die_Audio-Optionen_eines_Services_.28Senders.29">2.10 liefert die Audio-Optionen eines Services (Senders)</a><br>
+<a href="#zap_zum_angegebenen_Service">2.11 zap zum angegebenen Service</a><br>
+<a href="#zum_service_zappen">2.12 zum service zappen</a><br>
+<a href="#dbox.2Fdreambox_shutdown">2.13 dbox/dreambox shutdown</a><br>
+<a href="#dbox.2Fdreambox_reboot">2.14 dbox/dreambox reboot</a><br>
+<a href="#Enigma_Neustart">2.15 Enigma Neustart</a><br>
+<a href="#Enigma_standby">2.16 Enigma standby</a><br>
+<a href="#Enigma_aufwachen_aus_standby">2.17 Enigma aufwachen aus standby</a><br>
+<a href="#Nachricht_auf_den_Fernsehbildschirm">2.18 Nachricht auf den Fernsehbildschirm</a><br>
+<a href="#erweiterte_Nachricht_auf_den_Fernsehbildschirm">2.19 erweiterte Nachricht auf den Fernsehbildschirm</a><br>
+<a href="#startet_einen_Audio-HTTP-Stream_des_aktuell_laufenden_Services">2.20 startet einen Audio-HTTP-Stream des aktuell laufenden Services</a><br>
+<a href="#startet_einen_Video-HTTP-Stream_.28VLC_kompatibel.29_des_aktuell_laufenden_Services">2.21 startet einen Video-HTTP-Stream (VLC kompatibel) des aktuell laufenden Services</a><br>
+<a href="#startet_einen_Video-HTTP-Stream_.28MPlayer_kompatibel.29_des_aktuell_laufenden_Services">2.22 startet einen Video-HTTP-Stream (MPlayer kompatibel) des aktuell laufenden Services</a><br>
+<a href="#aktuelles_Enigma-Datum_und_-Uhrzeit">2.23 aktuelles Enigma-Datum und -Uhrzeit</a><br>
+<a href="#zeigt_aktuelle_Version_von_Enigma_an">2.24 zeigt aktuelle Version von Enigma an</a><br>
+<a href="#liefert_den_EPG_des_aktuellen_Service">2.25 liefert den EPG des aktuellen Service</a><br>
+<a href="#liefert_die_Stream-Daten_des_aktuellen_Service">2.26 liefert die Stream-Daten des aktuellen Service</a><br>
+<a href="#liefert_den_Namen_des_aktuellen_Service">2.27 liefert den Namen des aktuellen Service</a><br>
+<a href="#gibt_die_PMT_als_XML-File_zur.C3.BCck">2.28 gibt die PMT als XML-File zurück</a><br>
+<a href="#Enigma_Einstellungen_neu_laden">2.29 Enigma Einstellungen neu laden</a><br>
+<a href="#Liste_der_Recordings_neu_laden">2.30 Liste der Recordings neu laden</a><br>
+<a href="#Liste_der_Recordings_im_Flash_speichern">2.31 Liste der Recordings im Flash speichern</a><br>
+<a href="#Playlist_neu_laden">2.32 Playlist neu laden</a><br>
+<a href="#Playlist_speichern">2.33 Playlist speichern</a><br>
+<a href="#User-Bouquets_neu_einlesen">2.34 User-Bouquets neu einlesen</a><br>
+<a href="#User-Bouquets_speichern">2.35 User-Bouquets speichern</a><br>
+<a href="#Timer-Liste_neu_einlesen">2.36 Timer-Liste neu einlesen</a><br>
+<a href="#Timer-Liste_speichern">2.37 Timer-Liste speichern</a><br>
+<a href="#Plugin_starten">2.38 Plugin starten</a><br>
+<a href="#screenshot_nach_.2Ftmp.2Fscreenshot.bmp">2.39 screenshot nach /tmp/screenshot.bmp</a><br>
+<a href="#screenshot_des_OSD_nach_.2Ftmp.2Fosdshot.png">2.40 screenshot des OSD nach /tmp/osdshot.png</a><br>
+</p>
+</div>
+<div class="tocline"><a href="#einige_Kompatibilit.C3.A4ts-Funktionen_zu_Neutrino">3 einige Kompatibilitäts-Funktionen zu Neutrino</a><br></div>
+<div class="tocindent">
+<p><a href="#Nachricht_auf_den_Fernsehbildschirm_2">3.1 Nachricht auf den Fernsehbildschirm</a><br>
+<a href="#liefert_die_VPid_und_APid_des_aktuellen_Service_.28dezimal.29">3.2 liefert die VPid und APid des aktuellen Service (dezimal)</a><br>
+<a href="#liefert_VPid.2C_APid.27s.2C_vtxt_Pid_und_PMT_Pid_des_aktuellen_Service_.28dezimal.29">3.3 liefert VPid, APid's, vtxt Pid und PMT Pid des aktuellen Service (dezimal)</a><br>
+<a href="#sollte_zum_angegebenen_Channel_zappen_-.3E_tut_es_aber_nicht">3.4 sollte zum angegebenen Channel zappen -&gt; tut es aber nicht</a><br>
+<a href="#liefert_onid.2Bsid">3.5 liefert onid+sid</a><br>
+<a href="#liefert_die_komplette_Kanalliste_.28unsortiert.29">3.6 liefert die komplette Kanalliste (unsortiert)</a><br>
+</p>
+</div>
+<div class="tocline"><a href="#XML-Funktionen">4 XML-Funktionen</a><br></div>
+<div class="tocindent">
+<p><a href="#liefert_Statusinformationen_der_Box_wie_z.B._Standby.2C_Recording.2C_etc.">4.1 liefert Statusinformationen der Box wie z.B. Standby, Recording, etc.</a><br>
+<a href="#liefert_die_Timerliste">4.2 liefert die Timerliste</a><br>
+<a href="#liefert_den_EPG_eines_Services_mit_der_Servicereferenz">4.3 liefert den EPG eines Services mit der Servicereferenz</a><br>
+<a href="#liefert_Daten_des_momentanen_Services_wie_EPG.2C_Audio-_und_Video-Channels.2C_etc.">4.4 liefert Daten des momentanen Services wie EPG, Audio- und Video-Channels, etc.</a><br>
+<a href="#Box-Info">4.5 Box-Info</a><br>
+<a href="#liefert_die_Stream-Daten_des_aktuellen_Service_2">4.6 liefert die Stream-Daten des aktuellen Service</a><br>
+<a href="#Alle_Services">4.7 Alle Services</a><br>
+</p>
+</div>
+<div class="tocline"><a href="#Timer">5 Timer</a><br></div>
+<div class="tocindent">
+<p><a href="#einmal-Timer_hinzuf.C3.BCgen">5.1 einmal-Timer hinzufügen</a><br>
+<a href="#wiederholender-Timer_hinzuf.C3.BCgen">5.2 wiederholender-Timer hinzufügen</a><br>
+<a href="#einmal-Timer_.C3.A4ndern">5.3 einmal-Timer ändern</a><br>
+<a href="#wiederholender-Timer_.C3.A4ndern">5.4 wiederholender-Timer ändern</a><br>
+<a href="#einmal-Timer_l.C3.B6schen">5.5 einmal-Timer löschen</a><br>
+<a href="#wiederholender-Timer_l.C3.B6schen">5.6 wiederholender-Timer löschen</a><br>
+</p>
+</div>
+</td></tr></tbody></table>
+<p><br>
+</p>
+<a name="Allgemeines"></a><h1>Allgemeines</h1>
+<p>Dies ist die Dokumentation der <a href="http://wiki.godofgta.de/API" title="API">API</a> des ehttp (Web-Server) von <a href="http://wiki.godofgta.de/Enigma" title="Enigma">Enigma</a>.
+</p><p><br>
+</p>
+<a name="API-Dokumentation"></a><h1>API-Dokumentation</h1>
+<a name="Lautst.C3.A4rke_setzen_.28Bereich_0...63.29"></a><h2>Lautstärke setzen (Bereich 0...63)</h2>
+<p>Befehl: <a href="http://dbox/setVolume?volume=5" class="external" rel="nofollow">http://dbox/setVolume?volume=5</a> 
+</p><p>0 ist quasi mute, sprich Ton aus. 
+</p><p>63 entspricht der vollen Lautstärke.
+</p><p>Diese Funktion liefert keine Rückgabewerte. (wird für das webif benötigt)
+</p><p><br>
+</p>
+<a name="Lautst.C3.A4rke_setzen_.28Bereich_63...0.29"></a><h2>Lautstärke setzen (Bereich 63...0)</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/audio?volume=30" class="external" rel="nofollow">http://dbox/cgi-bin/audio?volume=30</a>
+</p><p>0 entspricht der vollen Lautstärke.
+</p><p>Rückgabe:
+</p>
+<pre>Volume set.
+volume: 0
+mute: 0
+</pre>
+<p>63 ist quasi mute, sprich Ton aus.
+</p><p>Rückgabe:
+</p>
+<pre>Volume set.
+volume: 63
+mute: 1
+</pre>
+<p><br>
+</p>
+<a name="Ton_Stumm_schalten"></a><h2>Ton Stumm schalten</h2>
+<p>Befehl: <a href="http://dbox/setVolume?mute=0" class="external" rel="nofollow">http://dbox/setVolume?mute=0</a>
+</p><p>Diese Funktion liefert keine Rückgabewerte. (wird für das webif benötigt)
+</p><p><br>
+</p>
+<a name="Ton_Stumm_schalten_.282.29"></a><h2>Ton Stumm schalten (2)</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/audio?mute=0" class="external" rel="nofollow">http://dbox/cgi-bin/audio?mute=0</a>
+</p><p>Rückgabe:
+</p>
+<pre>mute set
+volume: 0
+mute: 0
+</pre>
+<p><br>
+</p>
+<a name="liefert_die_TV_User-Bouquets_inklusive_Sender"></a><h2>liefert die TV User-Bouquets inklusive Sender</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/getServices?ref=4097:7:0:6:0:0:0:0:0:0:&amp;listContent=true" class="external" rel="nofollow">http://dbox/cgi-bin/getServices?ref=4097:7:0:6:0:0:0:0:0:0:&amp;listContent=true</a>
+</p><p>Beispiel Ausgabe:
+</p>
+<pre>4097:7:0:d2fca:0:0:0:0:0:0:/var/tuxbox/config/enigma/userbouquet.d2fca.tv;Basis
+1:0:1:6dca:44d:1:c00000:0:0:0:;Das Erste;ARD;192
+1:0:1:6d66:437:1:c00000:0:0:0:;ZDF;ZDFvision;192
+1:0:1:2e:21:85:c00000:0:0:0:;SAT.1;ProSiebenSat.1;192
+1:0:1:2ee3:441:1:c00000:0:0:0:;RTL Television;RTL World;192
+1:0:1:382:21:85:c00000:0:0:0:;ProSieben;ProSiebenSat.1;192
+</pre>
+<p><br>
+</p>
+<a name="liefert_die_Radio_User-Bouquets_inklusive_Sender"></a><h2>liefert die Radio User-Bouquets inklusive Sender</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/getServices?ref=4097:7:0:4:0:0:0:0:0:0:&amp;listContent=true" class="external" rel="nofollow">http://dbox/cgi-bin/getServices?ref=4097:7:0:4:0:0:0:0:0:0:&amp;listContent=true</a>
+</p><p>Beispiel Ausgabe:
+</p>
+<pre>4097:7:0:281ed:0:0:0:0:0:0:/etc/enigma/userbouquet.281ed.radio;Basis
+1:0:2:aa:7:85:c00000:0:0:0:;ANTENNE BAYERN;BetaDigital;192
+1:0:2:a9:7:85:c00000:0:0:0:;sunshine live;BetaDigital;192
+</pre>
+<p><br>
+</p>
+<a name="liefert_die_Movies-Liste"></a><h2>liefert die Movies-Liste</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/getServices?ref=4097:7:0:1:0:0:0:0:0:0:&amp;listContent=true" class="external" rel="nofollow">http://dbox/cgi-bin/getServices?ref=4097:7:0:1:0:0:0:0:0:0:&amp;listContent=true</a>
+</p><p>Beispiel Ausgabe:
+</p>
+<pre>1:0:1:382:21:85:c00000:0:0:0:/hdd/movie/ProSieben - Die Simpsons - 19_07_05.ts;Die Simpsons;192
+</pre>
+<p><br>
+</p>
+<a name="liefert_die_Services_.28Sender.29_des_aktuellen_Transponders"></a><h2>liefert die Services (Sender) des aktuellen Transponders</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/currentTransponderServices" class="external" rel="nofollow">http://dbox/cgi-bin/currentTransponderServices</a>
+</p><p>Beispiel Ausgabe:
+</p>
+<pre>1:0:1:2ee3:441:1:c00000:0:0:0:;RTL Television;0000a3;010068;020069;0300a3
+1:0:1:2ef4:441:1:c00000:0:0:0:;RTL2;0000a6;010080;020044;0300a6
+1:0:1:2f08:441:1:c00000:0:0:0:;Super RTL;0000a5;010078;020041;0300a5
+1:0:1:2f1c:441:1:c00000:0:0:0:;VOX;0000a7;010088;020047;0300a7
+1:0:1:2f30:441:1:c00000:0:0:0:;RTL Shop
+1:0:1:2f3a:441:1:c00000:0:0:0:;n-tv;0000a9;010049;020050;0300a9
+1:0:1:2f3f:441:1:c00000:0:0:0:;Traumpartner TV
+</pre>
+<p><br>
+</p>
+<a name="liefert_die_subchannels_.28Unterkan.C3.A4le.29_eines_Services_.28Senders.29"></a><h2>liefert die subchannels (Unterkanäle) eines Services (Senders)</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/videoChannels" class="external" rel="nofollow">http://dbox/cgi-bin/videoChannels</a>
+</p><p>Beispiel Ausgabe auf dem Premiere Sport Portal:
+</p>
+<pre>&lt;option value="1:0:7:11:3:85:c00000:0:0:0:"&gt;Portal&lt;/option&gt;
+&lt;option value="1:0:7:dd:11:85:c00000:0:0:0:"&gt;Bundesliga&lt;/option&gt;
+&lt;option value="1:0:7:de:3:85:c00000:0:0:0:"&gt;Golf&lt;/option&gt;
+&lt;option value="1:0:7:dc:3:85:c00000:0:0:0:"&gt;News&lt;/option&gt;
+</pre>
+<p><br>
+</p>
+<a name="liefert_die_Audio-Optionen_eines_Services_.28Senders.29"></a><h2>liefert die Audio-Optionen eines Services (Senders)</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/audioChannels" class="external" rel="nofollow">http://dbox/cgi-bin/audioChannels</a>
+</p><p>Beispiel Ausgabe auf Pro7:
+</p>
+<pre>&lt;option selected value="0x0100"&gt;deutsch&lt;/option&gt;
+&lt;option value="0x0101"&gt;dolby digital (AC3)&lt;/option&gt;
+</pre>
+<p><br>
+</p>
+<a name="zap_zum_angegebenen_Service"></a><h2>zap zum angegebenen Service</h2>
+<p>Beispiel-Befehl: <a href="http://dbox/cgi-bin/zapTo?path=1:0:1:2ee3:441:1:c00000:0:0:0" class="external" rel="nofollow">http://dbox/cgi-bin/zapTo?path=1:0:1:2ee3:441:1:c00000:0:0:0</a>
+</p><p>Parameter 1: FavoritenTyp: 1=DBV-Service, 2=File
+</p><p>Parameter 2: Flags
+</p><p>Parameter 3: SType = Service Type; Dezimalwert: 1=TV, 2=Radio, 4=NVod, andere=Daten
+</p><p>Parameter 4: 2ee3 ist die SID, wird in hex angegeben
+</p><p>Parameter 5: 441 ist die TSID, wird in hex angegeben
+</p><p>Parameter 6: 1 ist die ONID, wird in hex angegeben
+</p><p>Parameter 7: Namespace in hex
+</p><p>Parameter 8:&nbsp;?
+</p><p>Parameter 9:&nbsp;?
+</p><p>Parameter10:&nbsp;? 
+</p><p><br>
+</p>
+<a name="zum_service_zappen"></a><h2>zum service zappen</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/switchService" class="external" rel="nofollow">http://dbox/cgi-bin/switchService</a>
+</p><p><br>
+</p>
+<a name="dbox.2Fdreambox_shutdown"></a><h2>dbox/dreambox shutdown</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/admin?command=shutdown" class="external" rel="nofollow">http://dbox/cgi-bin/admin?command=shutdown</a>
+</p><p><br>
+</p>
+<a name="dbox.2Fdreambox_reboot"></a><h2>dbox/dreambox reboot</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/admin?command=reboot" class="external" rel="nofollow">http://dbox/cgi-bin/admin?command=reboot</a>
+</p><p><br>
+</p>
+<a name="Enigma_Neustart"></a><h2>Enigma Neustart</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/admin?command=restart" class="external" rel="nofollow">http://dbox/cgi-bin/admin?command=restart</a>
+</p><p><br>
+</p>
+<a name="Enigma_standby"></a><h2>Enigma standby</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/admin?command=standby" class="external" rel="nofollow">http://dbox/cgi-bin/admin?command=standby</a>
+</p><p><br>
+</p>
+<a name="Enigma_aufwachen_aus_standby"></a><h2>Enigma aufwachen aus standby</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/admin?command=wakeup" class="external" rel="nofollow">http://dbox/cgi-bin/admin?command=wakeup</a>
+</p><p><br>
+</p>
+<a name="Nachricht_auf_den_Fernsehbildschirm"></a><h2>Nachricht auf den Fernsehbildschirm</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/message?Hallo" class="external" rel="nofollow">http://dbox/cgi-bin/message?Hallo</a>
+</p><p><br>
+</p>
+<a name="erweiterte_Nachricht_auf_den_Fernsehbildschirm"></a><h2>erweiterte Nachricht auf den Fernsehbildschirm</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/xmessage?timeout=3&amp;caption=Nachricht&amp;body=Hallo" class="external" rel="nofollow">http://dbox/cgi-bin/xmessage?timeout=3&amp;caption=Nachricht&amp;body=Hallo</a>
+</p><p><br>
+</p>
+<a name="startet_einen_Audio-HTTP-Stream_des_aktuell_laufenden_Services"></a><h2>startet einen Audio-HTTP-Stream des aktuell laufenden Services</h2>
+<p>Befehl: <a href="http://dbox/audio.m3u" class="external" rel="nofollow">http://dbox/audio.m3u</a>
+</p><p><br>
+</p>
+<a name="startet_einen_Video-HTTP-Stream_.28VLC_kompatibel.29_des_aktuell_laufenden_Services"></a><h2>startet einen Video-HTTP-Stream (VLC kompatibel) des aktuell laufenden Services</h2>
+<p>Befehl: <a href="http://dbox/video.pls" class="external" rel="nofollow">http://dbox/video.pls</a>
+</p><p>Bei neueren Images (YADI 2.1.0.6) lautet der Befehl <a href="http://dbox/video.m3u" class="external" rel="nofollow">http://dbox/video.m3u</a>
+</p><p><br>
+</p>
+<a name="startet_einen_Video-HTTP-Stream_.28MPlayer_kompatibel.29_des_aktuell_laufenden_Services"></a><h2>startet einen Video-HTTP-Stream (MPlayer kompatibel) des aktuell laufenden Services</h2>
+<p>Befehl: <a href="http://dbox/mplayer.mply" class="external" rel="nofollow">http://dbox/mplayer.mply</a>
+</p><p><br>
+</p>
+<a name="aktuelles_Enigma-Datum_und_-Uhrzeit"></a><h2>aktuelles Enigma-Datum und -Uhrzeit</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/status" class="external" rel="nofollow">http://dbox/cgi-bin/status</a>
+</p><p>Beschreibung: gibt das aktuelle Enigma-Datum und -Uhrzeit zurück
+</p><p><br>
+</p>
+<a name="zeigt_aktuelle_Version_von_Enigma_an"></a><h2>zeigt aktuelle Version von Enigma an</h2>
+<p>Befehl: <a href="http://dbox/version" class="external" rel="nofollow">http://dbox/version</a>
+</p><p>(die Rückgabewerte sollten mal aktualisiert werden)
+</p><p><br>
+</p>
+<a name="liefert_den_EPG_des_aktuellen_Service"></a><h2>liefert den EPG des aktuellen Service</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/getcurrentepg" class="external" rel="nofollow">http://dbox/cgi-bin/getcurrentepg</a>
+</p><p><br>
+</p>
+<a name="liefert_die_Stream-Daten_des_aktuellen_Service"></a><h2>liefert die Stream-Daten des aktuellen Service</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/streaminfo" class="external" rel="nofollow">http://dbox/cgi-bin/streaminfo</a>
+</p><p><br>
+</p>
+<a name="liefert_den_Namen_des_aktuellen_Service"></a><h2>liefert den Namen des aktuellen Service</h2>
+<p>Befehl: <a href="http://dbox/channels/getcurrent" class="external" rel="nofollow">http://dbox/channels/getcurrent</a>
+</p><p><br>
+</p>
+<a name="gibt_die_PMT_als_XML-File_zur.C3.BCck"></a><h2>gibt die PMT als XML-File zurück</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/getPMT" class="external" rel="nofollow">http://dbox/cgi-bin/getPMT</a>
+</p><p><br>
+</p>
+<a name="Enigma_Einstellungen_neu_laden"></a><h2>Enigma Einstellungen neu laden</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/reloadSettings" class="external" rel="nofollow">http://dbox/cgi-bin/reloadSettings</a>
+</p><p><br>
+</p>
+<a name="Liste_der_Recordings_neu_laden"></a><h2>Liste der Recordings neu laden</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/reloadRecordings" class="external" rel="nofollow">http://dbox/cgi-bin/reloadRecordings</a>
+</p><p><br>
+</p>
+<a name="Liste_der_Recordings_im_Flash_speichern"></a><h2>Liste der Recordings im Flash speichern</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/saveRecordings" class="external" rel="nofollow">http://dbox/cgi-bin/saveRecordings</a>
+</p><p><br>
+</p>
+<a name="Playlist_neu_laden"></a><h2>Playlist neu laden</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/reloadPlaylist" class="external" rel="nofollow">http://dbox/cgi-bin/reloadPlaylist</a>
+</p><p><br>
+</p>
+<a name="Playlist_speichern"></a><h2>Playlist speichern</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/savePlaylist" class="external" rel="nofollow">http://dbox/cgi-bin/savePlaylist</a>
+</p><p><br>
+</p>
+<a name="User-Bouquets_neu_einlesen"></a><h2>User-Bouquets neu einlesen</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/reloadUserBouquets" class="external" rel="nofollow">http://dbox/cgi-bin/reloadUserBouquets</a>
+</p><p><br>
+</p>
+<a name="User-Bouquets_speichern"></a><h2>User-Bouquets speichern</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/saveUserBouquets" class="external" rel="nofollow">http://dbox/cgi-bin/saveUserBouquets</a>
+</p><p><br>
+</p>
+<a name="Timer-Liste_neu_einlesen"></a><h2>Timer-Liste neu einlesen</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/reloadTimerList" class="external" rel="nofollow">http://dbox/cgi-bin/reloadTimerList</a>
+</p><p><br>
+</p>
+<a name="Timer-Liste_speichern"></a><h2>Timer-Liste speichern</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/saveTimerList" class="external" rel="nofollow">http://dbox/cgi-bin/saveTimerList</a>
+</p><p><br>
+</p>
+<a name="Plugin_starten"></a><h2>Plugin starten</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/startPlugin?name=pluginname" class="external" rel="nofollow">http://dbox/cgi-bin/startPlugin?name=pluginname</a>
+</p><p><br>
+</p>
+<a name="screenshot_nach_.2Ftmp.2Fscreenshot.bmp"></a><h2>screenshot nach /tmp/screenshot.bmp</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/screenshot" class="external" rel="nofollow">http://dbox/cgi-bin/screenshot</a>
+</p><p><br>
+</p>
+<a name="screenshot_des_OSD_nach_.2Ftmp.2Fosdshot.png"></a><h2>screenshot des OSD nach /tmp/osdshot.png</h2>
+<p>Befehl: <a href="http://dbox/cgi-bin/osdshot" class="external" rel="nofollow">http://dbox/cgi-bin/osdshot</a>
+</p><p><br>
+</p>
+<a name="einige_Kompatibilit.C3.A4ts-Funktionen_zu_Neutrino"></a><h1>einige Kompatibilitäts-Funktionen zu Neutrino</h1>
+<a name="Nachricht_auf_den_Fernsehbildschirm_2"></a><h2>Nachricht auf den Fernsehbildschirm</h2>
+<p>Befehl: <a href="http://dbox/control/message?Hallo" class="external" rel="nofollow">http://dbox/control/message?Hallo</a> 
+</p><p><br>
+</p>
+<a name="liefert_die_VPid_und_APid_des_aktuellen_Service_.28dezimal.29"></a><h2>liefert die VPid und APid des aktuellen Service (dezimal)</h2>
+<p>Befehl: <a href="http://dbox/control/zapto?getpids" class="external" rel="nofollow">http://dbox/control/zapto?getpids</a> 
+</p><p>Beispiel-Ausgabe:
+</p>
+<pre>255
+256
+
+</pre>
+<p>255 ist die Video Pid
+</p><p>256 ist die Audio Pid
+</p><p><br>
+</p>
+<a name="liefert_VPid.2C_APid.27s.2C_vtxt_Pid_und_PMT_Pid_des_aktuellen_Service_.28dezimal.29"></a><h2>liefert VPid, APid's, vtxt Pid und PMT Pid des aktuellen Service (dezimal)</h2>
+<p>Befehl: <a href="http://dbox/control/zapto?getallpids" class="external" rel="nofollow">http://dbox/control/zapto?getallpids</a> 
+</p><p>Beispiel-Ausgabe:
+</p>
+<pre>00255
+00256 deutsch
+00257 dolby digital (AC3)
+00032 vtxt
+00100 pmt
+
+</pre>
+<p>00255 ist die Video Pid
+</p><p>00256 ist die Audio Pid
+</p><p>00257 ist die 2te Audio Pid
+</p><p>00032 ist die vtxt (Teletext) Pid
+</p><p>00100 ist die PMT Pid
+</p><p><br>
+</p>
+<a name="sollte_zum_angegebenen_Channel_zappen_-.3E_tut_es_aber_nicht"></a><h2>sollte zum angegebenen Channel zappen -&gt; tut es aber nicht</h2>
+<p>Befehl: <a href="http://dbox/control/zapto?69531" class="external" rel="nofollow">http://dbox/control/zapto?69531</a> 
+</p><p><br>
+</p>
+<a name="liefert_onid.2Bsid"></a><h2>liefert onid+sid</h2>
+<p>Befehl: <a href="http://dbox/control/getonidsid" class="external" rel="nofollow">http://dbox/control/getonidsid</a>
+</p><p><br>
+</p>
+<a name="liefert_die_komplette_Kanalliste_.28unsortiert.29"></a><h2>liefert die komplette Kanalliste (unsortiert)</h2>
+<p>Befehl: <a href="http://dbox/control/channellist" class="external" rel="nofollow">http://dbox/control/channellist</a>
+</p><p><br>
+</p>
+<a name="XML-Funktionen"></a><h1>XML-Funktionen</h1>
+<a name="liefert_Statusinformationen_der_Box_wie_z.B._Standby.2C_Recording.2C_etc."></a><h2>liefert Statusinformationen der Box wie z.B. Standby, Recording, etc.</h2>
+<p>Befehl: <a href="http://dbox/xml/boxstatus" class="external" rel="nofollow">http://dbox/xml/boxstatus</a>
+</p><p><b>Beispiel-Ausgabe:</b>
+</p>
+<pre>&lt;status&gt;
+ &lt;current_time&gt;Sat Jul 23 23:03:17 2005
+ &lt;/current_time&gt;
+ &lt;standby&gt;OFF&lt;/standby&gt;
+ &lt;recording&gt;OFF&lt;/recording&gt;
+ &lt;mode&gt;0&lt;/mode&gt;
+ &lt;ip&gt;192.168.0.10&lt;/ip&gt;
+&lt;/status&gt;
+</pre>
+<p><br>
+<b>Erläuterungen:</b> 
+</p><p>&lt;current_time&gt;Sat Jul 23 23:03:17 2005&lt;/current_time&gt; liefert das Datum und die aktuelle Uhrzeit
+</p><p>&lt;standby&gt;OFF&lt;/standby&gt; die Box ist nicht im standby, ON bedeutet sie befindet sich im Standby
+</p><p>&lt;recording&gt;OFF&lt;/recording&gt; Enigma nimmt gerade nicht auf, ON bedeutet Enigma nimmt gerade auf
+</p><p>&lt;mode&gt;0&lt;/mode&gt; Enigma befindet sich im TV-Modus
+</p><p>&lt;mode&gt;1&lt;/mode&gt; Enigma befindet sich im Radio-Modus
+</p><p>&lt;mode&gt;2&lt;/mode&gt; Enigma befindet sich im Datei-Modus
+</p><p>&lt;ip&gt;192.168.0.10&lt;/ip&gt; gibt die aktuelle IP-Adresse der Box zurück, in diesem Fall wäre das die 192.168.0.10
+</p><p><br>
+</p>
+<a name="liefert_die_Timerliste"></a><h2>liefert die Timerliste</h2>
+<p>Befehl: <a href="http://dbox/xml/timers" class="external" rel="nofollow">http://dbox/xml/timers</a> 
+</p><p><a href="http://wiki.godofgta.de/Bild:Timer.jpg" class="image" title=""><img src="Ehttp_api_doku-Dateien/600px-Timer.jpg" alt="" longdesc="/Bild:Timer.jpg"></a>
+</p><p><br>
+</p>
+<a name="liefert_den_EPG_eines_Services_mit_der_Servicereferenz"></a><h2>liefert den EPG eines Services mit der Servicereferenz</h2>
+<p>Befehl: http://dbox/xml/serviceepg?ref={service reference} 
+</p><p>(ref ist optional, falls nicht angegeben wird der eingestellte Service genommen)
+</p><p>Gibt den <a href="http://wiki.godofgta.de/EPG" title="EPG">EPG</a> eines Services mit der Servicereferenz 'ref' zurueck:
+</p><p><a href="http://wiki.godofgta.de/Bild:Epg.jpg" class="image" title=""><img src="Ehttp_api_doku-Dateien/600px-Epg.jpg" alt="" longdesc="/Bild:Epg.jpg"></a>
+</p><p><br>
+</p>
+<a name="liefert_Daten_des_momentanen_Services_wie_EPG.2C_Audio-_und_Video-Channels.2C_etc."></a><h2>liefert Daten des momentanen Services wie EPG, Audio- und Video-Channels, etc.</h2>
+<p>Befehl: <a href="http://dbox/xml/currentservicedata" class="external" rel="nofollow">http://dbox/xml/currentservicedata</a>
+</p><p><a href="http://wiki.godofgta.de/Bild:Currentservice.jpg" class="image" title=""><img src="Ehttp_api_doku-Dateien/600px-Currentservice.jpg" alt="" longdesc="/Bild:Currentservice.jpg"></a>
+</p><p><br>
+</p>
+<a name="Box-Info"></a><h2>Box-Info</h2>
+<p>Befehl: <a href="http://dbox/xml/boxinfo" class="external" rel="nofollow">http://dbox/xml/boxinfo</a>
+</p><p><br>
+</p>
+<a name="liefert_die_Stream-Daten_des_aktuellen_Service_2"></a><h2>liefert die Stream-Daten des aktuellen Service</h2>
+<p>Befehl: <a href="http://dbox/xml/streaminfo" class="external" rel="nofollow">http://dbox/xml/streaminfo</a>
+</p><p><br>
+</p>
+<a name="Alle_Services"></a><h2>Alle Services</h2>
+<p>Befehl: <a href="http://dbox/xml/services" class="external" rel="nofollow">http://dbox/xml/services</a>
+</p><p><br>
+</p>
+<a name="Timer"></a><h1>Timer</h1>
+<a name="einmal-Timer_hinzuf.C3.BCgen"></a><h2>einmal-Timer hinzufügen</h2>
+<pre>http://dbox/addTimerEvent?type=regular&amp;ref=' + channel + '&amp;sday=' + sday + '&amp;smonth=' + smonth + '&amp;syear=' +
+
+ syear + '&amp;shour=' + shour + '&amp;smin=' + smin + '&amp;eday=' + eday + '&amp;emonth=' + emonth + '&amp;eyear=' + eyear + '&amp;ehour=' +
+
+ ehour + '&amp;emin=' + emin + '&amp;descr=' + descr + '&amp;after_event=' + after_event + '&amp;action=' + action;
+</pre>
+<p>Bei action gibt man dvr, ngrab oder zap an.
+</p><p>Bei 'after_event' gibt man 67108864 (shutdown) oder 134217728 (standby) an. Keine Angabe entspricht keiner Aktion.
+</p><p><br>
+</p>
+<a name="wiederholender-Timer_hinzuf.C3.BCgen"></a><h2>wiederholender-Timer hinzufügen</h2>
+<pre>http://dbox/addTimerEvent?timer=repeating&amp;ref=' + channel + '&amp;shour=' + shour + '&amp;smin=' + smin + '&amp;ehour=' + 
+
+ehour + '&amp;emin=' + emin + '&amp;mo=' + mo + '&amp;tu=' + tu + '&amp;we=' + we + '&amp;th=' + th + '&amp;fr=' + fr + '&amp;sa=' + sa + '&amp;su=' + 
+
+su + '&amp;descr=' + descr + '&amp;after_event=' + after_event + '&amp;action=' + action;
+</pre>
+<p>Bei action gibt man dvr, ngrab oder zap an.
+</p><p>Bei 'after_event' gibt man 67108864 (shutdown) oder 134217728 (standby) an. Keine Angabe entspricht keiner Aktion.
+</p><p>Bei den Tagen gibt man 'on' an den Tagen an, an denen der Timer
+ausgeführt werden soll (z.B. &amp;tu=on&amp;fr=on). Nicht verwendete
+Tage kann man weglassen.
+</p><p><i><b>Achtung:</b></i>
+</p><p>Gegenüber dem Hinzfügen eines einmal-Timers muss hier nach addTimerEvent? <b>timer=repeating</b> kommen.
+</p><p><br>
+</p>
+<a name="einmal-Timer_.C3.A4ndern"></a><h2>einmal-Timer ändern</h2>
+<pre>http://dbox/changeTimerEvent?type=regular&lt;dieselben parameter wie addtimerevent&gt; plus old_type=...&amp;old_stime=... 
+</pre>
+<p>zur Identifikation des Timers. Bei old_data muss der Parameter &lt;typedata&gt; aus der Timerliste übernommen werden 
+und old_stime ist die alte Startzeit &lt;start&gt;
+</p><p><br>
+</p>
+<a name="wiederholender-Timer_.C3.A4ndern"></a><h2>wiederholender-Timer ändern</h2>
+<pre>http://dbox/changeTimerEvent?type=repeating&lt;dieselben parameter wie addtimerevent&gt; plus old_type=...&amp;old_stime=... 
+</pre>
+<p>zur Identifikation des Timers. Bei old_data muss der Parameter &lt;typedata&gt; aus der Timerliste übernommen werden 
+und old_stime ist die alte Startzeit &lt;start&gt;
+</p><p><br>
+</p>
+<a name="einmal-Timer_l.C3.B6schen"></a><h2>einmal-Timer löschen</h2>
+<pre>http://dbox/deleteTimerEvent?ref=#REFERENCE#&amp;start=#START#&amp;type=#TIMERTYPE#&amp;force=no/yes
+</pre>
+<p>Hier ist type=dvr oder type=ngrab.
+</p><p><br>
+</p>
+<a name="wiederholender-Timer_l.C3.B6schen"></a><h2>wiederholender-Timer löschen</h2>
+<pre>http://dbox/deleteTimerEvent?ref=#REFERENCE#&amp;start=#START#&amp;type=#TIMERID#&amp;force=no/yes
+</pre>
+<p><i><b>Achtung:</b></i>
+</p><p>Hier muss bei type die timer-id angegeben werden, dies ist nur für wiederholende-Timer notwendig. 
+</p><p><br>
+</p><p><br>
+<a href="http://wiki.godofgta.de/Bild:Qsicon_inArbeit.png" class="image" title=" Review-Kandidat"><img src="Ehttp_api_doku-Dateien/Qsicon_inArbeit.png" alt=" Review-Kandidat" longdesc="/Bild:Qsicon_inArbeit.png"></a><small>Dieser Artikel befindet sich derzeit im <a href="http://wiki.godofgta.de/Kategorie:TuxboxWIKI_Review" title="Kategorie:TuxboxWIKI Review">Reviewprozess</a>. Hilf mit, ihn zu verbessern! <b><i></i></b></small>
+</p>
+<br><hr>
+<div style="border: 1px solid rgb(0, 0, 0); margin: 10px 0pt 0pt; padding: 0em 1em 1em; background-color: rgb(239, 239, 239);"><div style="margin-top: 10px;" align="center">
+<p><a href="http://wiki.godofgta.de/Grundlagen" title="Grundlagen">Grundlagen</a> - <a href="http://wiki.godofgta.de/Installation" title="Installation">Installation</a> - <a href="http://wiki.godofgta.de/Kategorie:Debug" title="Kategorie:Debug">Debug-Mode</a> - <a href="http://wiki.godofgta.de/Kategorie:Hardware" title="Kategorie:Hardware">Hardware</a> - <a href="http://wiki.godofgta.de/Kategorie:CDK" title="Kategorie:CDK">CDK/Development</a>
+</p><p><a href="http://wiki.godofgta.de/Kategorie:LCars" title="Kategorie:LCars">LCars</a> - <a href="http://wiki.godofgta.de/Kategorie:Neutrino" title="Kategorie:Neutrino">Neutrino</a> - <a href="http://wiki.godofgta.de/Kategorie:Enigma" title="Kategorie:Enigma">Enigma</a> - <a href="http://wiki.godofgta.de/Kategorie:Plugins" title="Kategorie:Plugins">Plugins</a> - <a href="http://wiki.godofgta.de/Kategorie:Spiele" title="Kategorie:Spiele">Spiele</a> - <a href="http://wiki.godofgta.de/Kategorie:DBox2_Software" title="Kategorie:DBox2 Software">Software</a> - <a href="http://wiki.godofgta.de/%C3%9Cbersicht:Tools" title="Übersicht:Tools">Tools</a> - <a href="http://wiki.godofgta.de/Kategorie:Howto" title="Kategorie:Howto">Howto</a> - <a href="http://wiki.godofgta.de/FAQ" title="FAQ">FAQ</a> - <a href="http://wiki.godofgta.de/Kategorie:Images" title="Kategorie:Images">Images</a>
+</p><p><a href="http://wiki.godofgta.de/Hauptseite" title="Hauptseite">Hauptseite</a> - <a href="http://wiki.godofgta.de/Aktuelle_Ereignisse" title="Aktuelle Ereignisse">News</a> - <a href="http://wiki.godofgta.de/Spezial:Allpages" title="Spezial:Allpages">Alle Artikel</a> - <a href="http://wiki.godofgta.de/Hilfe:Bewertungen" title="Hilfe:Bewertungen">Bewertungen</a> - <a href="http://wiki.godofgta.de/Spezial:Wantedpages" title="Spezial:Wantedpages">Gewünschte Seiten</a> - <a href="http://wiki.godofgta.de/Kategorie:Register" title="Kategorie:Register">Index</a> - <a href="http://wiki.godofgta.de/Spezial:Newpages" title="Spezial:Newpages">Neue Artikel</a> - <a href="http://wiki.godofgta.de/TuxboxWIKI:Impressum" title="TuxboxWIKI:Impressum">Impressum</a> - <a href="http://wiki.godofgta.de/TuxboxWIKI:Meilensteine" title="TuxboxWIKI:Meilensteine">Meilensteine</a> - <a href="http://wiki.godofgta.de/TuxboxWIKI:Team" title="TuxboxWIKI:Team">Team</a>
+</p>
+<a href="http://wiki.godofgta.de/Hilfe:Portal" title="Hilfe:Portal">Hilfeportal</a> - <a href="http://wiki.godofgta.de/Hilfe:Seite_bearbeiten" title="Hilfe:Seite bearbeiten">Seite bearbeiten</a> -  <a href="http://wiki.godofgta.de/Hilfe:Bilder" title="Hilfe:Bilder">Bilder</a> - <a href="http://wiki.godofgta.de/Hilfe:Links" title="Hilfe:Links">Links</a> - <a href="http://wiki.godofgta.de/Hilfe:Tabellen" title="Hilfe:Tabellen">Tabellen</a> - <a href="http://wiki.godofgta.de/Hilfe:Textgestaltung" title="Hilfe:Textgestaltung">Textgestaltung</a></div></div>
+
+<!-- Saved in parser cache with key wikidb:pcache:idhash:2771-1!1!0!1!0!1!0!!de and timestamp 20070319100344 -->
+<div class="printfooter">
+Von "<a href="http://wiki.godofgta.de/Ehttp_api_doku">http://wiki.godofgta.de/Ehttp_api_doku</a>"</div>
+	    <div id="catlinks"><p class="catlinks"><a href="http://wiki.godofgta.de/index.php?title=Spezial:Categories&amp;article=Ehttp_api_doku" title="Spezial:Categories">Seitenkategorien</a>: <a href="http://wiki.godofgta.de/Kategorie:Register" title="Kategorie:Register">Register</a> | <a href="http://wiki.godofgta.de/Kategorie:Enigma" title="Kategorie:Enigma">Enigma</a> | <a href="http://wiki.godofgta.de/Kategorie:TuxboxWIKI_Review" title="Kategorie:TuxboxWIKI Review">TuxboxWIKI Review</a></p></div>	    <!-- end content -->
+	    <div class="visualClear"></div>
+	  </div>
+	</div>
+      </div>
+      <div id="column-one">
+	<div id="p-cactions" class="portlet">
+	  <h5>Views</h5>
+	  <ul>
+	    <li id="ca-nstab-main" class="selected"><a title="View the content page [alt-c]" accesskey="c" href="http://wiki.godofgta.de/Ehttp_api_doku">Artikel</a></li><li id="ca-talk" class="new"><a title="Discussion about the content page [alt-t]" accesskey="t" href="http://wiki.godofgta.de/index.php?title=Diskussion:Ehttp_api_doku&amp;action=edit">Diskussion</a></li><li id="ca-edit"><a title="You can edit this page. Please use the preview button before saving. [alt-e]" accesskey="e" href="http://wiki.godofgta.de/index.php?title=Ehttp_api_doku&amp;action=edit">bearbeiten</a></li><li id="ca-history"><a title="Past versions of this page. [alt-h]" accesskey="h" href="http://wiki.godofgta.de/index.php?title=Ehttp_api_doku&amp;action=history">Versionen</a></li>	  </ul>
+	</div>
+	<div class="portlet" id="p-personal">
+	  <h5>'Persönliche Werkzeuge</h5>
+	  <div class="pBody">
+	    <ul>
+	    <li id="pt-login"><a title="You are encouraged to log in, it is not mandatory however. [alt-o]" accesskey="o" href="http://wiki.godofgta.de/index.php?title=Spezial:Userlogin&amp;returnto=Ehttp_api_doku">Anmelden</a></li>	    </ul>
+	  </div>
+	</div>
+	<div class="portlet" id="p-logo">
+	  <a style="background-image: url(/images/wiki.png);" href="http://wiki.godofgta.de/Hauptseite" title="Hauptseite"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+	<div class="portlet" id="p-nav">
+	  <h5>Navigation</h5>
+	  <div class="pBody">
+	    <ul>
+	      	      <li id="n-mainpage"><a title="Visit the Main Page [alt-z]" accesskey="z" href="http://wiki.godofgta.de/Hauptseite">Hauptseite</a></li>	      <li id="n-portal"><a title="About the project, what you can do, where to find things" href="http://wiki.godofgta.de/Hilfe:Portal">Wiki-Hilfe</a></li>	      <li id="n-currentevents"><a title="Find background information on current events" href="http://wiki.godofgta.de/Current_events">Aktuelle Ereignisse</a></li>	      <li id="n-recentchanges"><a title="The list of recent changes in the wiki. [alt-r]" accesskey="r" href="http://wiki.godofgta.de/Spezial:Recentchanges">Letzte Änderungen</a></li>	      <li id="n-randompage"><a title="Load a random page [alt-x]" accesskey="x" href="http://wiki.godofgta.de/Spezial:Randompage">Zufälliger Artikel</a></li>	    </ul>
+	  </div>
+	</div>
+	<div id="p-search" class="portlet">
+	  <h5><label for="searchInput">Suche</label></h5>
+	  <div class="pBody">
+	    <form name="searchform" action="/Spezial:Search" id="searchform">
+	      <input id="searchInput" name="search" accesskey="f" value="" type="text">
+	      <input name="go" class="searchButton" id="searchGoButton" value="Los" type="submit">&nbsp;<input name="fulltext" class="searchButton" value="Suche" type="submit">
+	    </form>
+	  </div>
+	</div>
+	<div class="portlet" id="p-tb">
+	  <h5>Werkzeuge</h5>
+	  <div class="pBody">
+	    <ul>
+		  		  <li id="t-whatlinkshere"><a title="List of all wiki pages that link here [alt-j]" accesskey="j" href="http://wiki.godofgta.de/index.php?title=Spezial:Whatlinkshere&amp;target=Ehttp_api_doku">Was zeigt hierhin</a></li>
+		  		  <li id="t-recentchangeslinked"><a title="Recent changes in pages linked from this page [alt-k]" accesskey="k" href="http://wiki.godofgta.de/index.php?title=Spezial:Recentchangeslinked&amp;target=Ehttp_api_doku">Verlinkte Seiten</a></li>
+		  	      	      	      	      	      	      	      	      	      <li id="t-specialpages"><a title="List of all special pages [alt-q]" accesskey="q" href="http://wiki.godofgta.de/Spezial:Specialpages">Spezialseiten</a></li>	      	    </ul>
+	  </div>
+	</div>
+<br><center>
+<a href="http://www.muellingen.de/phpAdsNew/adclick.php?n=a6e08973" target="_blank"><img style="display: none;" src="Ehttp_api_doku-Dateien/adview.gif" alt="" border="0"></a>
+</center>
+
+	      </div><!-- end of the left (by default at least) column -->
+      <div class="visualClear"></div>
+      <div id="footer">
+    <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="Ehttp_api_doku-Dateien/poweredby_mediawiki_88x31.png" alt="MediaWiki"></a></div>	<div id="f-copyrightico"><a href="http://www.gnu.org/copyleft/fdl.html"><img src="Ehttp_api_doku-Dateien/gnu-fdl.png" alt="GNU Free Documentation License 1.2"></a></div>	<ul id="f-list">
+	  <li id="f-lastmod"> Diese Seite wurde zuletzt geändert um 18:21, 5. Feb 2006.</li>	  <li id="f-viewcount">Diese Seite wurde bisher 9160 mal abgerufen.</li>	  	  <li id="f-copyright">Inhalt ist verfügbar unter der <a href="http://www.gnu.org/copyleft/fdl.html" class="external" title="http://www.gnu.org/copyleft/fdl.html" rel="nofollow">GNU Free Documentation License 1.2</a>.</li>	  <li id="f-about"><a href="http://wiki.godofgta.de/Wiki:%C3%9Cber_Wiki" title="Wiki:Über Wiki">Über Wiki</a></li>	  <li id="f-disclaimer"><a href="http://wiki.godofgta.de/Wiki:Lizenzbestimmungen" title="Wiki:Lizenzbestimmungen">Lizenzbestimmungen</a></li>	</ul>
+      </div>
+    </div>
+    <!-- Served by ubuntu60664m in 0.02 secs. -->
+<a href="http://wiki.godofgta.de/db_connect.php?9edf391a240349b0b695786abdff7c3e"></a><a href="http://www.ranking-hits.de/" title="WEBMASTER SERVICES" target="_blank"><img src="Ehttp_api_doku-Dateien/a.gif" alt="PAGERANK-SERVICE" border="0"></a> 
+  </body></html>

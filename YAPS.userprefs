@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<UserCombinePreferences filename="/home/ello/Projects/YAPS/YAPS.mds">
+  <Files>
+    <File filename="Welcome" />
+    <File filename="./YAPS_Processors/RSS/RSSItem.cs" />
+    <File filename="./YAPS/YAPS.cs" />
+    <File filename="./YAPS_Processors/ChannelMapper.cs" />
+    <File filename="./YAPS_Processors/RSS/RSSUtilities.cs" />
+    <File filename="./YAPS_Processors/XBMCSyncProcessor.cs" />
+    <File filename="./PlaylistManager/MainWindow.cs" />
+    <File filename="./YAPS_Processors/http.cs" />
+    <File filename="./YAPS_Processors/multicast_vcr.cs" />
+  </Files>
+  <Views>
+    <ViewMemento Id="MonoDevelop.Ide.Gui.Pads.ProjectPad">
+      <TreeView>
+        <Node expanded="True">
+          <Option id="ShowVersionControlOverlays" value="True" />
+          <Option id="ShowAllFiles" value="False" />
+          <Node name="DVB" expanded="True">
+            <Option id="ShowAllFiles" value="True" />
+          </Node>
+          <Node name="EPG" expanded="True">
+            <Option id="ShowVersionControlOverlays" value="False" />
+            <Option id="ShowAllFiles" value="True" />
+            <Node name="Descriptors" expanded="True" />
+          </Node>
+          <Node name="PlaylistManager" expanded="False">
+            <Option id="ShowAllFiles" value="True" />
+          </Node>
+          <Node name="YAPS" expanded="False" />
+          <Node name="YAPS_Processors" expanded="True">
+            <Option id="ShowAllFiles" value="True" />
+            <Node name="multicast_vcr.cs" expanded="False" selected="True" />
+          </Node>
+        </Node>
+      </TreeView>
+    </ViewMemento>
+    <ViewMemento Id="MonoDevelop.Ide.Gui.Pads.ClassPad">
+      <TreeView>
+        <Node expanded="True" />
+      </TreeView>
+    </ViewMemento>
+  </Views>
+  <Properties>
+    <Properties>
+      <Property key="ActiveConfiguration" value="Debug" />
+      <Property key="ActiveWindow" value="/home/ello/Projects/YAPS/YAPS_Processors/multicast_vcr.cs" />
+    </Properties>
+  </Properties>
+</UserCombinePreferences>

@@ -1,0 +1,30 @@
+  <tr class="row_highlight">
+
+    <td>%playcount%</td>
+
+    <td>%starts_at%</td>
+
+    <td>
+      <div class="runtime">%runtime%</div>
+      <div class="played_percentage" title="already played: %played_percentage%%" style="width:%played_percentage%%;">&nbsp;</div>
+    </td>
+
+    <td>%channel%</td>
+    <td class="recording_name">%recording_name%</td>
+
+    <td>%categories%</td>
+
+    <td>%createdby%</td>
+
+    <td>
+      <a href="/%recording_id%">
+        <img src="images/watch_button.png" border="0" alt="Watch" />
+      </a>
+      <a href="/vcr/resetrecording?id=%recording_id%">
+        <img src="images/edit_button.png" border="0" alt="Reset" />
+      </a>
+      <a href="/vcr/RemoveRecordingFile?id=%recording_id%">
+        <img src="images/delete_button.png" border="0" alt="Delete" />
+      </a>
+    </td>
+  </tr>

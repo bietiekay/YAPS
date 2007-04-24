@@ -1,0 +1,149 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{20A22975-7A20-4196-B763-64853076F283}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Design</RootNamespace>
+    <AssemblyName>Design</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug - MONO|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug - MONO\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release - MONO|AnyCPU' ">
+    <OutputPath>bin\Release - MONO\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="vcr\addrecording.html" />
+    <Content Include="vcr\console.html" />
+    <Content Include="vcr\console_output.html" />
+    <Content Include="vcr\delcategory.html" />
+    <Content Include="vcr\addcategory.html" />
+    <Content Include="vcr\help.html" />
+    <Content Include="vcr\images\settings_channels.html" />
+    <Content Include="vcr\include\footer.inc" />
+    <Content Include="vcr\include\header.inc" />
+    <Content Include="vcr\images\rss_feed_icon.png" />
+    <Content Include="vcr\images\RSS_Logo_YAPS.png" />
+    <Content Include="vcr\images\settings_misc_settings.png" />
+    <Content Include="vcr\images\settings_category_delcategory_icon.png" />
+    <Content Include="vcr\images\settings_category_editcategory_icon.png" />
+    <Content Include="vcr\editcategory_step3.html" />
+    <Content Include="vcr\editcategory_step4.html" />
+    <Content Include="vcr\images\YAPS_logo_complete.png" />
+    <Content Include="vcr\index.html" />
+    <Content Include="vcr\recordings.html" />
+    <Content Include="vcr\settings.html" />
+    <Content Include="vcr\settings_categories.html" />
+    <Content Include="vcr\settings_channels.html" />
+    <Content Include="vcr\settings_misc.html" />
+    <Content Include="vcr\editcategory_step2.html" />
+    <Content Include="vcr\skins\default\images\percent_bar_tile_blue.png" />
+    <Content Include="vcr\skins\default\images\percent_bar_tile_green.png" />
+    <Content Include="vcr\skins\default\images\percent_bar_tile_red.png" />
+    <Content Include="vcr\skins\default\images\Recordings.png" />
+    <Content Include="vcr\images\channels\3sat.png" />
+    <Content Include="vcr\images\channels\ard.png" />
+    <Content Include="vcr\images\channels\arte.png" />
+    <Content Include="vcr\images\channels\br-alpha.png" />
+    <Content Include="vcr\images\channels\br.png" />
+    <Content Include="vcr\images\channels\dsf.png" />
+    <Content Include="vcr\images\channels\hr.png" />
+    <Content Include="vcr\images\channels\kabel1.png" />
+    <Content Include="vcr\images\channels\kika.png" />
+    <Content Include="vcr\images\channels\mdr.png" />
+    <Content Include="vcr\images\channels\n24.png" />
+    <Content Include="vcr\images\channels\ndr.png" />
+    <Content Include="vcr\images\channels\NTV.png" />
+    <Content Include="vcr\images\channels\phoenix.png" />
+    <Content Include="vcr\images\channels\pro7.png" />
+    <Content Include="vcr\images\channels\rtl.png" />
+    <Content Include="vcr\images\channels\rtl2.png" />
+    <Content Include="vcr\images\channels\sat1.png" />
+    <Content Include="vcr\images\channels\superrtl.png" />
+    <Content Include="vcr\images\channels\swr.png" />
+    <Content Include="vcr\images\channels\tele5.png" />
+    <Content Include="vcr\images\channels\vox.png" />
+    <Content Include="vcr\images\channels\wdr.png" />
+    <Content Include="vcr\images\channels\zdf.png" />
+    <Content Include="vcr\images\channels\zdfdoku.png" />
+    <Content Include="vcr\images\channels\zdfinfo.png" />
+    <Content Include="vcr\skins\default\images\Console.png" />
+    <Content Include="vcr\images\delete_button.png" />
+    <Content Include="vcr\images\edit_button.png" />
+    <Content Include="vcr\skins\default\images\Settings.png" />
+    <Content Include="vcr\images\exclamationmark.png" />
+    <Content Include="vcr\skins\default\images\Help.png" />
+    <Content Include="vcr\skins\default\images\IconBar_Background_Tile.png" />
+    <Content Include="vcr\images\Logo_Tape.png" />
+    <Content Include="vcr\skins\default\images\Logo_YAPS.png" />
+    <Content Include="vcr\images\neu.png" />
+    <Content Include="vcr\skins\default\images\newRecording.png" />
+    <Content Include="vcr\images\percent_bar_tile_blue.png" />
+    <Content Include="vcr\images\percent_bar_tile_green.png" />
+    <Content Include="vcr\images\percent_bar_tile_red.png" />
+    <Content Include="vcr\images\recordbutton.png" />
+    <Content Include="vcr\images\settings_category_addcategory_icon.png" />
+    <Content Include="vcr\images\settings_category_icon.png" />
+    <Content Include="vcr\images\Table_Headerbar_Tile.png" />
+    <Content Include="vcr\images\table_tile_dark.png" />
+    <Content Include="vcr\images\table_tile_light.png" />
+    <Content Include="vcr\images\waitbutton.png" />
+    <Content Include="vcr\images\watch_button.png" />
+    <Content Include="vcr\js\CalendarPopup.js" />
+    <Content Include="vcr\editcategory_step1.html" />
+    <Content Include="vcr\skins\default\default.css" />
+    <Content Include="vcr\skins\default\images\settings_category_icon.png" />
+    <Content Include="vcr\skins\default\images\settings_misc_settings.png" />
+    <Content Include="vcr\skins\default\images\title_placeholder.gif" />
+    <Content Include="vcr\skins\default\images\YAPS_logo_complete.png" />
+    <Content Include="vhs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vcr\recorded_line.template" />
+    <None Include="vcr\recording_line.template" />
+    <None Include="YAPS.cdr" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+    <Folder Include="vcr\settings\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

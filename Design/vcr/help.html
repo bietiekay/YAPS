@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de">
+<head>
+<title>Yet Another Proxy Server | Help</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="audience" content="All"/>
+<meta name="Language" content="English"/>
+<meta name="Content-Language" content="en"/>
+
+<link href="skins/%skin%/css/default.css" rel="stylesheet" type="text/css"/>
+<!--[if lte IE 7]>
+<link href="skins/%skin%/css/explorer/iehacks_2col_left_vlines.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+
+<body>
+<div id="page_margins">
+<div id="page" class="hold_floats">
+
+%include(include/header.inc)%
+
+<div id="nav">
+<a id="navigation" title="navigation"></a>
+<div id="nav_main" >
+	<ul>
+		<li><a href="index.html">Home</a></li>
+		<li><a href="addrecording.html">Add Recording</a></li>
+		<li><a href="recordings.html">Recordings</a></li>
+		<li><a href="console.html">Console</a></li>
+		<li><a href="settings.html">Settings</a></li>
+		<li id="current"><a href="help.html">Help</a></li>
+	</ul>
+</div>
+</div>
+<!-- 3-Spalten-Hauptteil -->
+<div id="main">
+<!-- #col1: Links Spalte des Inhaltsbereiches -->
+<!--
+    <div id="col1">
+      <div id="col1_content" class="clearfix">      
+      </div>
+    </div>
+ -->
+<!-- Left - Ende -->
+
+<!-- #col2: Rechte Spalte des Inhaltsbereiches -->
+
+    
+<!-- #col2 - Rechts - Ende -->
+
+<!-- #col3: Hauptteil des Inhaltesbereiches -->
+<div id="block1" class="clearfix">
+<a id="A1" title="content"></a>
+       <div id="help">
+        <h2>
+            This is Yet Another Proxy Server.</h2>
+        <ol id="help-index">
+            <li><a href="#preamble">Preamble</a></li>
+            <li><a href="#about">About YAPS</a></li>
+            <li><a href="#usage">Usage</a></li>
+            <li><a href="#settings">Settings</a></li>
+            <li><a href="#skins">Skins</a></li>
+        </ol>
+        <h3>
+            <a title="preamble">Preamble</a></h3>
+        <p>
+            Help and documentation is still to be written ;)
+        </p>
+        <h3>
+            <a title="about">About YAPS</a></h3>
+        <p>
+            It's a HTTP Server that can be triggered to join a multicast group and forward the
+            traffic from that multicast group directly to the client that asked for it using
+            TCP.
+        </p>
+        <p>
+            The point in writing this software was to use the vast number of multicast streams
+            in my network even in the wireless lan. And after I accomplished this goal there
+            was the urge to extend YAPS beyond this functionality and make it a proper multicast
+            vcr.
+        </p>
+        <p>
+            Visit my website: <a href="http://www.technology-ninja.com">http://www.technology-ninja.com</a>
+            to get more information and updates on YAPS.
+        </p>
+        <h3>
+            <a title="usage">Usage</a></h3>
+        <p>
+            Add docu</p>
+        <h3>
+            <a title="settings">Settings</a></h3>
+        <p>
+            Add docu</p>
+        <h3>
+            <a title="skins">Skins</a></h3>
+        <p>
+            The layout is based on Dirk Jesse's amazing CSS-Framework YAML (Yet Another Multicolumn Layout &copy; 2005-2006 by Dirk Jesse <a href="http://www.highresolution.info">highresolution.info</a>).<br />
+ 
+            Creating your own YAPS-skin is a fairly simple thing. Just create a new subfolder
+            in the skins directory of your YAPS-installation. The folder has to contain a "default.css"
+            stylesheet and another subfolder named "images". As you can imagine, this folder
+            should contain all images you want to use in your stylesheet ;)<br />
+            As a first step, you may want to start with simply copying the default skin, rename it
+            and start with modifying this stylesheet. Later release will include a complete documentation
+            of all used classes and ID's. To make your start as easy as possible the default_new-skin contains all CSS files of the original YAML framework.
+        </p>
+    </div>
+	</div>
+
+		  
+      <!-- IE Column Clearing -->
+         <div id="ie_clearing">&nbsp;</div>
+      <!-- Ende: IE Column Clearing -->
+</div>
+<!-- Content - Ende -->
+</div>
+%include(include/footer.inc)%
+</div>
+</body>
+</html>

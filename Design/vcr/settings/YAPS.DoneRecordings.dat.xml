@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<ArrayOfRecording xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Recording>
+    <Recording_Name>aufgenommen</Recording_Name>
+    <Recording_Filename>7dfe3e4e-c453-4481-bbfa-2a769ecbec98</Recording_Filename>
+    <Channel>18</Channel>
+    <StartsAt>2007-03-16T20:00:00</StartsAt>
+    <EndsAt>2007-03-16T21:30:00</EndsAt>
+    <Recording_ID>1dadfa35-57ea-4fd3-a6d5-3b6ea343eee1</Recording_ID>
+    <CurrentlyRecording>false</CurrentlyRecording>
+    <isWeekly>false</isWeekly>
+    <isDaily>false</isDaily>
+    <isMonthly>false</isMonthly>
+    <Week>
+      <boolean>false</boolean>
+      <boolean>false</boolean>
+      <boolean>false</boolean>
+      <boolean>false</boolean>
+      <boolean>false</boolean>
+      <boolean>false</boolean>
+      <boolean>false</boolean>
+    </Week>
+    <isEach>1</isEach>
+    <createdby>BtK</createdby>
+    <PlayCount>0</PlayCount>
+    <LastTimePlayed>0001-01-01T00:00:00</LastTimePlayed>
+    <Categories />
+    <FileSize>0</FileSize>
+    <Episode>0</Episode>
+    <Season>0</Season>
+    <Year>0</Year>
+    <LastStoppedPosition>0</LastStoppedPosition>
+    <StartPosition>0</StartPosition>
+    <EndPosition>0</EndPosition>
+    <AdInPosition />
+    <AdOutPosition />
+  </Recording>
+</ArrayOfRecording>

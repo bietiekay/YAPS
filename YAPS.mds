@@ -1,0 +1,32 @@
+<Combine name="YAPS" fileversion="2.0" outputpath="./build/bin/" MakePkgConfig="True" MakeLibPC="True">
+  <Configurations active="Debug">
+    <Configuration name="Debug" ctype="CombineConfiguration">
+      <Entry build="True" name="YAPS" configuration="Debug" />
+      <Entry build="True" name="YAPS_Processors" configuration="Debug" />
+      <Entry build="False" name="PlaylistManager" configuration="Debug" />
+      <Entry build="True" name="DVB" configuration="Debug" />
+      <Entry build="True" name="EPG" configuration="Debug" />
+    </Configuration>
+    <Configuration name="Release" ctype="CombineConfiguration">
+      <Entry build="True" name="YAPS" configuration="Debug" />
+      <Entry build="True" name="YAPS_Processors" configuration="Debug" />
+      <Entry build="False" name="PlaylistManager" configuration="Release" />
+      <Entry build="True" name="DVB" configuration="Release" />
+      <Entry build="True" name="EPG" configuration="Release" />
+    </Configuration>
+  </Configurations>
+  <StartMode startupentry="YAPS" single="True">
+    <Execute type="None" entry="YAPS" />
+    <Execute type="None" entry="YAPS_Processors" />
+    <Execute type="None" entry="PlaylistManager" />
+    <Execute type="None" entry="DVB" />
+    <Execute type="None" entry="EPG" />
+  </StartMode>
+  <Entries>
+    <Entry filename="./YAPS/YAPS.mdp" />
+    <Entry filename="./YAPS_Processors/YAPS_Processors.mdp" />
+    <Entry filename="./PlaylistManager/PlaylistManager.mdp" />
+    <Entry filename="./JMS/DVB/DVB.mdp" />
+    <Entry filename="./JMS/EPG/EPG.mdp" />
+  </Entries>
+</Combine>

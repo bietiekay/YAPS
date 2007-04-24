@@ -1,0 +1,354 @@
+body
+{
+	margin-bottom:0px;
+	margin-left:0px;
+	margin-right:0px;
+	margin-top:10px;
+	background-color:White;
+	color:Black;
+	font-family:Arial,sans-serif;
+}
+a:link 
+{
+	color:Black;
+}
+a:active
+{
+	color:Black;
+}
+a:hover
+{
+	color:Black;
+}
+a:visited
+{
+	color:Black;
+}
+
+#title
+{
+	background-image:url(images/YAPS_logo_complete.png);
+	width:344px;
+	height:106px;
+	margin-left:auto;
+	margin-right:auto;
+	border:none;
+	display:block;
+}
+#title img
+{
+    border:none;
+}
+#menu
+{
+	background-image:url(images/IconBar_Background_Tile.png);
+	height:64px;
+	width:100%;
+	text-align:left;
+	vertical-align:middle;
+}
+
+
+#menu-list
+{
+	list-style-type:none;
+	margin-left:auto;
+	margin-right:auto;
+	width:500px;
+}
+#menu-list li
+{
+float: left;
+height: 64px;
+background-color: transparent;
+margin-top:0px;
+margin-bottom:0px;
+margin-left:10px;
+margin-right:10px;
+border: none;
+}
+#icon_newrec
+{
+	background-image:url(images/newRecording.png);
+	width:74px;
+	height:64px;
+	background-repeat:no-repeat;
+	display:block;
+}
+#icon_records
+{
+	background-image:url(images/Recordings.png);
+	width:74px;
+	height:64px;
+	background-repeat:no-repeat;
+	display:block;
+}
+#icon_console
+{
+	background-image:url(images/Console.png);
+	width:74px;
+	height:64px;
+	background-repeat:no-repeat;
+	display:block;
+}
+#icon_settings
+{
+	background-image:url(images/Settings.png);
+	width:74px;
+	height:64px;
+	background-repeat:no-repeat;
+	display:block;
+}
+#icon_help
+{
+	background-image:url(images/Help.png);
+	width:74px;
+	height:64px;
+	background-repeat:no-repeat;
+	display:block;
+}
+#space-usage-bar
+{
+	width:50%;
+	margin-top:20px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	border:none;
+}
+#space-usage-bar table
+{
+    width:100%;
+    border-spacing:0px;
+    border-collapse:collapse;
+}
+#space-usage-cell-used
+{
+    background-image: url(images/percent_bar_tile_red.png); 
+    background-repeat: repeat-x;
+    height:25px;
+}
+#space-usage-cell-free
+{
+    background-image: url(images/percent_bar_tile_green.png); 
+    background-repeat: repeat-x;
+    height:25px;
+}
+#space-usage-cell-needed
+{
+    background-image: url(images/percent_bar_tile_blue.png); 
+    background-repeat: repeat-x; 
+    height:25px;
+}
+#recordings
+{
+	width:80%;
+	margin-left:10%;
+	margin-right:10%;
+}
+#recordings_table
+{
+    border:1px solid black;
+    margin:0px;
+    border-collapse:collapse;
+}
+#recordings_table td
+{
+    text-align:center;
+    border:1px solid black;
+}
+#recordings_table a
+{
+    text-decoration:none;
+}
+#planed_recordings_table
+{
+    border:1px solid black;
+    margin:0px;
+    border-collapse:collapse;
+}
+#planed_recordings_table td
+{
+    text-align:center;
+    border:1px solid black;
+}
+#footer
+{
+	position:relative;
+	bottom:5px;
+	width:80%;
+	margin-left:10%;
+	margin-right:10%;
+	text-align:center;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+#footer p
+{
+	text-align:center;
+}
+
+#footer img
+{
+	border:none;
+}
+
+#addrecording_form
+{
+	padding:5px;
+	width:80%;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:20px;
+}
+
+#addrecording_form fieldset
+{
+	padding:5px;
+	width:100%;
+	display:table;
+}
+
+#console 
+{
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:20px;
+	width:800px;
+}
+
+#console object
+{
+	width:800px;
+	height:400px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#Console-Output
+{
+	background-color:Black;
+	color:White;
+	font-family:"Lucida Console",terminal,fixedsys;
+}
+
+#help
+{
+	width:80%;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:20px;
+}
+
+#help-index
+{
+	border:1px solid black;
+	float:left;
+	margin:10px;
+	padding:5px;
+}
+#settings_menu
+{
+    float:left;
+}
+#settings_menu ul
+{
+    list-style-type:none;
+    list-style-position:outside;
+    padding-left:0px;
+    margin-left:5px;
+}
+#settings_title
+{
+    margin-left:5px;
+}
+.settings_menu_link a
+{
+    display:block;
+    border:none;
+    background-color:Gray;
+    text-decoration:none;
+    padding:0px;
+    height:62px;
+    width:64px;
+}
+.settings_menu_link a:hover
+{
+    background-color:White;
+}
+.settings_main
+{
+    float:right;
+    border:none;
+    margin-top:10px;
+    margin-left:10px;
+    margin-right:10px;
+}
+#settings_submenu
+{
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    font-size:large;
+}
+#settings_submenu a
+{
+    display:block;
+    margin:10px;
+    margin-left:auto;
+    margin-right:auto;
+    padding-top:10px;
+    padding-bottom:10px;
+    border:1px solid black;
+    border-left:none;
+    height:42px;
+    width:200px;
+    text-align:left;
+    padding-left:74px;
+    background-repeat:no-repeat;
+    background-position:left;
+    background-color:Gray;
+    text-decoration:none;
+}
+#settings_submenu a:hover
+{
+    background-color:White;
+}
+
+#link_settings_categories
+{
+    background-image:url(images/settings_category_icon.png);
+}
+#link_settings_channels
+{
+    background-image:url(images/settings_misc_settings.png);
+}
+#link_settings_misc
+{
+    background-image:url(images/settings_misc_settings.png);
+}
+
+.small
+{
+	font-size:small;
+}
+
+.row_highlight
+{
+    hover:expression(this.onmouseover=new Function("this.style.background='Gray';"),this.onmouseout=new Function("this.style.background='#ffffff';"));  
+}
+.recording_name
+{
+    
+}
+.played_percentage
+{
+    background-color:Red;
+    height:2px;
+    border:1px solid red;
+}
+.runtime
+{
+    font-size:x-small;
+}

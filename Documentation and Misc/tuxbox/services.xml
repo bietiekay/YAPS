@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<bouquets>
+  <bouquet>
+    <reference>4097:7:0:33fc5:0:0:0:0:0:0:/etc/enigma/userbouquet.33fc5.tv</reference>
+    <name>Favourites (TV)</name>
+    <service>
+      <reference>1:0:1:6dca:44d:1:c00000:0:0:0:</reference>
+      <name>Das Erste</name>
+      <provider>ARD</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:6d66:437:1:c00000:0:0:0:</reference>
+      <name>ZDF</name>
+      <provider>ZDFvision</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:6dcc:44d:1:c00000:0:0:0:</reference>
+      <name>hr-fernsehen</name>
+      <provider>ARD</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:2ee3:441:1:c00000:0:0:0:</reference>
+      <name>RTL Television</name>
+      <provider>RTL World</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:2e:21:85:c00000:0:0:0:</reference>
+      <name>SAT.1</name>
+      <provider>ProSiebenSat.1</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:2ef4:441:1:c00000:0:0:0:</reference>
+      <name>RTL2</name>
+      <provider>RTL World</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+  </bouquet>
+  <bouquet>
+    <reference>4097:7:0:cda27:0:0:0:0:0:0:/etc/enigma/userbouquet.cda27.tv</reference>
+    <name>PREMIERE</name>
+    <service>
+      <reference>1:0:1:1d:1:85:c00000:0:0:0:</reference>
+      <name>.</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:34:1:85:c00000:0:0:0:</reference>
+      <name>.</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:2a:4:85:c00000:0:0:0:</reference>
+      <name>13 TH STREET</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:c:11:85:c00000:0:0:0:</reference>
+      <name>ANIMAL PLANET</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:32:1:85:c00000:0:0:0:</reference>
+      <name>arena home (Premiere)</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:15:11:85:c00000:0:0:0:</reference>
+      <name>BEATE-UHSE.TV</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:1b:4:85:c00000:0:0:0:</reference>
+      <name>BIG BROTHER</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:18:1:85:c00000:0:0:0:</reference>
+      <name>CLASSICA</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:e:11:85:c00000:0:0:0:</reference>
+      <name>DISCOVERY CHANNEL</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:d:11:85:c00000:0:0:0:</reference>
+      <name>DISCOVERY GESCHICHTE</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:22:11:85:c00000:0:0:0:</reference>
+      <name>DISNEY CHANNEL</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:201:4:85:c00000:0:0:0:</reference>
+      <name>EROTIK - AB 18!</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:f:11:85:c00000:0:0:0:</reference>
+      <name>FOCUS GESUNDHEIT</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:206:1:85:c00000:0:0:0:</reference>
+      <name>GOLDSTAR TV</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:16:1:85:c00000:0:0:0:</reference>
+      <name>HEIMATKANAL</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:a8:1:85:c00000:0:0:0:</reference>
+      <name>HIT24</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:1c:11:85:c00000:0:0:0:</reference>
+      <name>JETIX</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:13:11:85:c00000:0:0:0:</reference>
+      <name>JUNIOR</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:203:4:85:c00000:0:0:0:</reference>
+      <name>MGM</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:a:2:85:c00000:0:0:0:</reference>
+      <name>PREMIERE 1</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:b:2:85:c00000:0:0:0:</reference>
+      <name>PREMIERE 2</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:2b:2:85:c00000:0:0:0:</reference>
+      <name>PREMIERE 3</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:9:2:85:c00000:0:0:0:</reference>
+      <name>PREMIERE 4</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:35:7:85:c00000:0:0:0:</reference>
+      <name>PREMIERE Austria</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:12:4:85:c00000:0:0:0:</reference>
+      <name>PREMIERE DIREKT</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:29:3:85:c00000:0:0:0:</reference>
+      <name>PREMIERE FILMCLASSICS</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:14:3:85:c00000:0:0:0:</reference>
+      <name>PREMIERE FILMFEST</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:17:2:85:c00000:0:0:0:</reference>
+      <name>PREMIERE KRIMI</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:204:3:85:c00000:0:0:0:</reference>
+      <name>PREMIERE NOSTALGIE</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:10:2:85:c00000:0:0:0:</reference>
+      <name>PREMIERE SERIE</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:11:3:85:c00000:0:0:0:</reference>
+      <name>PREMIERE SPORT PORTAL</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:8:1:85:c00000:0:0:0:</reference>
+      <name>PREMIERE START</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:24:4:85:c00000:0:0:0:</reference>
+      <name>SCI FI</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:20:21:85:c00000:0:0:0:</reference>
+      <name>Sonnenklar TV</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:298:4:85:c00000:0:0:0:</reference>
+      <name>THEMA LIVE</name>
+      <provider>PREMIERE</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+  </bouquet>
+  <bouquet>
+    <reference>4097:7:0:30acf:0:0:0:0:0:0:/etc/enigma/userbouquet.30acf.tv</reference>
+    <name>ORF</name>
+    <service>
+      <reference>1:0:1:32d5:45d:1:c00000:0:0:0:</reference>
+      <name>HITRADIO OE3</name>
+      <provider>ORF</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:32c9:45d:1:c00000:0:0:0:</reference>
+      <name>ORF1</name>
+      <provider>ORF</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:32ca:45d:1:c00000:0:0:0:</reference>
+      <name>ORF2</name>
+      <provider>ORF</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:32cd:45d:1:c00000:0:0:0:</reference>
+      <name>ORF2 B</name>
+      <provider>ORF</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:32d3:45d:1:c00000:0:0:0:</reference>
+      <name>ORF2 K</name>
+      <provider>ORF</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:32cc:45d:1:c00000:0:0:0:</reference>
+      <name>ORF2 N</name>
+      <provider>ORF</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:32ce:45d:1:c00000:0:0:0:</reference>
+      <name>ORF2 O</name>
+      <provider>ORF</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:32cf:45d:1:c00000:0:0:0:</reference>
+      <name>ORF2 S</name>
+      <provider>ORF</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:32d2:45d:1:c00000:0:0:0:</reference>
+      <name>ORF2 St</name>
+      <provider>ORF</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:32d0:45d:1:c00000:0:0:0:</reference>
+      <name>ORF2 T</name>
+      <provider>ORF</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:32d1:45d:1:c00000:0:0:0:</reference>
+      <name>ORF2 V</name>
+      <provider>ORF</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:32cb:45d:1:c00000:0:0:0:</reference>
+      <name>ORF2 W</name>
+      <provider>ORF</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:32d6:45d:1:c00000:0:0:0:</reference>
+      <name>ORF2E</name>
+      <provider>ORF</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+    <service>
+      <reference>1:0:1:332d:45b:1:c00000:0:0:0:</reference>
+      <name>TW1</name>
+      <provider>ORF</provider>
+      <orbital_position>192</orbital_position>
+    </service>
+  </bouquet>
+</bouquets>

@@ -1,0 +1,110 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0D92E621-A2BD-4185-A1BA-D0EFBE5224F5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YAPS</RootNamespace>
+    <AssemblyName>YAPS_Processors</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug - MONO|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;MONO</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release - MONO|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;MONO</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CategoryProcessor.cs" />
+    <Compile Include="ChannelAndStationMapper.cs" />
+    <Compile Include="ConsoleOutputLogger.cs" />
+    <Compile Include="data structures\Category.cs" />
+    <Compile Include="data structures\Authentification.cs" />
+    <Compile Include="data structures\EPG.cs" />
+    <Compile Include="data structures\StationAndChannel.cs" />
+    <Compile Include="data structures\TuxBoxServices.cs" />
+    <Compile Include="data structures\xmltv.cs" />
+    <Compile Include="EPGProcessor.cs" />
+    <Compile Include="http.cs" />
+    <Compile Include="HTTPAuthProcessor.cs" />
+    <Compile Include="MonoSocket.cs" />
+    <Compile Include="multicast_vcr.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="data structures\Recording.cs" />
+    <Compile Include="Querystring.cs" />
+    <Compile Include="RecordingsManager.cs" />
+    <Compile Include="RSS\RSSChannel.cs" />
+    <Compile Include="RSS\RSSEnums.cs" />
+    <Compile Include="RSS\RSSImage.cs" />
+    <Compile Include="RSS\RSSItem.cs" />
+    <Compile Include="RSS\RSSItemCollection.cs" />
+    <Compile Include="RSS\RSSRoot.cs" />
+    <Compile Include="RSS\RSSUtilities.cs" />
+    <Compile Include="RSS\RSS_Config.cs" />
+    <Compile Include="rtp.cs" />
+    <Compile Include="data structures\Settings.cs" />
+    <Compile Include="SettingsProcessor.cs" />
+    <Compile Include="Sorter.cs" />
+    <Compile Include="TemplateProcessor.cs" />
+    <Compile Include="TimeShiftProcessor.cs" />
+    <Compile Include="TSProcessor\TSProcessor_BitManipulation.cs" />
+    <Compile Include="TSProcessor\TSProcessor_PacketData.cs" />
+    <Compile Include="TSProcessor\TSProcessor_PacketProcessor.cs" />
+    <Compile Include="TuxboxProcessor.cs" />
+    <Compile Include="VCRScheduler.cs" />
+    <Compile Include="XBMCPlaylistFilesHelper.cs" />
+    <Compile Include="XBMCSyncProcessor.cs" />
+    <Compile Include="XMLtvProcessor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JMS\EPG\EPG.csproj">
+      <Project>{90D05FCC-70F9-4423-A79F-B8D31BFBC228}</Project>
+      <Name>EPG</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

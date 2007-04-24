@@ -1,0 +1,156 @@
+#header img
+{
+    margin-top:9px;
+    margin-bottom:0px;
+}
+#header a:hover 
+{
+    background-color:Transparent;
+}
+#space-usage-bar
+{
+	width:50%;
+	margin-top:20px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:20px;
+	border:none;
+}
+#space-usage-bar table
+{
+    width:100%;
+    border-spacing:0px;
+    border-collapse:collapse;
+}
+#space-usage-cell-used
+{
+    background-image: url(../../img/percent_bar_tile_red.png); 
+    background-repeat: repeat-x;
+    height:25px;
+}
+#space-usage-cell-free
+{
+    background-image: url(../../img/percent_bar_tile_green.png); 
+    background-repeat: repeat-x;
+    height:25px;
+}
+#space-usage-cell-needed
+{
+    background-image: url(../../img/percent_bar_tile_blue.png); 
+    background-repeat: repeat-x; 
+    height:25px;
+}
+#footer 
+{
+    width:inherit;
+    margin-left:0px;
+    margin-right:0px;
+    padding-left:5px;
+    padding-right:5px;
+    font-size:small;
+    text-align:center;
+}
+
+#addrecording_form
+{
+	padding:5px;
+	width:80%;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:20px;
+}
+
+#addrecording_form fieldset
+{
+	padding:5px;
+	width:100%;
+	display:table;
+	border:1px dotted black;
+}
+
+#recordings
+{
+	margin-left:10px;
+	margin-right:10px;
+}
+
+#recordings table tr th
+{
+    background-image: url(../../img/Table_Headerbar_Tile.png);
+    background-repeat: repeat-x;
+    height: 21px;
+    text-align: left;
+    font-weight:bold;
+    padding-left:2px;
+}
+#recordings table tr th a:hover
+{
+    background-color:Transparent;
+}
+#recordings table tr td a:hover
+{
+    background-color:Transparent;
+}
+#recordings table tr th
+{
+    padding:2px;
+}
+#recordings table tr td
+{
+    padding-top:2px;
+    padding-bottom:2px;
+    padding-left:5px;
+    padding-right:10px;
+}
+#console 
+{
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:20px;
+	width:800px;
+}
+
+#console object
+{
+	width:800px;
+	height:400px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#Console-Output
+{
+    padding:0px;
+}
+
+#Console-Output pre
+{
+	background-color:black;
+	color:white;
+	font-family:"Lucida Console",terminal,fixedsys;
+	padding:5px;
+    border:none;
+    border-width:0px;
+    margin:0px;
+}
+
+#help
+{
+	margin-left:10px;
+	margin-right:10px;
+	margin-top:20px;
+}
+
+#help-index
+{
+	border:1px dotted black;
+	float:left;
+	margin:10px;
+	padding:5px;
+}
+.played_percentage
+{
+    background-color:Red;
+    height:2px;
+    border:1px solid red;
+}

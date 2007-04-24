@@ -1,0 +1,79 @@
+<Project name="EPG" fileversion="2.0" language="C#" clr-version="Net_2_0" ctype="DotNetProject">
+  <Configurations active="Debug">
+    <Configuration name="Debug" ctype="DotNetProjectConfiguration">
+      <Output directory="./bin/Debug" assembly="EPG" />
+      <Build debugmode="True" target="Library" />
+      <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_2_0" />
+      <CodeGeneration compiler="Mcs" warninglevel="4" optimize="False" unsafecodeallowed="False" generateoverflowchecks="True" mainclass="" generatexmldocumentation="False" win32Icon="./" ctype="CSharpCompilerParameters" />
+    </Configuration>
+    <Configuration name="Release" ctype="DotNetProjectConfiguration">
+      <Output directory="./bin/Release" assembly="EPG" />
+      <Build debugmode="False" target="Library" />
+      <Execution runwithwarnings="True" consolepause="True" runtime="MsNet" clr-version="Net_2_0" />
+      <CodeGeneration compiler="Mcs" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" mainclass="" generatexmldocumentation="False" win32Icon="./" ctype="CSharpCompilerParameters" />
+    </Configuration>
+  </Configurations>
+  <Contents>
+    <File name="./Descriptors/AC3.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptors/CableDelivery.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptors/Component.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptors/Content.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptors/DataBroadcast.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptors/ExtendedEvent.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptors/ISOLanguage.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptors/Generic.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptors/Linkage.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptors/NetworkName.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptors/ParentalRating.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptors/PDCDescriptor.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptors/SatelliteDelivery.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptors/PrivateData.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptors/Service.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptors/ServiceList.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptors/ShortEvent.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptors/StreamIdentifier.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptors/Teletext.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Tables/EIT.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Tables/Generic.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Tables/NIT.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Tables/PAT.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Tables/PMT.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Tables/SDT.cs" subtype="Code" buildaction="Compile" />
+    <File name="./AssemblyInfo.cs" subtype="Code" buildaction="Compile" />
+    <File name="./AudioTypes.cs" subtype="Code" buildaction="Compile" />
+    <File name="./CableModulations.cs" subtype="Code" buildaction="Compile" />
+    <File name="./CRC32.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Descriptor.cs" subtype="Code" buildaction="Compile" />
+    <File name="./DescriptorTags.cs" subtype="Code" buildaction="Compile" />
+    <File name="./EntryBase.cs" subtype="Code" buildaction="Compile" />
+    <File name="./EventEntry.cs" subtype="Code" buildaction="Compile" />
+    <File name="./EventStatus.cs" subtype="Code" buildaction="Compile" />
+    <File name="./ExtendedSITScanner.cs" subtype="Code" buildaction="Compile" />
+    <File name="./IDescriptorContainer.cs" subtype="Code" buildaction="Compile" />
+    <File name="./InnerFECs.cs" subtype="Code" buildaction="Compile" />
+    <File name="./LanguageItem.cs" subtype="Code" buildaction="Compile" />
+    <File name="./NetworkEntry.cs" subtype="Code" buildaction="Compile" />
+    <File name="./OuterFECs.cs" subtype="Code" buildaction="Compile" />
+    <File name="./PATScanner.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Parser.cs" subtype="Code" buildaction="Compile" />
+    <File name="./PMTManager.cs" subtype="Code" buildaction="Compile" />
+    <File name="./PMTScanner.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Polarizations.cs" subtype="Code" buildaction="Compile" />
+    <File name="./ProgramEntry.cs" subtype="Code" buildaction="Compile" />
+    <File name="./SDTScanner.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Section.cs" subtype="Code" buildaction="Compile" />
+    <File name="./ServiceEntry.cs" subtype="Code" buildaction="Compile" />
+    <File name="./ServiceParser.cs" subtype="Code" buildaction="Compile" />
+    <File name="./ServiceTypes.cs" subtype="Code" buildaction="Compile" />
+    <File name="./SITScanner.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Table.cs" subtype="Code" buildaction="Compile" />
+    <File name="./StreamTypes.cs" subtype="Code" buildaction="Compile" />
+    <File name="./TableConstructor.cs" subtype="Code" buildaction="Compile" />
+    <File name="./TeletextItem.cs" subtype="Code" buildaction="Compile" />
+    <File name="./TeletextTypes.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Tools.cs" subtype="Code" buildaction="Compile" />
+  </Contents>
+  <References>
+    <ProjectReference type="Project" localcopy="True" refto="DVB" />
+  </References>
+</Project>

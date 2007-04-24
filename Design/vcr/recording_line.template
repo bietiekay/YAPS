@@ -1,0 +1,22 @@
+<tr class="row_highlight">
+
+  <td>%recording_status%</td>
+
+  <td>%starts_at%</td>
+
+  <td>%ends_at%</td>
+
+  <td>%channel%</td>
+
+  <td>%recording_name%</td>
+
+  <td>%categories%</td>
+
+  <td>%createdby%</td>
+  
+  <td>
+    <img src="images/edit_button.png" alt="edit" />
+    <a href="vcr/deleterecording?id=%recording_id%" title="delete recording"><img src="images/delete_button.png" alt="delete" />
+    </a>
+  </td>
+</tr>

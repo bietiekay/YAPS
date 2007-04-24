@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Minimum_Free_Filesystem_Space>0</Minimum_Free_Filesystem_Space>
+  <rewind_after_disconnect>true</rewind_after_disconnect>
+  <Multicast_Cached_and_Threaded_Writer_Buffer_Size>0</Multicast_Cached_and_Threaded_Writer_Buffer_Size>
+  <Multicast_IP_Prefix>239.255.2.</Multicast_IP_Prefix>
+  <Skin>default_new</Skin>
+  <Maximum_Number_Of_Concurrent_Clients>0</Maximum_Number_Of_Concurrent_Clients>
+  <HTTP_IPAdress>127.0.0.1</HTTP_IPAdress>
+  <HTTP_Port>80</HTTP_Port>
+  <HTTP_Buffer_Size>0</HTTP_Buffer_Size>
+  <MulticastEPGSources>
+    <MulticastEPGSource>
+      <IPAddress>239.255.18.1</IPAddress>
+      <Portnumber>1801</Portnumber>
+      <EPGName>EPG 1</EPGName>
+    </MulticastEPGSource>
+    <MulticastEPGSource>
+      <IPAddress>239.255.18.2</IPAddress>
+      <Portnumber>1802</Portnumber>
+      <EPGName>EPG 2</EPGName>
+    </MulticastEPGSource>
+    <MulticastEPGSource>
+      <IPAddress>239.255.18.3</IPAddress>
+      <Portnumber>1803</Portnumber>
+      <EPGName>EPG 3</EPGName>
+    </MulticastEPGSource>
+  </MulticastEPGSources>
+  <HTTP_URL>http://127.0.0.1</HTTP_URL>
+</Settings>

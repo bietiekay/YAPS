@@ -1,0 +1,67 @@
+<Project name="YAPS_Processors" fileversion="2.0" language="C#" clr-version="Net_2_0" ctype="DotNetProject">
+  <Configurations active="Debug">
+    <Configuration name="Debug" ctype="DotNetProjectConfiguration">
+      <Output directory="./bin/Debug" assembly="YAPS_Processors" />
+      <Build debugmode="True" target="Library" />
+      <Execution runwithwarnings="True" consolepause="False" runtime="MsNet" clr-version="Net_2_0" />
+      <CodeGeneration compiler="Csc" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" mainclass="" definesymbols="MONO, DEBUG" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
+    </Configuration>
+    <Configuration name="Release" ctype="DotNetProjectConfiguration">
+      <Output directory="./bin/Release" assembly="YAPS_Processors" />
+      <Build debugmode="False" target="Library" />
+      <Execution runwithwarnings="True" consolepause="False" runtime="MsNet" clr-version="Net_2_0" />
+      <CodeGeneration compiler="Csc" warninglevel="4" optimize="True" unsafecodeallowed="False" generateoverflowchecks="True" generatexmldocumentation="False" ctype="CSharpCompilerParameters" />
+    </Configuration>
+  </Configurations>
+  <Contents>
+    <File name="./http.cs" subtype="Code" buildaction="Compile" />
+    <File name="./ConsoleOutputLogger.cs" subtype="Code" buildaction="Compile" />
+    <File name="./multicast_vcr.cs" subtype="Code" buildaction="Compile" />
+    <File name="./rtp.cs" subtype="Code" buildaction="Compile" />
+    <File name="./SettingsProcessor.cs" subtype="Code" buildaction="Compile" />
+    <File name="./TemplateProcessor.cs" subtype="Code" buildaction="Compile" />
+    <File name="./VCRScheduler.cs" subtype="Code" buildaction="Compile" />
+    <File name="./data structures/Recording.cs" subtype="Code" buildaction="Compile" />
+    <File name="./data structures/Settings.cs" subtype="Code" buildaction="Compile" />
+    <File name="./MonoSocket.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Properties/AssemblyInfo.cs" subtype="Code" buildaction="Compile" />
+    <File name="./RSS/RSS_Config.cs" subtype="Code" buildaction="Compile" />
+    <File name="./RSS/RSSChannel.cs" subtype="Code" buildaction="Compile" />
+    <File name="./RSS/RSSEnums.cs" subtype="Code" buildaction="Compile" />
+    <File name="./RSS/RSSImage.cs" subtype="Code" buildaction="Compile" />
+    <File name="./RSS/RSSItem.cs" subtype="Code" buildaction="Compile" />
+    <File name="./RSS/RSSItemCollection.cs" subtype="Code" buildaction="Compile" />
+    <File name="./RSS/RSSRoot.cs" subtype="Code" buildaction="Compile" />
+    <File name="./RSS/RSSUtilities.cs" subtype="Code" buildaction="Compile" />
+    <File name="./CategoryProcessor.cs" subtype="Code" buildaction="Compile" />
+    <File name="./ChannelMapper.cs" subtype="Code" buildaction="Compile" />
+    <File name="./HTTPAuthProcessor.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Querystring.cs" subtype="Code" buildaction="Compile" />
+    <File name="./RecordingsManager.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Sorter.cs" subtype="Code" buildaction="Compile" />
+    <File name="./XBMCSyncProcessor.cs" subtype="Code" buildaction="Compile" />
+    <File name="./data structures/Authentification.cs" subtype="Code" buildaction="Compile" />
+    <File name="./data structures/Category.cs" subtype="Code" buildaction="Compile" />
+    <File name="./data structures/tuxbox.cs" subtype="Code" buildaction="Compile" />
+    <File name="./TimeShiftProcessor.cs" subtype="Code" buildaction="Compile" />
+    <File name="./XBMCPlaylistFilesHelper.cs" subtype="Code" buildaction="Compile" />
+    <File name="./TSProcessor/TSProcessor_BitManipulation.cs" subtype="Code" buildaction="Compile" />
+    <File name="./TSProcessor/TSProcessor_PacketData.cs" subtype="Code" buildaction="Compile" />
+    <File name="./TSProcessor/TSProcessor_PacketProcessor.cs" subtype="Code" buildaction="Compile" />
+    <File name="./data structures/xmltv.cs" subtype="Code" buildaction="Compile" />
+    <File name="./data structures/EPG.cs" subtype="Code" buildaction="Compile" />
+    <File name="./EPGProcessor.cs" subtype="Code" buildaction="Compile" />
+    <File name="./XMLtvProcessor.cs" subtype="Code" buildaction="Compile" />
+  </Contents>
+  <References>
+    <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <ProjectReference type="Gac" localcopy="True" refto="System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <ProjectReference type="Gac" localcopy="True" refto="Mono.Posix, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
+    <ProjectReference type="Gac" localcopy="True" refto="System.Xml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <ProjectReference type="Project" localcopy="True" refto="DVB" />
+    <ProjectReference type="Project" localcopy="True" refto="EPG" />
+  </References>
+  <DeploymentInformation strategy="File">
+    <excludeFiles />
+  </DeploymentInformation>
+</Project>
