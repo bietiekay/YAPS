@@ -49,27 +49,30 @@ namespace YAPS
             // tell the HTTP Server that we're up'n'running
             internal_http_server_object.vcr_scheduler = this;
 
-            // check if we have some undone recordings in the queue that need to be set to "done"...
-            foreach (Recording recording_entry in doneRecordings.Values)
+            lock (doneRecordings.SyncRoot)
             {
-                if (recording_entry.CurrentlyRecording)
+                // check if we have some undone recordings in the queue that need to be set to "done"...
+                foreach (Recording recording_entry in doneRecordings.Values)
                 {
-                    recording_entry.CurrentlyRecording = false;
-                    ConsoleOutputLogger.WriteLine("Obviously the recording " + recording_entry.Recording_Name + " did not finish properly.");
-                }
+                    if (recording_entry.CurrentlyRecording)
+                    {
+                        recording_entry.CurrentlyRecording = false;
+                        ConsoleOutputLogger.WriteLine("Obviously the recording " + recording_entry.Recording_Name + " did not finish properly.");
+                    }
 
-                #region HACK: Create playlist files on launch...
-                // normally commented section, use only of you know what you're doing
-                /*using (StreamWriter sw = new StreamWriter(XBMCPlaylistFilesHelper.generatePlaylistFilename(recording_entry)))
-                {
-                    // Add some text to the file.
-                    sw.Write(Settings.HTTP_URL + "/" + recording_entry.Recording_Filename);
-                    sw.Close();
-                }
-                File.SetLastWriteTime(XBMCPlaylistFilesHelper.generatePlaylistFilename(recording_entry), recording_entry.EndsAt);
-                File.SetCreationTime(XBMCPlaylistFilesHelper.generatePlaylistFilename(recording_entry), recording_entry.EndsAt);*/
-                #endregion
+                    #region HACK: Create playlist files on launch...
+                    // normally commented section, use only of you know what you're doing
+                    /*using (StreamWriter sw = new StreamWriter(XBMCPlaylistFilesHelper.generatePlaylistFilename(recording_entry)))
+                    {
+                        // Add some text to the file.
+                        sw.Write(Settings.HTTP_URL + "/" + recording_entry.Recording_Filename);
+                        sw.Close();
+                    }
+                    File.SetLastWriteTime(XBMCPlaylistFilesHelper.generatePlaylistFilename(recording_entry), recording_entry.EndsAt);
+                    File.SetCreationTime(XBMCPlaylistFilesHelper.generatePlaylistFilename(recording_entry), recording_entry.EndsAt);*/
+                    #endregion
 
+                }
             }
 
 

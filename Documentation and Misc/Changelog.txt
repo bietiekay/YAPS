@@ -1,3 +1,6 @@
+01.05.2007
+* fixed a bug in VCRScheduler that could lead to a crash on startup (was not threadsafe)
+
 24.04.2007
 + added %rendertransformation($input_url,$xslt_url)% keyword to the TemplateProcessor
 
