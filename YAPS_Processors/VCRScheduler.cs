@@ -75,7 +75,6 @@ namespace YAPS
                 }
             }
 
-
             ConsoleOutputLogger.WriteLine("VCR Scheduler up and running...");
 
             // as long as we're not done, check for upcoming recordings...

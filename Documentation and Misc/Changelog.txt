@@ -1,3 +1,7 @@
+05.05.2007
+* several changes for debugging purposes to the YAPS multicast processor to debug a specific problem
+* fixed a thread unsafe bug in multicast processor
+
 01.05.2007
 * fixed a bug in VCRScheduler that could lead to a crash on startup (was not threadsafe)
 

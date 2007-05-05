@@ -42,6 +42,7 @@ namespace YAPS
             done = false;
             internal_is_VCR = isVCR;
             internal_recording_info = recording_info;
+
             if (isVCR)
             {
                 // OLD: recorder_stream = File.Create(internal_recording_info.Recording_Filename);
@@ -53,6 +54,8 @@ namespace YAPS
                 cache = new byte[cache_size];
                 // TODO: sometimes the cache size can be too big so the harddisk cannot write all the data within a tolerable time, we should check that and increase/decrease the cache size accordingly
                 cache_length = 0; // it's brand new!!
+
+                // set timeout
                 
                 #region Create the currently-recording playlist file for the XBMC player
                 using (StreamWriter sw = new StreamWriter(XBMCPlaylistFilesHelper.generateCurrentlyRecordingPlaylistFilename(internal_recording_info)))
@@ -65,9 +68,7 @@ namespace YAPS
 
                     ConsoleOutputLogger.WriteLine("Created CurrentlyRecording Playlist File...");
                 }
-                #endregion
-
-                
+                #endregion                
             }
         }
         #endregion
@@ -145,6 +146,18 @@ namespace YAPS
             {
                 // okay we have a MulticastProcessor already
 
+                // TODO: REMOVE THIS !!!
+                #region Debugging 1
+                foreach (MulticastProcessor mpr in internal_http_server_object.MulticastProcessorList.Values)
+                {
+                    ConsoleOutputLogger.WriteLine(" + " + mpr.diedalready.ToString());
+                    foreach (VCRandStreaming HRequest in mpr.ReceiverList.Values)
+                    {
+                        ConsoleOutputLogger.WriteLine("  - " + HRequest.internal_recording_info.Recording_Name);
+                    }
+                }
+                #endregion
+
                 // get that MulticastProcessor object
                 internal_Multicast_Processor_Object = (MulticastProcessor)internal_http_server_object.MulticastProcessorList[myChannel.ServiceID];
 
@@ -197,6 +210,8 @@ namespace YAPS
             IPEndPoint ipep;
 
             internal_HTTP_Processor_Object = http_processor_object;
+
+            internal_HTTP_Processor_Object.ns.WriteTimeout = 1000;
 
             ip = IPAddress.Parse(myChannel.MulticastIP);
             ipep = new IPEndPoint(IPAddress.Any, int.Parse(myChannel.MulticastPort));
@@ -259,7 +274,14 @@ namespace YAPS
                     //  3. when user unpauses retrieve the data from there (keep it in this thread and let the multicast_vcr Processor put data into the TimeShiftProcessor from other threads)
                     #endregion
 
-                    internal_HTTP_Processor_Object.ns.Write(Data, 0, length);
+                    try
+                    {
+                        internal_HTTP_Processor_Object.ns.Write(Data, 0, length);
+                    }
+                    catch (SocketException sex)
+                    {
+                        ConsoleOutputLogger.WriteLine("Socket Timeout while sending: " + sex.Message);
+                    }
                     #endregion
                 }
                 else
@@ -335,13 +357,15 @@ namespace YAPS
                     ConsoleOutputLogger.WriteLine("Cache flushing error: "+e2.Message);
                 }
 
-                // check if there's no one left to watch or record
-                if (internal_Multicast_Processor_Object.ReceiverList.Count == 1)
+                lock (internal_Multicast_Processor_Object.ReceiverList.SyncRoot)
                 {
-                    // remove the MulticastProcessor Object from the global list
-                    internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.Remove(myChannel.ServiceID);
+                    // check if there's no one left to watch or record
+                    if (internal_Multicast_Processor_Object.ReceiverList.Count == 1)
+                    {
+                        // remove the MulticastProcessor Object from the global list
+                        internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.Remove(myChannel.ServiceID);
+                    }
                 }
-
                 // set us to done and close everything
                 done = true;
                 #endregion
