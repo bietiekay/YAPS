@@ -93,11 +93,16 @@ namespace YAPS
                                 {
                                     // TODO: Recording "done" list handling...
 
-                                    // move the recording to the "done" list
-                                    doneRecordings.Add(recording_entry.Recording_ID, recording_entry);
-                                    // remove the recording from the todo-Recordings List
-                                    Recordings.Remove(recording_entry.Recording_ID);
-
+                                    lock (doneRecordings.SyncRoot)
+                                    {
+                                        // move the recording to the "done" list
+                                        doneRecordings.Add(recording_entry.Recording_ID, recording_entry);
+                                    }
+                                    lock (Recordings.SyncRoot)
+                                    {
+                                        // remove the recording from the todo-Recordings List
+                                        Recordings.Remove(recording_entry.Recording_ID);
+                                    }
                                     // fire up the recorder... "true" because we're an recorder and not a streamer
                                     VCRandStreaming HReq = new VCRandStreaming(true, recording_entry,internal_http_server_object);
 

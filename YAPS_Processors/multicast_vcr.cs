@@ -161,8 +161,11 @@ namespace YAPS
                 // get that MulticastProcessor object
                 internal_Multicast_Processor_Object = (MulticastProcessor)internal_http_server_object.MulticastProcessorList[myChannel.ServiceID];
 
-                // add myself to the list
-                internal_Multicast_Processor_Object.ReceiverList.Add(myID, this);
+                lock (internal_Multicast_Processor_Object.ReceiverList.SyncRoot)
+                {
+                    // add myself to the list
+                    internal_Multicast_Processor_Object.ReceiverList.Add(myID, this);
+                }
             }
             else
             {
@@ -171,9 +174,14 @@ namespace YAPS
                 // create one
                 internal_Multicast_Processor_Object = new MulticastProcessor(ip, ipep, internal_http_server_object, myChannel.ServiceID.ToString());
                 // add him to the global list
-                internal_http_server_object.MulticastProcessorList.Add(myChannel.ServiceID, internal_Multicast_Processor_Object);
-
-                internal_Multicast_Processor_Object.ReceiverList.Add(myID, this);
+                lock (internal_http_server_object.MulticastProcessorList.SyncRoot)
+                {
+                    internal_http_server_object.MulticastProcessorList.Add(myChannel.ServiceID, internal_Multicast_Processor_Object);
+                }
+                lock (internal_Multicast_Processor_Object.ReceiverList.SyncRoot)
+                {
+                    internal_Multicast_Processor_Object.ReceiverList.Add(myID, this);
+                }
 
                 Thread thread = new Thread(new ThreadStart(internal_Multicast_Processor_Object.Go));
                 thread.Start();
@@ -227,8 +235,11 @@ namespace YAPS
                 // get that MulticastProcessor object
                 internal_Multicast_Processor_Object = (MulticastProcessor)internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList[myChannel.ServiceID];
 
-                // add myself to the list
-                internal_Multicast_Processor_Object.ReceiverList.Add(myID, this);
+                lock (internal_Multicast_Processor_Object.ReceiverList.SyncRoot)
+                {
+                    // add myself to the list
+                    internal_Multicast_Processor_Object.ReceiverList.Add(myID, this);
+                }
             }
             else
             {
@@ -236,11 +247,16 @@ namespace YAPS
                 ConsoleOutputLogger.WriteLine("Creating a new MulticastProcessor for channel " + myChannel.ChannelName);
                 // create one
                 internal_Multicast_Processor_Object = new MulticastProcessor(ip, ipep, internal_HTTP_Processor_Object.HTTPServer, myChannel.ServiceID.ToString());
-                // add him to the global list
-                internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.Add(myChannel.ServiceID, internal_Multicast_Processor_Object);
+                lock (internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.SyncRoot)
+                {
+                    // add him to the global list
+                    internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.Add(myChannel.ServiceID, internal_Multicast_Processor_Object);
+                }
 
-                internal_Multicast_Processor_Object.ReceiverList.Add(myID, this);
-
+                lock (internal_Multicast_Processor_Object.ReceiverList.SyncRoot)
+                {
+                    internal_Multicast_Processor_Object.ReceiverList.Add(myID, this);
+                }
                 Thread thread = new Thread(new ThreadStart(internal_Multicast_Processor_Object.Go));
                 thread.Start();
             }
@@ -363,7 +379,10 @@ namespace YAPS
                     if (internal_Multicast_Processor_Object.ReceiverList.Count == 1)
                     {
                         // remove the MulticastProcessor Object from the global list
-                        internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.Remove(myChannel.ServiceID);
+                        lock (internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.SyncRoot)
+                        {
+                            internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.Remove(myChannel.ServiceID);
+                        }
                     }
                 }
                 // set us to done and close everything
@@ -455,7 +474,10 @@ namespace YAPS
                     {
                         ConsoleOutputLogger.WriteLine("No One wants to see us...so we're going to die now...");
                         // fail-safe: remove us from the list
-                        internal_http_server_object.MulticastProcessorList.Remove(my_ID);
+                        lock (internal_http_server_object.MulticastProcessorList.SyncRoot)
+                        {
+                            internal_http_server_object.MulticastProcessorList.Remove(my_ID);
+                        }
                         break;
                     }
 
@@ -510,7 +532,10 @@ namespace YAPS
                 // shutting down...
                 ReceiverList.Clear();
                 // Removing MulticastProcessor from the MulticastProcessorList...
-                internal_http_server_object.MulticastProcessorList.Remove(my_ID);
+                lock (internal_http_server_object.MulticastProcessorList.SyncRoot)
+                {
+                    internal_http_server_object.MulticastProcessorList.Remove(my_ID);
+                }
             }
             catch (Exception e)
             {
