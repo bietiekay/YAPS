@@ -148,14 +148,14 @@ namespace YAPS
 
                 // TODO: REMOVE THIS !!!
                 #region Debugging 1
-                foreach (MulticastProcessor mpr in internal_http_server_object.MulticastProcessorList.Values)
+                /*foreach (MulticastProcessor mpr in internal_http_server_object.MulticastProcessorList.Values)
                 {
                     ConsoleOutputLogger.WriteLine(" + " + mpr.diedalready.ToString());
                     foreach (VCRandStreaming HRequest in mpr.ReceiverList.Values)
                     {
                         ConsoleOutputLogger.WriteLine("  - " + HRequest.internal_recording_info.Recording_Name);
                     }
-                }
+                }*/
                 #endregion
 
                 // get that MulticastProcessor object

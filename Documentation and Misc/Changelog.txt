@@ -2,6 +2,7 @@
 * several changes for debugging purposes to the YAPS multicast processor to debug a specific problem
 * fixed a thread unsafe bug in multicast processor
 * fixed several more thread unsafe things in multicast processor and vcrscheduler
+! changed behaviour: If a streaming client now refuses to accept data packets he will be disconnected after 1 second (until timeshift is implemented)
 
 01.05.2007
 * fixed a bug in VCRScheduler that could lead to a crash on startup (was not threadsafe)
