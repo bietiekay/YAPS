@@ -1314,6 +1314,54 @@ namespace YAPS
                     }
                     #endregion
 
+                    #region currentservicedata
+                    if (url.ToUpper().StartsWith("BOXINFO"))
+                    {
+                        method_found = true;
+
+                        System.IO.MemoryStream XMLStream = new System.IO.MemoryStream();
+                        // TODO: add check if EPGProcessor is even instantiated
+
+                        try
+                        {
+                            XmlRootAttribute xRoot = new XmlRootAttribute();
+                            xRoot.ElementName = "boxinfo";
+                            xRoot.IsNullable = true;
+
+                            YAPS.tuxbox.boxinfo boxinfo = new YAPS.tuxbox.boxinfo();
+
+                            boxinfo.disk = "none";
+                            boxinfo.firmware = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                            boxinfo.fpfirmware = "n/a";
+                            boxinfo.image.version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                            boxinfo.image.catalog = "http://www.technology-ninja.com";
+                            boxinfo.image.comment = "Yet Another Proxy Server: UDP Multicast to TCP Unicast Proxy";
+                            boxinfo.image.url = "http://www.technology-ninja.com";
+                            boxinfo.manufacturer = "(C) 2006-2007 Daniel Kirstenpfad and the YAPS Team";
+                            boxinfo.model = "YAPS";
+                            boxinfo.processor = "n/a";
+                            boxinfo.usbstick = "none";
+                            boxinfo.webinterface = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
+                            System.Xml.Serialization.XmlSerializer xmls = new XmlSerializer(boxinfo.GetType(), xRoot);
+                            xmls.Serialize(XMLStream, boxinfo);
+
+                            XMLStream.Seek(0, SeekOrigin.Begin);
+
+                            byte[] byteArray = new byte[XMLStream.Length];
+                            int xmlcount = XMLStream.Read(byteArray, 0, Convert.ToInt32(XMLStream.Length));
+
+                            writeSuccess(xmlcount, "text/xml");
+                            ns.Write(byteArray, 0, xmlcount);
+                            ns.Flush();
+                        }
+                        finally
+                        {
+                            XMLStream.Close();
+                        }
+                    }
+                    #endregion
+
 
                     if (!method_found)
                     {

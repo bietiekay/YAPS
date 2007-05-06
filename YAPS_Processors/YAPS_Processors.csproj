@@ -59,6 +59,7 @@
     <Compile Include="data structures\Authentification.cs" />
     <Compile Include="data structures\EPG.cs" />
     <Compile Include="data structures\StationAndChannel.cs" />
+    <Compile Include="data structures\TuxBoxBoxinfo.cs" />
     <Compile Include="data structures\TuxBoxCurrentServiceData.cs" />
     <Compile Include="data structures\TuxBoxServices.cs" />
     <Compile Include="data structures\xmltv.cs" />

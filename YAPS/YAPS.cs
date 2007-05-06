@@ -41,7 +41,7 @@ namespace YAPS
 
             #region Logo
             ConsoleOutputLogger.WriteLine("Yet Another Proxy Server: UDP Multicast to TCP Unicast Proxy "+System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
-            ConsoleOutputLogger.WriteLine("(C) 2006-2007 Daniel Kirstenpfad - http://www.technology-ninja.com");
+            ConsoleOutputLogger.WriteLine("(C) 2006-2007 Daniel Kirstenpfad and the YAPS Team - http://www.technology-ninja.com");
             //ConsoleOutputLogger.verbose = false;
             #endregion
 

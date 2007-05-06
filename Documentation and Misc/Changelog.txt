@@ -4,6 +4,8 @@
 + added Name2ServiceID to ChannelAndStationMapper
 + added TuxboxCurrentServiceData structure and handling
 + added /xml/currentservicedata method to http server
++ added /xml/boxinfo method to http server
++ added boxinfo data structure
 
 05.05.2007
 * several changes for debugging purposes to the YAPS multicast processor to debug a specific problem
