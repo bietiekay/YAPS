@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/xsl" href="/xml/streaminfo.xsl"?>
+<streaminfo>
+<frontend>DVB-S</frontend>
+<service>
+	<name>KABEL1</name>
+	<reference>1:0:1:383:21:85:c00000:0:0:0:</reference>
+</service>
+<provider>ProSiebenSat.1</provider>
+<vpid>ffffffffh (-1d)</vpid>
+
+<apid>ffffffffh (-1d)</apid>
+<pcrpid>ffffffffh (-1d)</pcrpid>
+<tpid>ffffffffh (-1d)</tpid>
+<tsid>0021h</tsid>
+<onid>0085h</onid>
+<sid>0383h</sid>
+<pmt>ffffffffh</pmt>
+<video_format>n/a</video_format>
+<namespace>c00000h</namespace>
+
+<supported_crypt_systems></supported_crypt_systems>
+<used_crypt_systems>None</used_crypt_systems>
+<satellite>Astra 19.2E</satellite>
+<frequency>12480</frequency>
+<symbol_rate>27500</symbol_rate>
+<polarisation>Vertical</polarisation>
+<inversion>Auto</inversion>
+<fec>3/4</fec>
+<snr>18%</snr>
+
+<agc>29%</agc>
+<ber>5192</ber>
+<lock>No</lock>
+<sync>No</sync>
+<modulation>#MODULATION#</modulation>
+<bandwidth>#BANDWIDTH#</bandwidth>
+<constellation>#CONSTELLATION#</constellation>
+<guardinterval>#GUARDINTERVAL#</guardinterval>
+
+<transmission>#TRANSMISSION#</transmission>
+<coderatelp>#CODERATELP#</coderatelp>
+<coderatehp>#CODERATEHP#</coderatehp>
+<hierarchyinfo>#HIERARCHYINFO#</hierarchyinfo>
+</streaminfo>

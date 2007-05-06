@@ -1198,7 +1198,7 @@ namespace YAPS
                     #endregion
 
                     #region streaminfo
-                    if (url.ToUpper().StartsWith("STREAMINFO"))
+                    if (url.ToUpper().StartsWith("STREAMINFO2"))
                     {
                         method_found = true;
 
@@ -1222,12 +1222,12 @@ namespace YAPS
 
                             // TODO: add correct aspect ratio, resolution, bitrate 
 
-                            streaminfo.AppendLine("768"); // vertical resolution
-                            streaminfo.AppendLine("576"); // horizontal resolution
-                            streaminfo.AppendLine("997500"); // bitrate
-                            streaminfo.AppendLine("4:3"); // aspect ratio
-                            streaminfo.AppendLine("25"); // frames per second
-                            streaminfo.AppendLine("joint stereo"); // audio information
+                            streaminfo.AppendLine("768\n"); // vertical resolution
+                            streaminfo.AppendLine("576\n"); // horizontal resolution
+                            streaminfo.AppendLine("997500\n"); // bitrate
+                            streaminfo.AppendLine("4:3\n"); // aspect ratio
+                            streaminfo.AppendLine("25\n"); // frames per second
+                            streaminfo.AppendLine("joint stereo\n"); // audio information
 
                             byte[] buffer = new UTF8Encoding().GetBytes(streaminfo.ToString());
 
