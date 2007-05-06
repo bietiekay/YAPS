@@ -1,3 +1,8 @@
+06.05.2007
++ added /cgi-bin/zapto to http handling
++ added /xml/streaminfo to http handling
++ added Name2ServiceID to ChannelAndStationMapper
+
 05.05.2007
 * several changes for debugging purposes to the YAPS multicast processor to debug a specific problem
 * fixed a thread unsafe bug in multicast processor

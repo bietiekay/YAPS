@@ -425,7 +425,6 @@ namespace YAPS
                                 newEventEntry.ShortDescription.Name = shortEvent.Name;
                                 newEventEntry.ShortDescription.Text = shortEvent.Text;
                                 newEventEntry.ShortDescription.Tag = shortEvent.Tag;
-
                                 continue;
                             }
                         }

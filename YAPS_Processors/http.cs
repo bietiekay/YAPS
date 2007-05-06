@@ -1157,7 +1157,7 @@ namespace YAPS
                     }
                     #endregion
 
-                    #region
+                    #region services
                     if (url.ToUpper().StartsWith("SERVICES"))
                     {
                         method_found = true;
@@ -1196,12 +1196,119 @@ namespace YAPS
                     }
                     #endregion
 
+                    #region streaminfo
+                    if (url.ToUpper().StartsWith("STREAMINFO"))
+                    {
+                        method_found = true;
+
+                        if (TuxboxProcessor.ZapToChannel != "")
+                        {
+                            // get the currently running event information for this channel...
+
+                            //EPG_Event_Entry currentlyrunningevent = TuxboxProcessor.getCurrentlyRunningEventOnChannel(TuxboxProcessor.ZapToChannel);
+
+                            /*
+                             * 480
+                             * 576
+                             * 997500
+                             * 4:3
+                             * 25
+                             * joint stereo
+                             * */
+
+                            // first of all get the info what's currently running on the ZapedToChannel
+                            StringBuilder streaminfo = new StringBuilder();
+
+                            // TODO: add correct aspect ratio, resolution, bitrate 
+
+                            streaminfo.AppendLine("768"); // vertical resolution
+                            streaminfo.AppendLine("576"); // horizontal resolution
+                            streaminfo.AppendLine("997500"); // bitrate
+                            streaminfo.AppendLine("4:3"); // aspect ratio
+                            streaminfo.AppendLine("25"); // frames per second
+                            streaminfo.AppendLine("joint stereo"); // audio information
+
+                            byte[] buffer = new UTF8Encoding().GetBytes(streaminfo.ToString());
+
+                            writeSuccess(buffer.Length, "text/html");
+
+                            ns.Write(buffer, 0, buffer.Length);
+                            ns.Flush();
+                        }
+                        else
+                        {
+                            ConsoleOutputLogger.WriteLine("No ZappedTo Channel found. Please first do a /cgi-bin/ZapTo?Path=");
+                            writeFailure();
+                        }
+                    }
+                    #endregion
+
                     if (!method_found)
                     {
                         ConsoleOutputLogger.WriteLine("Tuxbox stuff is coming soon");
                         writeFailure();
                     }
                     #endregion
+                }
+                else
+                if (url.StartsWith("/cgi-bin/"))
+                {
+                    bool method_found = false;
+
+                    // remove the start
+                    url = url.Remove(0, 9);
+
+                    #region Tuxbox Requests
+                    #region CheckAuthentification
+                    if (!HTTPAuthProcessor.AllowedToAccessTuxbox(AC_endpoint.Address))
+                    {
+                        // now give the user a 403 and break...
+                        writeForbidden();
+                        ns.Flush();
+                        return;
+                    }
+                    #endregion
+
+                    #region zapTo
+                    if (url.ToUpper().StartsWith("ZAPTO?PATH="))
+                    {
+                        method_found = true;
+
+                        url = url.Remove(0, 11);
+
+                        if (ChannelAndStationMapper.Name2Number(url) != -1)
+                        {
+                            TuxboxProcessor.ZapToChannel = url;
+
+                            String Output = "ok";
+                            byte[] buffer = new UnicodeEncoding().GetBytes(Output);
+                            int left = new UnicodeEncoding().GetByteCount(Output);
+                            writeSuccess(left);
+                            ns.Write(buffer, 0, left);
+                            ns.Flush();
+                        }
+                        else
+                        {
+                            ConsoleOutputLogger.WriteLine("Station not found, cannot zap to this channel: "+url);
+
+                            String Output = "error";
+                            byte[] buffer = new UnicodeEncoding().GetBytes(Output);
+                            int left = new UnicodeEncoding().GetByteCount(Output);
+                            writeSuccess(left);
+                            ns.Write(buffer, 0, left);
+                            ns.Flush();                            
+                        }
+                    }
+                    #endregion
+
+                    #endregion
+
+                    if (!method_found)
+                    {
+                        ConsoleOutputLogger.WriteLine("Tuxbox stuff is coming soon");
+                        writeFailure();
+                    }
+
                 }
                 else
                 {

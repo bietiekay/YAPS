@@ -138,6 +138,18 @@ namespace YAPS
                 return "";
             }
         }
+        public static ushort Name2ServiceID(String Channelname)
+        {
+            lock (ChannelsAndStations)
+            {
+                foreach (StationAndChannel _station in ChannelsAndStations)
+                {
+                    if (_station.ChannelName == Channelname)
+                        return _station.ServiceID;
+                }
+                return 0;
+            }
+        }
         #endregion
     }
 }

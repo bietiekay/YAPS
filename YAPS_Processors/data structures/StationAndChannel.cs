@@ -11,7 +11,7 @@ namespace YAPS
         public String ChannelName;
         public Int32 ChannelNumber;           // legacy
         public String ChannelPictureURL;
-        public Int32 ServiceID;
+        public ushort ServiceID;
 
         public String MulticastIP;
         public String MulticastPort;
