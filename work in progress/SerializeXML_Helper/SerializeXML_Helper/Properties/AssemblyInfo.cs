@@ -5,14 +5,14 @@ using System.Runtime.InteropServices;
 // Allgemeine Informationen über eine Assembly werden über die folgenden 
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die mit einer Assembly verknüpft sind.
-[assembly: AssemblyTitle("Yet Another Proxy Server VCR Processor Module")]
-[assembly: AssemblyDescription("udp multicast to tcp unicast proxy with vcr functionality")]
+[assembly: AssemblyTitle("SerializeXML_Helper")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("(none)")]
-[assembly: AssemblyProduct("YAPS")]
-[assembly: AssemblyCopyright("YAPS Team 2006-2007")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SerializeXML_Helper")]
+[assembly: AssemblyCopyright("Copyright ©  2007")]
 [assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]		
+[assembly: AssemblyCulture("")]
 
 // Durch Festlegen von ComVisible auf "false" werden die Typen in dieser Assembly unsichtbar 
 // für COM-Komponenten. Wenn Sie auf einen Typ in dieser Assembly von 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM verfügbar gemacht wird
-[assembly: Guid("b2d947bd-0a14-4501-912b-71aa637c7902")]
+[assembly: Guid("f76c2ab5-4904-42d6-a87d-8523a12dba35")]
 
 // Versionsinformationen für eine Assembly bestehen aus den folgenden vier Werten:
 //
@@ -29,7 +29,5 @@ using System.Runtime.InteropServices;
 //      Buildnummer
 //      Revision
 //
-// Sie können alle Werte angeben oder die standardmäßigen Revisions- und Buildnummern 
-// übernehmen, indem Sie "*" eingeben:
-[assembly: AssemblyVersion("1.0.828.0")]
-[assembly: AssemblyFileVersion("1.0.828.0")]
+[assembly: AssemblyVersion("1.0.26.0")]
+[assembly: AssemblyFileVersion("1.0.26.0")]

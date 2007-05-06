@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<boxinfo>
+	<image>
+		<version>0202200703171600</version>
+		<url>http://switch.dl.sourceforge.net/sourceforge/dboxjffs2/200703171600_yadi_mtd1.img</url>
+		<comment>yadi made by HorstH</comment>
+		<catalog>http://yadi.org/update/squashfs_catalog.xml?rc=202</catalog>
+	</image>
+	<firmware>release 2.2. 17.03.2007</firmware>
+	<fpfirmware>n/a</fpfirmware>
+	<webinterface>6.0.2-Expert</webinterface>
+	<model>d-Box 2</model>
+	<manufacturer>Philips</manufacturer>
+	<processor>XPC823, 66MHz</processor>
+	<usbstick>none</usbstick>
+	<disk>none</disk>
+</boxinfo>

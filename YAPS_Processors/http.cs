@@ -1192,6 +1192,7 @@ namespace YAPS
                         }
                         finally
                         {
+                            XMLStream.Close();
                         }                        
                     }
                     #endregion
@@ -1242,6 +1243,77 @@ namespace YAPS
                         }
                     }
                     #endregion
+
+                    #region currentservicedata
+                    if (url.ToUpper().StartsWith("CURRENTSERVICEDATA"))
+                    {
+                        method_found = true;
+
+                        if (TuxboxProcessor.ZapToChannel != "")
+                        {
+                            // get the currently running event information for this channel...
+                            EPG_Event_Entry currentlyrunningevent = TuxboxProcessor.getCurrentlyRunningEventOnChannel(TuxboxProcessor.ZapToChannel,HTTPServer.EPGProcessor);
+
+                            System.IO.MemoryStream XMLStream = new System.IO.MemoryStream();
+                            // TODO: add check if EPGProcessor is even instantiated
+
+                            try
+                            {
+                                YAPS.tuxbox.currentservicedata CurrentServiceData_ = new YAPS.tuxbox.currentservicedata();
+
+                                XmlRootAttribute xRoot = new XmlRootAttribute();
+                                xRoot.ElementName = "currentservicedata";
+                                xRoot.IsNullable = true;
+
+                                // TODO: this is default... implement later
+                                YAPS.tuxbox.channel channel = new YAPS.tuxbox.channel();
+                                channel.Name = "Stereo";
+                                channel.pid = "0x01";
+                                channel.selected = 1;
+
+                                CurrentServiceData_.audio_channels.Add(channel);
+
+
+                                CurrentServiceData_.current_event.date = currentlyrunningevent.StartTime.ToShortDateString();
+                                CurrentServiceData_.current_event.description = currentlyrunningevent.ShortDescription.Name;
+                                CurrentServiceData_.current_event.details = currentlyrunningevent.ShortDescription.Text;
+
+                                TimeSpan event_duration = currentlyrunningevent.EndTime - currentlyrunningevent.StartTime;
+
+                                CurrentServiceData_.current_event.duration = event_duration.Minutes.ToString();
+                                CurrentServiceData_.current_event.start = currentlyrunningevent.StartTime.Ticks.ToString();
+                                CurrentServiceData_.current_event.time = currentlyrunningevent.StartTime.ToShortTimeString();
+
+                                CurrentServiceData_.next_event = CurrentServiceData_.current_event;
+                                CurrentServiceData_.service.name = TuxboxProcessor.ZapToChannel;
+                                CurrentServiceData_.service.reference = TuxboxProcessor.ZapToChannel;
+
+                                System.Xml.Serialization.XmlSerializer xmls = new XmlSerializer(CurrentServiceData_.GetType(), xRoot);
+                                xmls.Serialize(XMLStream, CurrentServiceData_);
+
+                                XMLStream.Seek(0, SeekOrigin.Begin);
+
+                                byte[] byteArray = new byte[XMLStream.Length];
+                                int xmlcount = XMLStream.Read(byteArray, 0, Convert.ToInt32(XMLStream.Length));
+
+                                writeSuccess(xmlcount, "text/xml");
+                                ns.Write(byteArray, 0, xmlcount);
+                                ns.Flush();
+
+                            }
+                            finally
+                            {
+                                XMLStream.Close();
+                            }
+                        }
+                        else
+                        {
+                            ConsoleOutputLogger.WriteLine("No ZappedTo Channel found. Please first do a /cgi-bin/ZapTo?Path=");
+                            writeFailure();
+                        }
+                    }
+                    #endregion
+
 
                     if (!method_found)
                     {

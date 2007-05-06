@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<currentservicedata>
+	<service>
+		<name>ProSieben</name>
+		<reference>1:0:1:382:21:85:c00000:0:0:0:</reference>
+	</service>
+	<audio_channels>
+		<channel><pid>0x0100</pid><selected>1</selected><name>deutsch</name></channel><channel><pid>0x0101</pid><selected>0</selected><name>dolby digital (AC3)</name></channel>
+	</audio_channels>
+	<audio_track>
+		STEREO
+	</audio_track>
+	<video_channels>
+		
+	</video_channels>
+	<current_event>
+		<date>06.05.2007</date>
+		<time>18:04</time>
+		<start>1178467496</start>
+		<duration>(53)</duration>
+		<description>Galileo Mystery</description>
+		<details>Mitte des 18. Jahrhunderts: Eine schreckliche Mordserie mit mehr als hundert Opfern erschüttert Südfrankreich. Unter den Bauern der Region kursiert das Gerücht, dass ein Werwolf sein Unwesen treibe. Aiman Abdallah geht 250 Jahre nach dem Geschehen mit seinem 'Galileo Mystery'-Team auf Spurensuche: Wer war die 'Bestie von Gévaudan' - ein Mensch, ein Tier oder Beides in einem?</details>
+	</current_event>
+	<next_event>
+		<date>06.05.2007</date>
+		<time>18:58</time>
+		<start>1178470697</start>
+		<duration>(76)</duration>
+		<description>Wunderwelt Wissen</description>
+		<details>Warum klingt eigentlich jedes Auto anders: ein BMW-Motor aggressiv und tief und der eines VW eher leise und sanft? Weil jeder Käufer eine bestimmte Klangfarbe erwartet. Jede Automarke designt ihren eigenen Sound und geht dabei weit über akustisches Motorentuning hinaus. Bei teuren Autos wird vom Scheibenwischer bis zum Zündschlossklang alles durchgestylt. Reicht der natürliche Sound nicht, helfen diskret versteckte Lautsprecher nach.</details>
+	</next_event>
+</currentservicedata>

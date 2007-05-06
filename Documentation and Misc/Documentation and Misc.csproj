@@ -52,6 +52,17 @@
   </Target>
   -->
   <ItemGroup>
+    <None Include="tuxbox\currentservicedata.xsc">
+      <DependentUpon>currentservicedata.xsd</DependentUpon>
+    </None>
+    <None Include="tuxbox\currentservicedata.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>currentservicedata.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="tuxbox\currentservicedata.xss">
+      <DependentUpon>currentservicedata.xsd</DependentUpon>
+    </None>
     <None Include="tuxbox\services.xsc">
       <DependentUpon>services.xsd</DependentUpon>
     </None>
@@ -78,10 +89,22 @@
     <Content Include="Changelog.txt" />
     <Content Include="KnownBugs.txt" />
     <Content Include="license.txt" />
+    <Content Include="tuxbox\boxinfo.xml" />
+    <Content Include="tuxbox\boxstatus.xml" />
+    <Content Include="tuxbox\currentservicedata.xml" />
     <Content Include="tuxbox\Ehttp_api_doku.htm" />
+    <Content Include="tuxbox\serviceepg.htm" />
     <Content Include="tuxbox\services.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tuxbox\currentservicedata.cs">
+      <DependentUpon>currentservicedata.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="tuxbox\currentservicedata.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>currentservicedata.xsd</DependentUpon>
+    </Compile>
     <Compile Include="tuxbox\services.cs">
       <DependentUpon>services.xsd</DependentUpon>
     </Compile>
