@@ -95,6 +95,8 @@
     <Content Include="tuxbox\Ehttp_api_doku.htm" />
     <Content Include="tuxbox\serviceepg.htm" />
     <Content Include="tuxbox\services.xml" />
+    <Content Include="tuxbox\streaminfo.xml" />
+    <Content Include="tuxbox\streaminfo.xsl" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="tuxbox\currentservicedata.cs">

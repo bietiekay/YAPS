@@ -1,3 +1,7 @@
+07.05.2007
+* fixed a bug in the /xml/CurrentServiceData section that caused an exception when no EPG data was known
++ added error handling to the EPG Processor Thread; after 25 errors a thread will be shut down
+
 06.05.2007
 + added /cgi-bin/zapto to http handling
 + added /xml/streaminfo to http handling

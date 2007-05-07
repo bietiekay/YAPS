@@ -151,6 +151,8 @@ namespace YAPS
         private MulticastEPGSource EPGDataSource;
         Hashtable EPG_Events;
 
+        private int ErrorCounter = 0;
+
         bool done;
 
         #region JMS global stuff
@@ -211,10 +213,24 @@ namespace YAPS
                     //Console.Write("+");
 
                     // Handleit!
-                    for (int i = 0; (i + epgPacketSize) <= receivedBufferLength; i += epgPacketSize) ProcessEPGPacket(receiveBuffer, i);
-
+                    try
+                    {
+                        for (int i = 0; (i + epgPacketSize) <= receivedBufferLength; i += epgPacketSize) ProcessEPGPacket(receiveBuffer, i);
+                    }
+                    catch (Exception e)
+                    {
+                        ConsoleOutputLogger.WriteLine("EPG Thread " + this.EPGDataSource.EPGName + " has an error: " + e.Message);
+                        ErrorCounter++;
+                    }
                     // waiting FTW!!
                     Thread.Sleep(1);
+
+                    // end this thread when 25 errors occured
+                    if (ErrorCounter == 25)
+                    {
+                        ConsoleOutputLogger.WriteLine("Too many errors in EPG Thread " + this.EPGDataSource.EPGName + " - shutting it down.");
+                        done = true;
+                    }
                 }
 
                 ConsoleOutputLogger.WriteLine("EPG Thread for " + EPGDataSource.EPGName + " exiting.");
