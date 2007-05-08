@@ -1617,6 +1617,10 @@ namespace YAPS
                                         if (currentlyPlaying != null)
                                         {
                                             currentlyPlaying.LastStoppedPosition = 0;
+
+                                            // generate Thumbnail
+                                            RecordingsThumbnail.CreateRecordingsThumbnail(currentlyPlaying, XBMCPlaylistFilesHelper.generateThumbnailFilename(currentlyPlaying));
+
                                             HTTPServer.Configuration.SaveSettings();
                                         }
                                     }
@@ -1641,6 +1645,10 @@ namespace YAPS
                                     if (currentlyPlaying != null)
                                     {
                                         currentlyPlaying.LastStoppedPosition = bytesSent;
+
+                                        // generate Thumbnail
+                                        RecordingsThumbnail.CreateRecordingsThumbnail(currentlyPlaying, XBMCPlaylistFilesHelper.generateThumbnailFilename(currentlyPlaying));
+
                                         // Save it
                                         HTTPServer.Configuration.SaveSettings();
                                     }
