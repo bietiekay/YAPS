@@ -13,6 +13,7 @@ namespace YAPS
     {
         public static void CreateRecordingsThumbnail(Recording recording, String Filename)
         {
+            ConsoleOutputLogger.WriteLine("Updating thumbnail for recording " + recording.Recording_Name);
             Bitmap newBitmap = new Bitmap(182, 256);
 
             Graphics objGraphics;
