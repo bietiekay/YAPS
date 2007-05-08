@@ -16,6 +16,8 @@ namespace YAPS
         public String MulticastIP;
         public String MulticastPort;
 
+        public bool isRTP;
+
         public StationAndChannel()
         {
             ChannelName = "";
@@ -24,6 +26,7 @@ namespace YAPS
             ServiceID = 0;
             MulticastPort = "";
             MulticastIP = "";
+            isRTP = false;
         }
     }
 }

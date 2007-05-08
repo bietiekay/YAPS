@@ -175,7 +175,7 @@ namespace YAPS
                 // we don't have a MulticastProcessor yet
 
                 // create one
-                internal_Multicast_Processor_Object = new MulticastProcessor(ip, ipep, internal_http_server_object, myChannel.ServiceID.ToString());
+                internal_Multicast_Processor_Object = new MulticastProcessor(ip, ipep, internal_http_server_object, myChannel.ServiceID.ToString(),myChannel.isRTP);
                 // add him to the global list
                 lock (internal_http_server_object.MulticastProcessorList.SyncRoot)
                 {
@@ -249,7 +249,7 @@ namespace YAPS
                 // we don't have a MulticastProcessor yet
                 ConsoleOutputLogger.WriteLine("Creating a new MulticastProcessor for channel " + myChannel.ChannelName);
                 // create one
-                internal_Multicast_Processor_Object = new MulticastProcessor(ip, ipep, internal_HTTP_Processor_Object.HTTPServer, myChannel.ServiceID.ToString());
+                internal_Multicast_Processor_Object = new MulticastProcessor(ip, ipep, internal_HTTP_Processor_Object.HTTPServer, myChannel.ServiceID.ToString(),myChannel.isRTP);
                 lock (internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.SyncRoot)
                 {
                     // add him to the global list
@@ -431,8 +431,9 @@ namespace YAPS
         private YAPS.HttpServer internal_http_server_object;
         private string my_ID;
         public bool diedalready;
+        private bool isRTP;
 
-        public MulticastProcessor(IPAddress ip_address, IPEndPoint ip_endpoint, YAPS.HttpServer http_server_object, string MulticastProcessorID)
+        public MulticastProcessor(IPAddress ip_address, IPEndPoint ip_endpoint, YAPS.HttpServer http_server_object, string MulticastProcessorID, bool isRTP_)
         {
             ReceiverList = new Hashtable();
             ipep = ip_endpoint;
@@ -440,6 +441,7 @@ namespace YAPS
             my_ID = MulticastProcessorID;
             internal_http_server_object = http_server_object;
             diedalready = false;
+            isRTP = isRTP_;
         }
 
         public void Go()
@@ -469,8 +471,12 @@ namespace YAPS
                     // receive it!
                     int blength = s.Receive(b);
 
-                    // we don't need to kill the RTP header anymore since dvbstream now uses -udp instead of -rdp
-                    //byte[] ob = rtp.killRTPheader(b, ref blength);
+                    // if this channel uses RTP - strip the RTP headers...
+                    if (isRTP)
+                    {
+                        byte[] ob = rtp.killRTPheader(b, ref blength);
+                        b = ob;
+                    }
 
                     // check if no one wants to see us...
                     if (ReceiverList.Count == 0)

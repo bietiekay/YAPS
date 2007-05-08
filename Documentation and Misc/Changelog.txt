@@ -4,6 +4,7 @@
 + added thumbnail creation and deletion routines to multicast_vcr and others
 + udpating thumbnail when playcounter/position is updated...
 + added "Updating recording..." console output
++ added isRTP property to channelist (default value is false); you can determine if RTP header should be stripped or not for a specific channel
 
 07.05.2007
 * fixed a bug in the /xml/CurrentServiceData section that caused an exception when no EPG data was known
