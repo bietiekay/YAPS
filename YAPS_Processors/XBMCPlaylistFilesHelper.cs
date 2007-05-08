@@ -70,6 +70,21 @@ namespace YAPS
             }
             return Output;
         }
+
+        public static String generateThumbnailFilename(Recording _recording)
+        {
+            String Output = "";
+
+            if (_recording != null)
+            {
+                if (IfPathExists(".\\Playlists\\"))
+                {
+                    Output = ".\\Playlists\\" + _recording.Recording_Name.Replace(":", " -").Replace('?', '_').Replace('/', '_').Replace('\\', '_').Replace('\'', '_').Replace('\"', '_').Replace('&', '_').Replace('>', '_').Replace('<', '_').Replace("?", "") + "                                          " + _recording.Recording_ID + ".tbn";
+                }
+            }
+            return Output;
+        }
+
         #endregion
     }
 }

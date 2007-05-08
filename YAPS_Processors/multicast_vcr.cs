@@ -115,6 +115,9 @@ namespace YAPS
 
                     ConsoleOutputLogger.WriteLine("Created CurrentlyRecording Playlist File...");
                 }
+
+                RecordingsThumbnail.CreateRecordingsThumbnail(internal_recording_info, XBMCPlaylistFilesHelper.generateThumbnailFilename(internal_recording_info));
+
                 #endregion
             }
             // Save settings

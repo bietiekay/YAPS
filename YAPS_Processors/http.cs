@@ -920,6 +920,7 @@ namespace YAPS
                                     try
                                     {
                                         File.Delete(XBMCPlaylistFilesHelper.generatePlaylistFilename(tobedeletedrecording));
+                                        File.Delete(XBMCPlaylistFilesHelper.generateThumbnailFilename(tobedeletedrecording));
                                     }
                                     catch
                                     {

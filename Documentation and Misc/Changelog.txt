@@ -1,3 +1,8 @@
+08.05.2007
++ added RecordingsThumbnail class to generate a Thumbnail picture for a recording
++ added generateThumbnailFilename to XBMCPlaylistFilesHelper
++ added Thumbnail Creation and deletion routines to multicast_vcr and others
+
 07.05.2007
 * fixed a bug in the /xml/CurrentServiceData section that caused an exception when no EPG data was known
 + added error handling to the EPG Processor Thread; after 25 errors a thread will be shut down

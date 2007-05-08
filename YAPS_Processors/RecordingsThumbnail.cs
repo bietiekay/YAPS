@@ -9,9 +9,9 @@ namespace YAPS
     /// <summary>
     /// Creates a thumbnail
     /// </summary>
-    public class RecordingsThumbnail
+    public static class RecordingsThumbnail
     {
-        public void CreateRecordingsThumbnail(Recording recording, String Filename)
+        public static void CreateRecordingsThumbnail(Recording recording, String Filename)
         {
             Bitmap newBitmap = new Bitmap(182, 256);
 

@@ -59,6 +59,8 @@ namespace YAPS
                                         ConsoleOutputLogger.WriteLine("Apparently the Playlistfile for " + recording_entry.Recording_Name + " does not exist anymore - deleting recording");
 
                                         RecordingsManager.deleteRecording(recording_entry, internal_http_server_object.vcr_scheduler);
+                                        
+                                        File.Delete(XBMCPlaylistFilesHelper.generateThumbnailFilename(recording_entry));
                                     }
                                 }
                             }
