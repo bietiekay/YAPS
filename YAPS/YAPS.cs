@@ -10,6 +10,7 @@ namespace YAPS
     /*
      * YAPS - Yet Another Proxy Server: UDP Multicast to TCP Unicast Proxy (with VCR)
      * (C) Daniel Kirstenpfad 2006-2007, HTTP portions (C) 2001 by Sam Pullara; ICON (C) 2003-2004 by Steven W. Smith
+     * EPG portions (C) Dr. Jochen Manns
      * 
      * This is a small tool which allows you to proxy udp rtp multicast to tcp unicast (wihtout the rtp enclosure).
      * Beside this functionality YAPS implements a HTTP webserver and a VCR.
@@ -95,19 +96,17 @@ namespace YAPS
 
             vcrScheduler.Recordings.Add(testRecording.Recording_ID, testRecording);
             */
-
             /*
             foreach (Recording aufnahme in vcrScheduler.Recordings.Values)
             {
                 aufnahme.Categories = new List<Category>();
             }
-
-            foreach (Recording aufnahme in vcrScheduler.doneRecordings.Values)
-            {
-                aufnahme.Categories = new List<Category>();
-            }
-            Configuration.SaveSettings();
             */
+            /*
+            foreach (Recording recording in vcrScheduler.doneRecordings.Values)
+            {
+                RecordingsThumbnail.CreateRecordingsThumbnail(recording, XBMCPlaylistFilesHelper.generateThumbnailFilename(recording));
+            }*/
             
             #endregion
 
