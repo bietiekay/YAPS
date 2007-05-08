@@ -48,6 +48,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -72,6 +73,7 @@
     <Compile Include="data structures\Recording.cs" />
     <Compile Include="Querystring.cs" />
     <Compile Include="RecordingsManager.cs" />
+    <Compile Include="RecordingsThumbnail.cs" />
     <Compile Include="RSS\RSSChannel.cs" />
     <Compile Include="RSS\RSSEnums.cs" />
     <Compile Include="RSS\RSSImage.cs" />
