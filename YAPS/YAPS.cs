@@ -26,6 +26,7 @@ namespace YAPS
     // TODO: allow Reencoding of recordings (Download-Archive-Upload) through a client software (using mencoder)
     // TODO: add feature which auto-deletes old recordings after a specific number of recordings of that category is reached...
     // TODO: add feature which auto-deletes old recordings when we're running out of drive space
+    // BUG: If the endtime of a recording is before it starts some things break...
 
     /// <summary>
     /// Yet Another Proxy Server: UDP Multicast to TCP Unicast Proxy and VCR

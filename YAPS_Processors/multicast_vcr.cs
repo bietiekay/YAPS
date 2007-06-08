@@ -145,49 +145,39 @@ namespace YAPS
             #endregion
 
             #region MulticastProcessor checking and spawning/reusing
-            if (internal_http_server_object.MulticastProcessorList.ContainsKey(myChannel.ServiceID))
+            lock (internal_http_server_object.MulticastProcessorList.SyncRoot)
             {
-                // okay we have a MulticastProcessor already
-
-                // TODO: REMOVE THIS !!!
-                #region Debugging 1
-                /*foreach (MulticastProcessor mpr in internal_http_server_object.MulticastProcessorList.Values)
+                if (internal_http_server_object.MulticastProcessorList.ContainsKey(myChannel.ServiceID))
                 {
-                    ConsoleOutputLogger.WriteLine(" + " + mpr.diedalready.ToString());
-                    foreach (VCRandStreaming HRequest in mpr.ReceiverList.Values)
+                    // okay we have a MulticastProcessor already
+                    // get that MulticastProcessor object
+                    internal_Multicast_Processor_Object = (MulticastProcessor)internal_http_server_object.MulticastProcessorList[myChannel.ServiceID];
+
+                    lock (internal_Multicast_Processor_Object.ReceiverList.SyncRoot)
                     {
-                        ConsoleOutputLogger.WriteLine("  - " + HRequest.internal_recording_info.Recording_Name);
+                        // add myself to the list
+                        internal_Multicast_Processor_Object.ReceiverList.Add(myID, this);
                     }
-                }*/
-                #endregion
-
-                // get that MulticastProcessor object
-                internal_Multicast_Processor_Object = (MulticastProcessor)internal_http_server_object.MulticastProcessorList[myChannel.ServiceID];
-
-                lock (internal_Multicast_Processor_Object.ReceiverList.SyncRoot)
-                {
-                    // add myself to the list
-                    internal_Multicast_Processor_Object.ReceiverList.Add(myID, this);
                 }
-            }
-            else
-            {
-                // we don't have a MulticastProcessor yet
-
-                // create one
-                internal_Multicast_Processor_Object = new MulticastProcessor(ip, ipep, internal_http_server_object, myChannel.ServiceID.ToString(),myChannel.isRTP);
-                // add him to the global list
-                lock (internal_http_server_object.MulticastProcessorList.SyncRoot)
+                else
                 {
-                    internal_http_server_object.MulticastProcessorList.Add(myChannel.ServiceID, internal_Multicast_Processor_Object);
-                }
-                lock (internal_Multicast_Processor_Object.ReceiverList.SyncRoot)
-                {
-                    internal_Multicast_Processor_Object.ReceiverList.Add(myID, this);
-                }
+                    // we don't have a MulticastProcessor yet
 
-                Thread thread = new Thread(new ThreadStart(internal_Multicast_Processor_Object.Go));
-                thread.Start();
+                    // create one
+                    internal_Multicast_Processor_Object = new MulticastProcessor(ip, ipep, internal_http_server_object, myChannel.ServiceID.ToString(), myChannel.isRTP);
+                    // add him to the global list
+                    lock (internal_http_server_object.MulticastProcessorList.SyncRoot)
+                    {
+                        internal_http_server_object.MulticastProcessorList.Add(myChannel.ServiceID, internal_Multicast_Processor_Object);
+                    }
+                    lock (internal_Multicast_Processor_Object.ReceiverList.SyncRoot)
+                    {
+                        internal_Multicast_Processor_Object.ReceiverList.Add(myID, this);
+                    }
+
+                    Thread thread = new Thread(new ThreadStart(internal_Multicast_Processor_Object.Go));
+                    thread.Start();
+                }
             }
             #endregion
         }
@@ -231,37 +221,40 @@ namespace YAPS
             #endregion
 
             #region MulticastProcessor checking and spawning/reusing
-            if (internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.ContainsKey(myChannel.ServiceID))
+            lock (internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.SyncRoot)
             {
-                // okay we have a MulticastProcessor already
-                ConsoleOutputLogger.WriteLine("Reusing MulticastProcessor for channel " + myChannel.ChannelName);
-                // get that MulticastProcessor object
-                internal_Multicast_Processor_Object = (MulticastProcessor)internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList[myChannel.ServiceID];
+                if (internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.ContainsKey(myChannel.ServiceID))
+                {
+                    // okay we have a MulticastProcessor already
+                    ConsoleOutputLogger.WriteLine("Reusing MulticastProcessor for channel " + myChannel.ChannelName);
+                    // get that MulticastProcessor object
+                    internal_Multicast_Processor_Object = (MulticastProcessor)internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList[myChannel.ServiceID];
 
-                lock (internal_Multicast_Processor_Object.ReceiverList.SyncRoot)
-                {
-                    // add myself to the list
-                    internal_Multicast_Processor_Object.ReceiverList.Add(myID, this);
+                    lock (internal_Multicast_Processor_Object.ReceiverList.SyncRoot)
+                    {
+                        // add myself to the list
+                        internal_Multicast_Processor_Object.ReceiverList.Add(myID, this);
+                    }
                 }
-            }
-            else
-            {
-                // we don't have a MulticastProcessor yet
-                ConsoleOutputLogger.WriteLine("Creating a new MulticastProcessor for channel " + myChannel.ChannelName);
-                // create one
-                internal_Multicast_Processor_Object = new MulticastProcessor(ip, ipep, internal_HTTP_Processor_Object.HTTPServer, myChannel.ServiceID.ToString(),myChannel.isRTP);
-                lock (internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.SyncRoot)
+                else
                 {
-                    // add him to the global list
-                    internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.Add(myChannel.ServiceID, internal_Multicast_Processor_Object);
-                }
+                    // we don't have a MulticastProcessor yet
+                    ConsoleOutputLogger.WriteLine("Creating a new MulticastProcessor for channel " + myChannel.ChannelName);
+                    // create one
+                    internal_Multicast_Processor_Object = new MulticastProcessor(ip, ipep, internal_HTTP_Processor_Object.HTTPServer, myChannel.ServiceID.ToString(), myChannel.isRTP);
+                    lock (internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.SyncRoot)
+                    {
+                        // add him to the global list
+                        internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.Add(myChannel.ServiceID, internal_Multicast_Processor_Object);
+                    }
 
-                lock (internal_Multicast_Processor_Object.ReceiverList.SyncRoot)
-                {
-                    internal_Multicast_Processor_Object.ReceiverList.Add(myID, this);
+                    lock (internal_Multicast_Processor_Object.ReceiverList.SyncRoot)
+                    {
+                        internal_Multicast_Processor_Object.ReceiverList.Add(myID, this);
+                    }
+                    Thread thread = new Thread(new ThreadStart(internal_Multicast_Processor_Object.Go));
+                    thread.Start();
                 }
-                Thread thread = new Thread(new ThreadStart(internal_Multicast_Processor_Object.Go));
-                thread.Start();
             }
             #endregion
         }
@@ -502,11 +495,12 @@ namespace YAPS
                             }
                             else
                             {
+                                
                                 // do nothing with this object, just ignore it this time...our top priority is to
                                 // get the bytes out to all clients..
 
-                                ////ConsoleOutputLogger.WriteLine("One VCR Client is done, so we remove him from the Receiverlist...");
-                                ////ReceiverList.Remove(HRequest.myID
+                                ConsoleOutputLogger.WriteLine("One VCR Client is done, so we remove him from the Receiverlist...");
+                                ReceiverList.Remove(HRequest.myID);
                             }
                         }
                     }
