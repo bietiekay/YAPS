@@ -164,7 +164,7 @@ namespace YAPS
                     // we don't have a MulticastProcessor yet
 
                     // create one
-                    internal_Multicast_Processor_Object = new MulticastProcessor(ip, ipep, internal_http_server_object, myChannel.ServiceID.ToString(), myChannel.isRTP);
+                    internal_Multicast_Processor_Object = new MulticastProcessor(ip, ipep, internal_http_server_object, myChannel.ServiceID, myChannel.isRTP);
                     // add him to the global list
                     lock (internal_http_server_object.MulticastProcessorList.SyncRoot)
                     {
@@ -223,6 +223,14 @@ namespace YAPS
             #region MulticastProcessor checking and spawning/reusing
             lock (internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.SyncRoot)
             {
+                foreach (MulticastProcessor m in internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.Values)
+                {
+                    ConsoleOutputLogger.WriteLine("we have a MulticastProcessor for " + m.my_ID);
+                    if (m.diedalready) ConsoleOutputLogger.WriteLine("it died already...");
+                    else
+                        ConsoleOutputLogger.WriteLine("which is living...");
+                }
+
                 if (internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.ContainsKey(myChannel.ServiceID))
                 {
                     // okay we have a MulticastProcessor already
@@ -241,7 +249,7 @@ namespace YAPS
                     // we don't have a MulticastProcessor yet
                     ConsoleOutputLogger.WriteLine("Creating a new MulticastProcessor for channel " + myChannel.ChannelName);
                     // create one
-                    internal_Multicast_Processor_Object = new MulticastProcessor(ip, ipep, internal_HTTP_Processor_Object.HTTPServer, myChannel.ServiceID.ToString(), myChannel.isRTP);
+                    internal_Multicast_Processor_Object = new MulticastProcessor(ip, ipep, internal_HTTP_Processor_Object.HTTPServer, myChannel.ServiceID, myChannel.isRTP);
                     lock (internal_HTTP_Processor_Object.HTTPServer.MulticastProcessorList.SyncRoot)
                     {
                         // add him to the global list
@@ -422,11 +430,11 @@ namespace YAPS
         private IPEndPoint ipep;
         private IPAddress ip;
         private YAPS.HttpServer internal_http_server_object;
-        private string my_ID;
+        public ushort my_ID;
         public bool diedalready;
         private bool isRTP;
 
-        public MulticastProcessor(IPAddress ip_address, IPEndPoint ip_endpoint, YAPS.HttpServer http_server_object, string MulticastProcessorID, bool isRTP_)
+        public MulticastProcessor(IPAddress ip_address, IPEndPoint ip_endpoint, YAPS.HttpServer http_server_object, ushort MulticastProcessorID, bool isRTP_)
         {
             ReceiverList = new Hashtable();
             ipep = ip_endpoint;
@@ -524,19 +532,34 @@ namespace YAPS
             try
             {
                 ConsoleOutputLogger.WriteLine("Telling every Client that this Channel blacked out...");
-                foreach (VCRandStreaming HRequest in ReceiverList.Values)
+                lock (ReceiverList.SyncRoot)
                 {
-                    if (!HRequest.done)
+                    try
                     {
-                        HRequest.youreDone();
-                        ConsoleOutputLogger.WriteLine("Telling Recording " + HRequest.internal_recording_info.Recording_Name + " that we blacked out..");
+                        if (ReceiverList.Count != 0)
+                        {
+                            foreach (VCRandStreaming HRequest in ReceiverList.Values)
+                            {
+                                if (!HRequest.done)
+                                {
+                                    HRequest.youreDone();
+                                    ConsoleOutputLogger.WriteLine("Telling Recording " + HRequest.internal_recording_info.Recording_Name + " that we blacked out..");
+                                }
+                            }
+                        }
                     }
-                }
-                // shutting down...
+                    catch (Exception e)
+                    {
+                        ConsoleOutputLogger.WriteLine("Dying Exception: " + e.Message);
+                    }
+                    // shutting down...
                 ReceiverList.Clear();
+                }
+
                 // Removing MulticastProcessor from the MulticastProcessorList...
                 lock (internal_http_server_object.MulticastProcessorList.SyncRoot)
                 {
+                    ConsoleOutputLogger.WriteLine("Removing myself from the MulticastProcessorList...");
                     internal_http_server_object.MulticastProcessorList.Remove(my_ID);
                 }
             }
