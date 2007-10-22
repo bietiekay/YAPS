@@ -38,13 +38,14 @@ namespace YAPS
 
             objGraphics.DrawRectangle(Pens.Black, new Rectangle(45, 207, 101, 21));
 
-            if ( (recording.LastStoppedPosition != 0) && (recording.FileSize != 0) )
+            /*
+            if ( (recording.LastStoppedPosition(Username) != 0) && (recording.FileSize != 0) )
             {
-
-                int percentage = Convert.ToInt32(((float)recording.LastStoppedPosition / (float)recording.FileSize) * 100);
+                int percentage = Convert.ToInt32(((float)recording.LastStoppedPosition(Username) / (float)recording.FileSize) * 100);
 
                 objGraphics.FillRectangle(Brushes.Red, new Rectangle(46, 208, percentage, 20));
             }
+            */
 
             // Clean up.
             objGraphics.DrawImage(newBitmap, 182, 256);

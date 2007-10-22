@@ -8,6 +8,23 @@ using System.Xml.Serialization;
 
 namespace YAPS
 {
+    [Serializable]
+    public class UserStopPosition
+    {
+        public long LastStoppedPosition;
+        public String WatchedBy;
+
+        public UserStopPosition()
+        {
+        }
+
+        public UserStopPosition(String Username, long Position)
+        {
+            LastStoppedPosition = Position;
+            WatchedBy = Username;
+        }
+    }
+
     /// <summary>
     /// holds all the data of one particular recording
     /// </summary>
@@ -33,7 +50,8 @@ namespace YAPS
 
         public String createdby; // who created this recording (Username)
 
-        #region reserved for future extensions
+        public List<UserStopPosition> LastStoppedPositions;
+
         // TODO: implement those below...
         public Int32 PlayCount;
         public DateTime LastTimePlayed;
@@ -53,15 +71,11 @@ namespace YAPS
         public long Episode;
         public long Season;
         public long Year;
-        public long LastStoppedPosition;
         public long StartPosition;
         public long EndPosition;
 
         public List<long> AdInPosition;
         public List<long> AdOutPosition;
-
-
-        #endregion
 
         public Recording()
         {
@@ -74,6 +88,38 @@ namespace YAPS
             isEach = 1;
             createdby = "";
             Week = new bool[7];
+            LastStoppedPositions = new List<UserStopPosition>();
         }
+
+        public long LastStopPosition(String Username)
+        {
+            lock (LastStoppedPositions)
+            {
+                foreach (UserStopPosition uposition in LastStoppedPositions)
+                {
+                    if (uposition.WatchedBy == Username)
+                        return uposition.LastStoppedPosition;
+                }
+            }
+            return 0;
+        }
+
+        public void SetLastStopPosition(String Username, long Position)
+        {
+            lock (LastStoppedPositions)
+            {
+                foreach (UserStopPosition uposition in LastStoppedPositions)
+                {
+                    if (uposition.WatchedBy == Username)
+                    {
+                        uposition.LastStoppedPosition = Position;
+                        return;
+                    }
+                }
+                // we end up here in case we did not find the User
+                LastStoppedPositions.Add(new UserStopPosition(Username, Position));
+            }
+        }
+
     }
 }

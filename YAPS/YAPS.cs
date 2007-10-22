@@ -67,6 +67,8 @@ namespace YAPS
             // tell the processors that we exist...
             vcrScheduler.Configuration = Configuration;
             httpServer.Configuration = Configuration;
+
+            Configuration.LoadSettingsXML();
             #endregion
 
             #region Testing

@@ -1,3 +1,6 @@
+22.10.2007
++ added a new management data structure to the data structures/Recording.cs that holds a list of UserStopPosition; Each User now has his own LastStoppedPosition for each recording.
+
 08.05.2007
 + added RecordingsThumbnail class to generate a Thumbnail picture for a recording
 + added generateThumbnailFilename to XBMCPlaylistFilesHelper

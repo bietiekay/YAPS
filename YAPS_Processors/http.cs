@@ -957,7 +957,7 @@ namespace YAPS
 
                                         if (original == splitted[1])
                                         {
-                                            recording_entry.LastStoppedPosition = 0;
+                                            recording_entry.SetLastStopPosition(HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString()),0);
                                         }
                                     }
                                 }
@@ -1527,7 +1527,7 @@ namespace YAPS
                                 else
                                     if (filename.EndsWith(".html") | (filename.EndsWith(".htm")))
                                     {
-                                        String Output = HTTPServer.Template_Processor.ProcessHTMLTemplate(filename, querystring);
+                                        String Output = HTTPServer.Template_Processor.ProcessHTMLTemplate(filename, querystring, HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString()));
 
                                         //int left = new UnicodeEncoding().GetByteCount(Output);
                                         int left = new UTF8Encoding().GetByteCount(Output);
@@ -1556,8 +1556,8 @@ namespace YAPS
                                         if (currentlyPlaying != null)
                                         {
                                             //if (currentlyPlaying.LastStoppedPosition != 0) resumed = true;
-                                            left = file.Length - currentlyPlaying.LastStoppedPosition;
-                                            bytesSent = currentlyPlaying.LastStoppedPosition;
+                                            left = file.Length - currentlyPlaying.LastStopPosition(HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString()));
+                                            bytesSent = currentlyPlaying.LastStopPosition(HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString()));
                                             writeSuccess(left, "video/mpeg2");
                                         }
                                         else
@@ -1597,7 +1597,7 @@ namespace YAPS
                                         left = file.Length;
 
                                         if (currentlyPlaying != null)
-                                            bs.Seek(currentlyPlaying.LastStoppedPosition, SeekOrigin.Begin);
+                                            bs.Seek(currentlyPlaying.LastStopPosition(HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString())), SeekOrigin.Begin);
 
                                         int read;
                                         while (left > 0 && (read = bs.Read(bytes, 0, (int)Math.Min(left, bytes.Length))) != 0)
@@ -1616,7 +1616,7 @@ namespace YAPS
                                         // this happens when we're all done...
                                         if (currentlyPlaying != null)
                                         {
-                                            currentlyPlaying.LastStoppedPosition = 0;
+                                            currentlyPlaying.SetLastStopPosition(HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString()), 0);
 
                                             // generate Thumbnail
                                             RecordingsThumbnail.CreateRecordingsThumbnail(currentlyPlaying, XBMCPlaylistFilesHelper.generateThumbnailFilename(currentlyPlaying));
@@ -1644,7 +1644,7 @@ namespace YAPS
                                 {
                                     if (currentlyPlaying != null)
                                     {
-                                        currentlyPlaying.LastStoppedPosition = bytesSent;
+                                        currentlyPlaying.SetLastStopPosition(HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString()), bytesSent);
 
                                         // generate Thumbnail
                                         RecordingsThumbnail.CreateRecordingsThumbnail(currentlyPlaying, XBMCPlaylistFilesHelper.generateThumbnailFilename(currentlyPlaying));
@@ -1655,7 +1655,7 @@ namespace YAPS
                                 }
                                 else
                                 {
-                                    currentlyPlaying.LastStoppedPosition = 0;
+                                    currentlyPlaying.SetLastStopPosition(HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString()), 0);
                                     HTTPServer.Configuration.SaveSettings();
                                 }
 

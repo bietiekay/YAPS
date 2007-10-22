@@ -36,7 +36,7 @@ namespace YAPS
         /// </summary>
         /// <param name="template_filename"></param>
         /// <returns>the actual HTML code after the template parsing and keyword replaceing</returns>
-        public String ProcessHTMLTemplate(String template_filename,String Querystring)
+        public String ProcessHTMLTemplate(String template_filename,String Querystring, String Username)
         {
             String Output_HTML_Code = "";
             DateTime Started = DateTime.Now;
@@ -279,7 +279,7 @@ namespace YAPS
                             }
                             #endregion
 
-                            Output_HTML_Code = Output_HTML_Code.Replace("%render_recorded_table_template%", Template_Recorded_Listing(FilterCategory, SortAscending, newTemplate));
+                            Output_HTML_Code = Output_HTML_Code.Replace("%render_recorded_table_template%", Template_Recorded_Listing(FilterCategory, SortAscending, newTemplate, Username));
 
                         }
                     }
@@ -363,7 +363,7 @@ namespace YAPS
 
                             // now pass the template code to the http generator...
 
-                            Output_HTML_Code = Output_HTML_Code.Replace("%render_recording_table_template%", Template_Recording_Listing(newTemplate));
+                            Output_HTML_Code = Output_HTML_Code.Replace("%render_recording_table_template%", Template_Recording_Listing(newTemplate, Username));
                         }
                     }
                     catch (Exception e)
@@ -776,7 +776,7 @@ namespace YAPS
         /// <param name="Input"></param>
         /// <param name="recording_entry"></param>
         /// <returns></returns>
-        StringBuilder RenderOneLine_Template_Recorded_Listing(StringBuilder Input, Recording recording_entry, String LineTemplate)
+        StringBuilder RenderOneLine_Template_Recorded_Listing(StringBuilder Input, Recording recording_entry, String LineTemplate, String Username)
         {
             StringBuilder Output = Input;
 
@@ -882,9 +882,9 @@ namespace YAPS
 
             while (newLine.Contains("%played_percentage%"))
             {
-                if ( (recording_entry.LastStoppedPosition != 0) && (recording_entry.FileSize != 0) )
+                if ( (recording_entry.LastStopPosition(Username) != 0) && (recording_entry.FileSize != 0) )
                 {
-                    int percentage = Convert.ToInt32(((float)recording_entry.LastStoppedPosition / (float)recording_entry.FileSize) * 100);
+                    int percentage = Convert.ToInt32(((float)recording_entry.LastStopPosition(Username) / (float)recording_entry.FileSize) * 100);
 
                     newLine = newLine.Replace("%played_percentage%",percentage.ToString());
                 }
@@ -903,7 +903,7 @@ namespace YAPS
         /// this generates the Record Listing HTML Sourcecode
         /// </summary>
         /// <returns>Record Listing Sourcecode</returns>
-        String Template_Recorded_Listing(Category FilterCategory, bool SortAscending, String LineTemplate)
+        String Template_Recorded_Listing(Category FilterCategory, bool SortAscending, String LineTemplate, String Username)
         {
             StringBuilder Output = new StringBuilder();
             /*
@@ -943,7 +943,7 @@ namespace YAPS
 
                     foreach (Recording recording_entry in sortedDoneRecordingList)
                     {
-                        Output = RenderOneLine_Template_Recorded_Listing(Output, recording_entry, LineTemplate);
+                        Output = RenderOneLine_Template_Recorded_Listing(Output, recording_entry, LineTemplate, Username);
                     }
                 }
             }
@@ -962,7 +962,7 @@ namespace YAPS
                     foreach (Recording recording_entry in sortedDoneRecordingList)
                     {
                         if (internal_vcrscheduler.Category_Processor.isRecordingInCategory(recording_entry,FilterCategory))
-                            Output = RenderOneLine_Template_Recorded_Listing(Output, recording_entry, LineTemplate);
+                            Output = RenderOneLine_Template_Recorded_Listing(Output, recording_entry, LineTemplate, Username);
                     }
                 }
 
@@ -985,7 +985,7 @@ namespace YAPS
         /// this generates the Record Listing HTML Sourcecode
         /// </summary>
         /// <returns>Record Listing Sourcecode</returns>
-        String Template_Recording_Listing(string LineTemplate)
+        String Template_Recording_Listing(string LineTemplate, String Username)
         {
             StringBuilder Output = new StringBuilder();
 
@@ -1010,7 +1010,7 @@ namespace YAPS
                 {
                     if (recording_entry.CurrentlyRecording == true)
                     {
-                        Output = RenderOneLine_Template_Recorded_Listing(Output, recording_entry, LineTemplate);
+                        Output = RenderOneLine_Template_Recorded_Listing(Output, recording_entry, LineTemplate, Username);
                     }
                 }
 
@@ -1030,7 +1030,7 @@ namespace YAPS
 
                     // OLD Output.Append("<tr style=\"background-color: #a29ca2;\"><td style=\"background-color:red;width:50px\"></td><td align=\"center\" style=\"width:150px\">");
 
-                    Output = RenderOneLine_Template_Recorded_Listing(Output, recording_entry, LineTemplate);
+                    Output = RenderOneLine_Template_Recorded_Listing(Output, recording_entry, LineTemplate, Username);
                 }
             }
 
