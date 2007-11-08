@@ -1085,6 +1085,7 @@ namespace YAPS
                         {
                             Thread.Sleep(100);
                         }
+                        HTTPServer.Settings.NumberOfPlayedLiveTV++;
                     }
                     catch (Exception e)
                     {
@@ -1655,6 +1656,7 @@ namespace YAPS
                                 }
                                 else
                                 {
+                                    HTTPServer.Settings.NumberOfPlayedRecordings++;
                                     currentlyPlaying.SetLastStopPosition(HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString()), 0);
                                     HTTPServer.Configuration.SaveSettings();
                                 }
@@ -1831,7 +1833,7 @@ namespace YAPS
                 listener.Bind(endpoint);
                 listener.Blocking = true;
                 listener.Listen(-1);
-                ConsoleOutputLogger.WriteLine("Http server listening on "+ Settings.HTTP_IPAdress + ":" + port);
+                ConsoleOutputLogger.WriteLine("Http server listening on "+ Settings.HTTP_IPAdress + ":" + Settings.HTTP_Port);
                 while (true)
                 {
                     try

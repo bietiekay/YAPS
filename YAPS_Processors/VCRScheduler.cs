@@ -108,7 +108,7 @@ namespace YAPS
 
                                     // tell the console that we're going to record something right now...
                                     ConsoleOutputLogger.WriteLine("Record started at " + recording_entry.StartsAt.ToShortTimeString() + " - Name: " + recording_entry.Recording_Name);
-
+                                    Settings.NumberOfRecordings++;
                                     // we're recording
                                     recording_entry.CurrentlyRecording = true;
 

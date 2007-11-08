@@ -49,6 +49,7 @@ namespace YAPS
 
             #region Data
             HttpServer httpServer;
+            Cassini.Server CassiniServer;
             VCRScheduler vcrScheduler;
             XBMCSyncProcessor SyncProcessor;
 			int port = 80;
@@ -69,6 +70,8 @@ namespace YAPS
             httpServer.Configuration = Configuration;
 
             Configuration.LoadSettingsXML();
+
+            Configuration.SaveSettings();
             #endregion
 
             #region Testing
@@ -186,10 +189,16 @@ namespace YAPS
             #endregion
 
             #region Starting up...
-            #region HTTP Server
-            ConsoleOutputLogger.WriteLine("Starting HTTP Server...");
+                #region internal HTTP Server 
+                ConsoleOutputLogger.WriteLine("Starting internal HTTP Server...");
 			    Thread http_server_thread = new Thread(new ThreadStart(httpServer.listen));
 			    http_server_thread.Start();
+                #endregion
+
+                #region Cassini HTTP Server
+                ConsoleOutputLogger.WriteLine("Starting Cassini HTTP Server...");
+                CassiniServer = new Cassini.Server(httpServer.Settings.Cassini_Port, httpServer.Settings.Cassini_VirtualDirectory, httpServer.Settings.Cassini_Root_Directory);
+                CassiniServer.Start();
                 #endregion
 
                 #region XBMC Sync
