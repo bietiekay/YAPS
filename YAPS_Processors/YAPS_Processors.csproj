@@ -53,6 +53,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cassini\ByteParser.cs" />
+    <Compile Include="cassini\ByteString.cs" />
+    <Compile Include="cassini\Connection.cs" />
+    <Compile Include="cassini\Host.cs" />
+    <Compile Include="cassini\Messages.cs" />
+    <Compile Include="cassini\Request.cs" />
+    <Compile Include="cassini\Server.cs" />
     <Compile Include="CategoryProcessor.cs" />
     <Compile Include="ChannelAndStationMapper.cs" />
     <Compile Include="ConsoleOutputLogger.cs" />
