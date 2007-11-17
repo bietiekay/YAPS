@@ -18,6 +18,7 @@ namespace Cassini {
     using System.Threading;
     using System.Web;
     using System.Web.Hosting;
+    using YAPS;
 
     //
     //  Internal Request class provides the implementation of
@@ -124,6 +125,9 @@ namespace Cassini {
             }
 
             PrepareResponse();
+
+            ConsoleOutputLogger.WriteLine("blah");
+            Console.WriteLine("Cassini: pathinfo: " + _url);
 
             // Hand the processing over to HttpRuntime
 

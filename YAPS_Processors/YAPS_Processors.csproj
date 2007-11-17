@@ -66,6 +66,7 @@
     <Compile Include="data structures\Category.cs" />
     <Compile Include="data structures\Authentification.cs" />
     <Compile Include="data structures\EPG.cs" />
+    <Compile Include="Cassini Wrapper.cs" />
     <Compile Include="data structures\StationAndChannel.cs" />
     <Compile Include="data structures\TuxBoxBoxinfo.cs" />
     <Compile Include="data structures\TuxBoxCurrentServiceData.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="EPGProcessor.cs" />
     <Compile Include="http.cs" />
     <Compile Include="HTTPAuthProcessor.cs" />
+    <Compile Include="HoldingTimeManager.cs" />
     <Compile Include="MonoSocket.cs" />
     <Compile Include="multicast_vcr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

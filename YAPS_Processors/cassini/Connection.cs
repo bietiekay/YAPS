@@ -26,7 +26,8 @@ namespace Cassini {
         private Host _host;
         private Socket _socket;
 
-        public Connection(Host host, Socket socket) {
+        public Connection(Host host, Socket socket)
+        {
             _host = host;
             _socket = socket;
         }

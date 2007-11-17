@@ -52,6 +52,8 @@ namespace YAPS
 
         public List<UserStopPosition> LastStoppedPositions;
 
+        public Int32 HoldingTime; // the time this recording will be saved...
+
         // TODO: implement those below...
         public Int32 PlayCount;
         public DateTime LastTimePlayed;

@@ -287,7 +287,7 @@ namespace YAPS
 
                 querystring = "";
                 url = original_url;
-                ConsoleOutputLogger.WriteLine("Request: " + HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString()) + " - " + url);
+                ConsoleOutputLogger.WriteLine("internal HTTP: " + HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString()) + " - " + url);
                 if (url.StartsWith("/vcr/"))
                 {
                     #region VCR request
@@ -597,6 +597,9 @@ namespace YAPS
 
                             ConsoleOutputLogger.WriteLine("Apparently the username is " + newTimer.createdby);
 
+                            newTimer.HoldingTime = HTTPAuthProcessor.GetAccordingHoldingTime(AC_endpoint.Address.ToString());
+
+                            ConsoleOutputLogger.WriteLine("Apparently this users HoldingTime is " + newTimer.HoldingTime);
 
                             // TODO: check if there are enough information given to actually create that timer
                             try
@@ -1552,6 +1555,7 @@ namespace YAPS
                                         fs = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 
                                         long left = file.Length;
+                                        bool isThisARecordingRecording = false;
 
                                         // TODO: make the resuming behaviour for streamed recordings configurable!!
                                         if (currentlyPlaying != null)
@@ -1560,6 +1564,7 @@ namespace YAPS
                                             left = file.Length - currentlyPlaying.LastStopPosition(HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString()));
                                             bytesSent = currentlyPlaying.LastStopPosition(HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString()));
                                             writeSuccess(left, "video/mpeg2");
+                                            isThisARecordingRecording = true;
                                         }
                                         else
                                         {
@@ -1600,6 +1605,9 @@ namespace YAPS
                                         if (currentlyPlaying != null)
                                             bs.Seek(currentlyPlaying.LastStopPosition(HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString())), SeekOrigin.Begin);
 
+
+                                        // for performance reasons...
+                                        String tUsername = HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString());
                                         int read;
                                         while (left > 0 && (read = bs.Read(bytes, 0, (int)Math.Min(left, bytes.Length))) != 0)
                                         {
@@ -1609,6 +1617,9 @@ namespace YAPS
 
                                             // check filesize; maybe when we're viewing while recording the filesize may change from time to time...
                                             left = file.Length;
+
+                                            // set the already watched Size...
+                                            if (isThisARecordingRecording) currentlyPlaying.SetLastStopPosition(tUsername,bytesSent);
                                         }
                                         ns.Flush();
                                         bs.Close();
@@ -1645,7 +1656,7 @@ namespace YAPS
                                 {
                                     if (currentlyPlaying != null)
                                     {
-                                        currentlyPlaying.SetLastStopPosition(HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString()), bytesSent);
+                                        //currentlyPlaying.SetLastStopPosition(HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString()), bytesSent);
 
                                         // generate Thumbnail
                                         RecordingsThumbnail.CreateRecordingsThumbnail(currentlyPlaying, XBMCPlaylistFilesHelper.generateThumbnailFilename(currentlyPlaying));

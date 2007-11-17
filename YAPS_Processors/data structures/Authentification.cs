@@ -9,12 +9,14 @@ namespace YAPS
     public class AuthentificationUser
     {
         public String Username;
-
+        public Int32 RecordingsHoldingTime; // how long will the recording be saved...0 is indefinite
+        
         public List<AuthentificationEntry> AuthEntry;
 
         public AuthentificationUser()
         {
             AuthEntry = new List<AuthentificationEntry>();
+            RecordingsHoldingTime = 0;
         }
     }
 

@@ -50,6 +50,21 @@ namespace YAPS
                         {
                             foreach (Recording recording_entry in internal_http_server_object.vcr_scheduler.doneRecordings.Values)
                             {
+                                
+                                // check holding time...
+                                if (recording_entry.HoldingTime != 0)
+                                {
+                                    if (recording_entry.HoldingTime <= HoldingTimeManager.HowOldIsThisRecordingInDays(recording_entry.EndsAt))
+                                    {
+                                        ConsoleOutputLogger.WriteLine("The HoldingTime of "+recording_entry.Recording_Name+" is reached, deleting...");
+
+                                        if (!File.Exists(XBMCPlaylistFilesHelper.generatePlaylistFilename(recording_entry)))
+                                        {
+                                            File.Delete(XBMCPlaylistFilesHelper.generatePlaylistFilename(recording_entry));
+                                        }                                        
+                                    }
+                                }
+
                                 // one run through the whole list and check if the playlist file exists... if it does not; also remove the recording...
                                 if (!File.Exists(XBMCPlaylistFilesHelper.generatePlaylistFilename(recording_entry)))
                                 {

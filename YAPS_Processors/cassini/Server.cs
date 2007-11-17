@@ -18,6 +18,7 @@ namespace Cassini {
     using System.Web;
     using System.Web.Hosting;
     using Microsoft.Win32;
+    using YAPS;
 
     //
     // Server class that provides public Cassini APIs to start and stop the Web Server.
@@ -27,6 +28,8 @@ namespace Cassini {
     // using System.Web.Hosting.ApplicationHost.CreateApplicationHost()
     //
     public class Server : MarshalByRefObject {
+
+       
         private int _port;
         private String _virtualPath;
         private String _physicalPath;
@@ -36,7 +39,8 @@ namespace Cassini {
 
         private Host _host;
 
-        public Server(int port, String virtualPath, String physicalPath) {
+        public Server(int port, String virtualPath, String physicalPath)
+        {
             _port = port;
             _virtualPath = virtualPath;
             _physicalPath = physicalPath.EndsWith("\\") ? physicalPath : physicalPath + "\\";
@@ -45,7 +49,7 @@ namespace Cassini {
 
             _installPath = GetInstallPathAndConfigureAspNetIfNeeded();
 
-            CreateHost();
+            //CreateHost();
         }
 
         public override Object InitializeLifetimeService() {
@@ -97,6 +101,7 @@ namespace Cassini {
         }
 
         public void Start() {
+            CreateHost();
             if (_host != null)
                 _host.Start();
         }

@@ -27,7 +27,7 @@ namespace Cassini {
     // Host uses System.Net to listen to the configured port and accept
     // incoming HTTP connections.
     //
-    internal class Host : MarshalByRefObject {
+    internal class Host : MarshalByRefObject{
         private bool _started;
         private bool _stopped;
 
@@ -49,13 +49,20 @@ namespace Cassini {
         private WaitCallback _onSocketAccept;
         private EventHandler _onAppDomainUnload;
 
-        public override Object InitializeLifetimeService() {
+/*        public Host(YAPS.VCRScheduler vcrScheduler, YAPS.HttpServer httpServer)
+        {
+            internal_http_server_object = httpServer;
+            internal_vcr_scheduler = vcrScheduler;
+        }*/
+
+        public override Object InitializeLifetimeService() 
+        {
             return null; // never expire lease
         }
 
-        public void Configure(Server server, int port, String virtualPath, String physicalPath, String installPath) {
+        public void Configure(Server server, int port, String virtualPath, String physicalPath, String installPath)
+        {
             _server = server;
-
             _port = port;
             _virtualPath = virtualPath;
             _lowerCasedVirtualPath = CultureInfo.InvariantCulture.TextInfo.ToLower(_virtualPath);

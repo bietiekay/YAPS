@@ -40,6 +40,20 @@ namespace YAPS
         }
         #endregion
 
+        #region Holding Time
+        public static Int32 GetAccordingHoldingTime(String IPAdress)
+        {
+            foreach (AuthentificationUser User in KnownClients)
+            {
+                foreach (AuthentificationEntry Entry in User.AuthEntry)
+                {
+                    if (Entry.accessingIP == IPAdress) return User.RecordingsHoldingTime;
+                }
+            }
+            return 1; // hold one day 
+        }
+        #endregion
+
         #region Capability Checking
         #region CanAccessLiveStream
         public static bool AllowedToAccessLiveStream(IPAddress accessingIP)
