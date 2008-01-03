@@ -13,6 +13,14 @@ namespace Documentation_and_Misc.xmltv
 {
 }
 
+namespace Documentation_and_Misc.xmltv
+{
+}
+
+namespace Documentation_and_Misc.xmltv
+{
+}
+
 // 
 // Dieser Quellcode wurde automatisch generiert von xsd, Version=2.0.50727.42.
 // 

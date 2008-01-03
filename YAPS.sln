@@ -1,5 +1,5 @@
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YAPS", "YAPS\YAPS.csproj", "{5D732FCD-10BE-4EB0-A164-78726B651439}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YAPS_Processors", "YAPS_Processors\YAPS_Processors.csproj", "{0D92E621-A2BD-4185-A1BA-D0EFBE5224F5}"
