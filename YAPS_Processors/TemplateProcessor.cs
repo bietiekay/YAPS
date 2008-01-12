@@ -802,7 +802,12 @@ namespace YAPS
             {
                 if (recording_entry.CurrentlyRecording) newLine = newLine.Replace("%recording_status%", "<img src=\"images/recordbutton.png\" border=\"0\" alt=\"Status: recording\" />");
                 else
-                    newLine = newLine.Replace("%recording_status%", "<img src=\"images/waitbutton.png\" border=\"0\" alt=\"Status: wait\"/>");
+                {
+                    if ((recording_entry.isDaily) | (recording_entry.isMonthly) | (recording_entry.isWeekly))
+                        newLine = newLine.Replace("%recording_status%", "<img src=\"images/waitbutton_repeat.png\" border=\"0\" alt=\"Status: wait\"/>");
+                    else
+                        newLine = newLine.Replace("%recording_status%", "<img src=\"images/waitbutton.png\" border=\"0\" alt=\"Status: wait\"/>");
+                }
             }
 
             while (newLine.Contains("%starts_at%"))

@@ -3,6 +3,8 @@
 + added reoccuring event handling in HTML page AddRecordings
 * updated years and version numbers
 * bugfixed RecordingsPlayed statistics
+* updated Recordings-Table to reflect status if recording is reoccuring or not
++ added SVG Files for all YAPS graphics
 
 03.01.2008
 * updated solutions to Visual Studio 2008
