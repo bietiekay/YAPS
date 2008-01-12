@@ -570,6 +570,42 @@ namespace YAPS
                                         case "CH":
                                             newTimer.Channel = HttpUtility.UrlDecode(split_parameter[1], Encoding.UTF8);// UTF-8 Decoding..
                                             break;
+                                        case "REPEAT":
+                                            if (split_parameter[1].ToUpper() == "DAILY")
+                                                newTimer.isDaily = true;
+                                            if (split_parameter[1].ToUpper() == "WEEKLY")
+                                                newTimer.isWeekly = true;
+                                            if (split_parameter[1].ToUpper() == "MONTHLY")
+                                                newTimer.isMonthly = true;
+                                            break;
+                                        case "MO":
+                                            if (split_parameter[1].ToUpper() == "ON")
+                                                newTimer.Week[0] = true;
+                                            break;
+                                        case "TU":
+                                            if (split_parameter[1].ToUpper() == "ON")
+                                                newTimer.Week[1] = true;
+                                            break;
+                                        case "WE":
+                                            if (split_parameter[1].ToUpper() == "ON")
+                                                newTimer.Week[2] = true;
+                                            break;
+                                        case "TH":
+                                            if (split_parameter[1].ToUpper() == "ON")
+                                                newTimer.Week[3] = true;
+                                            break;
+                                        case "FR":
+                                            if (split_parameter[1].ToUpper() == "ON")
+                                                newTimer.Week[4] = true;
+                                            break;
+                                        case "SA":
+                                            if (split_parameter[1].ToUpper() == "ON")
+                                                newTimer.Week[5] = true;
+                                            break;
+                                        case "SU":
+                                            if (split_parameter[1].ToUpper() == "ON")
+                                                newTimer.Week[6] = true;
+                                            break;
                                         default:
                                             // alles andere interessiert uns nicht
                                             break;
@@ -611,7 +647,7 @@ namespace YAPS
                             {
                                 ConsoleOutputLogger.WriteLine("AddRecording: " + e.Message);
                             }
-                            newTimer.Recording_Filename = newTimer.Recording_ID.ToString();
+                            //newTimer.Recording_Filename = newTimer.Recording_ID.ToString();
 
                             // TODO: check for other timers that could possibly concur...
                             lock (HTTPServer.vcr_scheduler.Recordings.SyncRoot)
@@ -1491,6 +1527,7 @@ namespace YAPS
 
                                     currentlyPlaying = recording;
                                     recording.PlayCount++;
+                                    HTTPServer.Settings.NumberOfPlayedRecordings++;
                                     recording.LastTimePlayed = DateTime.Now;
                                     ConsoleOutputLogger.WriteLine("Increasing Playcount for Recording " + recording.Recording_Name);
                                     HTTPServer.Configuration.SaveSettings();

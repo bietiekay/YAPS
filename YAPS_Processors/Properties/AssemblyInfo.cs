@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("(none)")]
 [assembly: AssemblyProduct("YAPS")]
-[assembly: AssemblyCopyright("YAPS Team 2006-2007")]
+[assembly: AssemblyCopyright("YAPS Team 2006-2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]		
 
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 //
 // Sie können alle Werte angeben oder die standardmäßigen Revisions- und Buildnummern 
 // übernehmen, indem Sie "*" eingeben:
-[assembly: AssemblyVersion("1.0.923.0")]
-[assembly: AssemblyFileVersion("1.0.923.0")]
+[assembly: AssemblyVersion("1.0.925.0")]
+[assembly: AssemblyFileVersion("1.0.925.0")]

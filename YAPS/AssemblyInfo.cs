@@ -11,7 +11,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("(none)")]
 [assembly: AssemblyProduct("YAPS")]
-[assembly: AssemblyCopyright("YAPS Team 2006-2007")]
+[assembly: AssemblyCopyright("YAPS Team 2006-2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]		
 

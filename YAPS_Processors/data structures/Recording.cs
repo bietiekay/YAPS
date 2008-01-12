@@ -82,6 +82,7 @@ namespace YAPS
         public Recording()
         {
             Recording_ID = Guid.NewGuid();
+            Recording_Filename = Recording_ID.ToString();
             Categories = new List<Category>();
             CurrentlyRecording = false;
             isWeekly = false;
@@ -123,5 +124,31 @@ namespace YAPS
             }
         }
 
+
+        public Recording Clone()
+        {
+            Recording Output = new Recording();
+
+            Output.Channel = Channel;
+            Output.StartsAt = new DateTime(StartsAt.Ticks);
+            Output.EndsAt = new DateTime(EndsAt.Ticks);
+            Output.Recording_Name = Recording_Name;
+            Output.isWeekly = isWeekly;
+            Output.isDaily = isDaily;
+            Output.isMonthly = isMonthly;
+            Output.isEach = isEach;
+            Output.Week = Week;
+            Output.createdby = createdby;
+            Output.HoldingTime = HoldingTime;
+            Output.Username = Username;
+            Output.Password = Password;
+            Output.Comment = Comment;
+            Output.EpisodeTitle = EpisodeTitle;
+            Output.Episode = Episode;
+            Output.Season = Season;
+            Output.Year = Year;
+
+            return Output;
+        }
     }
 }

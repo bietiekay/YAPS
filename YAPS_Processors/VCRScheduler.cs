@@ -103,6 +103,47 @@ namespace YAPS
                                         // remove the recording from the todo-Recordings List
                                         Recordings.Remove(recording_entry.Recording_ID);
                                     }
+
+                                    #region Reoccuring Recordings
+                                    // everything regarding reoccuring event handling takes place here
+                                    
+                                    // first check if we have to do anything
+                                    // TODO: we're currently only checking for "each", not for anything else
+
+                                    if (recording_entry.isDaily)
+                                    {
+                                        int StartDay = CalcDayOfWeekNumber(DateTime.Now.DayOfWeek);
+                                        int Counter = 0;
+                                        
+                                        bool done2 = false;
+
+                                        while (!done2)
+                                        {
+                                            StartDay++;
+                                            Counter++;
+
+                                            if (StartDay == 7)
+                                                StartDay = 0;
+
+                                            if (recording_entry.Week[StartDay] == true)
+                                                done2 = true;
+                                        }
+
+                                        Counter = Counter * recording_entry.isEach;
+
+                                        Recording newRecording = recording_entry.Clone();
+
+                                        newRecording.StartsAt = newRecording.StartsAt.AddDays(Convert.ToDouble(Counter));
+                                        newRecording.EndsAt = newRecording.EndsAt.AddDays(Convert.ToDouble(Counter));
+
+                                        lock (Recordings.SyncRoot)
+                                        {
+                                            Recordings.Add(newRecording.Recording_ID, newRecording);
+                                        }
+                                    }
+
+                                    #endregion
+
                                     // fire up the recorder... "true" because we're an recorder and not a streamer
                                     VCRandStreaming HReq = new VCRandStreaming(true, recording_entry,internal_http_server_object);
 
@@ -131,6 +172,24 @@ namespace YAPS
                     ConsoleOutputLogger.WriteLine("Scheduler Error: " + e.Message);
                 }
             }
+        }
+        private Int32 CalcDayOfWeekNumber(DayOfWeek Input)
+        {
+            if (Input == DayOfWeek.Monday)
+                return 0;
+            if (Input == DayOfWeek.Tuesday)
+                return 1;
+            if (Input == DayOfWeek.Wednesday)
+                return 2;
+            if (Input == DayOfWeek.Thursday)
+                return 3;
+            if (Input == DayOfWeek.Friday)
+                return 4;
+            if (Input == DayOfWeek.Saturday)
+                return 5;
+            if (Input == DayOfWeek.Sunday)
+                return 6;
+            return 0;
         }
     }
     #endregion

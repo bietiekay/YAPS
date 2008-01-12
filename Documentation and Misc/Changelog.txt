@@ -1,3 +1,21 @@
+12.01.2008
++ added reoccuring event handling in VCRScheduler
++ added reoccuring event handling in HTML page AddRecordings
+* updated years and version numbers
+* bugfixed RecordingsPlayed statistics
+
+03.01.2008
+* updated solutions to Visual Studio 2008
+
+17.11.2007
++ Added HoldingTime to make "forget to delete a recording" impossible; HoldingTime of 0 is indefinite, everything else means hold n+1 days
+* Changed behaviour of Recordings Streaming: The StopPosition Counter is updated in realtime which means: You don't have to close a recording to watch it from the current Position
++ added Cassini Wrapper
+
+8.11.2007
++ integration of Cassini v2 into YAPS
++ added some statistics
+
 22.10.2007
 + added a new management data structure to the data structures/Recording.cs that holds a list of UserStopPosition; Each User now has his own LastStoppedPosition for each recording.
 
