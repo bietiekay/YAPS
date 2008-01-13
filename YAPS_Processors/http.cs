@@ -606,6 +606,9 @@ namespace YAPS
                                             if (split_parameter[1].ToUpper() == "ON")
                                                 newTimer.Week[6] = true;
                                             break;
+                                        case "HOLD":
+                                            newTimer.HoldingTime = Convert.ToInt32(split_parameter[1]);
+                                            break;
                                         default:
                                             // alles andere interessiert uns nicht
                                             break;
@@ -633,7 +636,11 @@ namespace YAPS
 
                             ConsoleOutputLogger.WriteLine("Apparently the username is " + newTimer.createdby);
 
-                            newTimer.HoldingTime = HTTPAuthProcessor.GetAccordingHoldingTime(AC_endpoint.Address.ToString());
+                            // check if HoldingTime isn't already set...
+                            if (newTimer.HoldingTime == 0)
+                            {
+                                newTimer.HoldingTime = HTTPAuthProcessor.GetAccordingHoldingTime(AC_endpoint.Address.ToString());
+                            }
 
                             ConsoleOutputLogger.WriteLine("Apparently this users HoldingTime is " + newTimer.HoldingTime);
 

@@ -92,6 +92,7 @@ namespace YAPS
             createdby = "";
             Week = new bool[7];
             LastStoppedPositions = new List<UserStopPosition>();
+            HoldingTime = 0;
         }
 
         public long LastStopPosition(String Username)

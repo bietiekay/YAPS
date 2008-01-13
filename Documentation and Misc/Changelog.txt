@@ -1,3 +1,7 @@
+13.01.2008
+* updated neu.png
++ added Holding-Time Handling
+
 12.01.2008
 + added reoccuring event handling in VCRScheduler
 + added reoccuring event handling in HTML page AddRecordings
