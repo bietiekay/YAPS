@@ -58,7 +58,7 @@ namespace YAPS
                                     {
                                         ConsoleOutputLogger.WriteLine("The HoldingTime of "+recording_entry.Recording_Name+" is reached, deleting...");
 
-                                        if (!File.Exists(XBMCPlaylistFilesHelper.generatePlaylistFilename(recording_entry)))
+                                        if (File.Exists(XBMCPlaylistFilesHelper.generatePlaylistFilename(recording_entry)))
                                         {
                                             File.Delete(XBMCPlaylistFilesHelper.generatePlaylistFilename(recording_entry));
                                         }                                        
