@@ -489,7 +489,7 @@ namespace YAPS
                 else
                 {
                     // this is an unknown channel...print it out for debugging reasons...
-                    ConsoleOutputLogger.WriteLine("*UNKNOWN* New Event " + newEventEntry.ShortDescription.Name+ "(" + newEventEntry.ShortDescription.Text + ") on unknown service ID" + service + " - " + entry.StartTime.ToLocalTime().ToString());
+                    //ConsoleOutputLogger.WriteLine("*UNKNOWN* New Event " + newEventEntry.ShortDescription.Name+ "(" + newEventEntry.ShortDescription.Text + ") on unknown service ID" + service + " - " + entry.StartTime.ToLocalTime().ToString());
                 }
         }
         #endregion

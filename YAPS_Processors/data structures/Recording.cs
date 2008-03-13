@@ -40,6 +40,9 @@ namespace YAPS
         public Guid Recording_ID;
         public bool CurrentlyRecording;
 
+        public bool isAutomaticEPGRecording;
+        public List<String> AutomaticEPGRecordingKeywords;
+
         public bool isWeekly; // weekly
         public bool isDaily; // daily
         public bool isMonthly; // monthly

@@ -88,74 +88,86 @@ namespace YAPS
                         {
                             foreach (Recording recording_entry in Recordings.Values)
                             {
-                                // TODO: maybe we should also check if the EndsAt is also reached; so we do not start recordings that already passed by
-                                if ((recording_entry.StartsAt.Ticks - DateTime.Now.Ticks) <= 0)
+                                if (recording_entry.isAutomaticEPGRecording)
                                 {
-                                    // TODO: Recording "done" list handling...
-
-                                    lock (doneRecordings.SyncRoot)
+                                    #region Automatic Recordings
+                                    foreach (EPG_Event_Entry currentlyRunningEvent in internal_http_server_object.EPGProcessor.CurrentlyRunningEvents)
                                     {
-                                        // move the recording to the "done" list
-                                        doneRecordings.Add(recording_entry.Recording_ID, recording_entry);
+
                                     }
-                                    lock (Recordings.SyncRoot)
+                                    #endregion
+                                }
+                                else
+                                {
+                                    // TODO: maybe we should also check if the EndsAt is also reached; so we do not start recordings that already passed by
+                                    if ((recording_entry.StartsAt.Ticks - DateTime.Now.Ticks) <= 0)
                                     {
-                                        // remove the recording from the todo-Recordings List
-                                        Recordings.Remove(recording_entry.Recording_ID);
-                                    }
+                                        // TODO: Recording "done" list handling...
 
-                                    #region Reoccuring Recordings
-                                    // everything regarding reoccuring event handling takes place here
-                                    
-                                    // first check if we have to do anything
-                                    // TODO: we're currently only checking for "each", not for anything else
-
-                                    if (recording_entry.isDaily)
-                                    {
-                                        int StartDay = CalcDayOfWeekNumber(DateTime.Now.DayOfWeek);
-                                        int Counter = 0;
-                                        
-                                        bool done2 = false;
-
-                                        while (!done2)
+                                        lock (doneRecordings.SyncRoot)
                                         {
-                                            StartDay++;
-                                            Counter++;
-
-                                            if (StartDay == 7)
-                                                StartDay = 0;
-
-                                            if (recording_entry.Week[StartDay] == true)
-                                                done2 = true;
+                                            // move the recording to the "done" list
+                                            doneRecordings.Add(recording_entry.Recording_ID, recording_entry);
                                         }
-
-                                        Counter = Counter * recording_entry.isEach;
-
-                                        Recording newRecording = recording_entry.Clone();
-
-                                        newRecording.StartsAt = newRecording.StartsAt.AddDays(Convert.ToDouble(Counter));
-                                        newRecording.EndsAt = newRecording.EndsAt.AddDays(Convert.ToDouble(Counter));
-
                                         lock (Recordings.SyncRoot)
                                         {
-                                            Recordings.Add(newRecording.Recording_ID, newRecording);
+                                            // remove the recording from the todo-Recordings List
+                                            Recordings.Remove(recording_entry.Recording_ID);
                                         }
+
+                                        #region Reoccuring Recordings
+                                        // everything regarding reoccuring event handling takes place here
+
+                                        // first check if we have to do anything
+                                        // TODO: we're currently only checking for "each", not for anything else
+
+                                        if (recording_entry.isDaily)
+                                        {
+                                            int StartDay = CalcDayOfWeekNumber(DateTime.Now.DayOfWeek);
+                                            int Counter = 0;
+
+                                            bool done2 = false;
+
+                                            while (!done2)
+                                            {
+                                                StartDay++;
+                                                Counter++;
+
+                                                if (StartDay == 7)
+                                                    StartDay = 0;
+
+                                                if (recording_entry.Week[StartDay] == true)
+                                                    done2 = true;
+                                            }
+
+                                            Counter = Counter * recording_entry.isEach;
+
+                                            Recording newRecording = recording_entry.Clone();
+
+                                            newRecording.StartsAt = newRecording.StartsAt.AddDays(Convert.ToDouble(Counter));
+                                            newRecording.EndsAt = newRecording.EndsAt.AddDays(Convert.ToDouble(Counter));
+
+                                            lock (Recordings.SyncRoot)
+                                            {
+                                                Recordings.Add(newRecording.Recording_ID, newRecording);
+                                            }
+                                        }
+
+                                        #endregion
+
+                                        // fire up the recorder... "true" because we're an recorder and not a streamer
+                                        VCRandStreaming HReq = new VCRandStreaming(true, recording_entry, internal_http_server_object);
+
+                                        // tell the console that we're going to record something right now...
+                                        ConsoleOutputLogger.WriteLine("Record started at " + recording_entry.StartsAt.ToShortTimeString() + " - Name: " + recording_entry.Recording_Name);
+                                        Settings.NumberOfRecordings++;
+                                        // we're recording
+                                        recording_entry.CurrentlyRecording = true;
+
+                                        // call the Handler and lets get back to our job of scheduling...
+                                        HReq.HandleVCR(ChannelAndStationMapper.Number2Data(Convert.ToInt32(recording_entry.Channel)), internal_http_server_object);
+                                        break;
                                     }
-
-                                    #endregion
-
-                                    // fire up the recorder... "true" because we're an recorder and not a streamer
-                                    VCRandStreaming HReq = new VCRandStreaming(true, recording_entry,internal_http_server_object);
-
-                                    // tell the console that we're going to record something right now...
-                                    ConsoleOutputLogger.WriteLine("Record started at " + recording_entry.StartsAt.ToShortTimeString() + " - Name: " + recording_entry.Recording_Name);
-                                    Settings.NumberOfRecordings++;
-                                    // we're recording
-                                    recording_entry.CurrentlyRecording = true;
-
-                                    // call the Handler and lets get back to our job of scheduling...
-                                    HReq.HandleVCR(ChannelAndStationMapper.Number2Data(Convert.ToInt32(recording_entry.Channel)), internal_http_server_object);
-                                    break;
                                 }
                             }
                         }
