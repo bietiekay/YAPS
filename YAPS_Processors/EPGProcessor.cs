@@ -216,6 +216,9 @@ namespace YAPS
                     try
                     {
                         for (int i = 0; (i + epgPacketSize) <= receivedBufferLength; i += epgPacketSize) ProcessEPGPacket(receiveBuffer, i);
+
+                        // reset ErrorCounter because we successfully processed an EPG packet...
+                        ErrorCounter = 0;
                     }
                     catch (Exception e)
                     {
@@ -225,7 +228,7 @@ namespace YAPS
                     // waiting FTW!!
                     Thread.Sleep(1);
 
-                    // end this thread when 25 errors occured
+                    // end this thread when 25 errors in a line occured
                     if (ErrorCounter == 25)
                     {
                         ConsoleOutputLogger.WriteLine("Too many errors in EPG Thread " + this.EPGDataSource.EPGName + " - shutting it down.");
@@ -406,9 +409,6 @@ namespace YAPS
             EPG_Event_Entry newEventEntry = new EPG_Event_Entry();
 
             // check if this channel is known; only use the EPG data when the channel can be used
-            if (ChannelAndStationMapper.ServiceID2Name(service) != "")
-            {
-
                 newEventEntry.Service = service;
                 newEventEntry.EndTime = entry.StartTime.ToLocalTime() + entry.Duration;
                 //newEventEntry.EIT_Table = entry.Table;
@@ -464,26 +464,33 @@ namespace YAPS
                         }
                     }
 
-                // first check if the event is currently running or in the future
-                if (newEventEntry.EndTime.Ticks > DateTime.Now.Ticks)
+                if (ChannelAndStationMapper.ServiceID2Name(service) != "")
                 {
-                    lock (EPG_Events.SyncRoot)
+                    // first check if the event is currently running or in the future
+                    if (newEventEntry.EndTime.Ticks > DateTime.Now.Ticks)
                     {
-                        // add and check if it's already in
-                        try
+                        lock (EPG_Events.SyncRoot)
                         {
-                            EPG_Events.Add(string.Format("{0}-{1}", service, entry.EventIdentifier), newEventEntry);
+                            // add and check if it's already in
+                            try
+                            {
+                                EPG_Events.Add(string.Format("{0}-{1}", service, entry.EventIdentifier), newEventEntry);
 
-                            ConsoleOutputLogger.WriteLine("New Event " + newEventEntry.ShortDescription.Name + " on Channel " + ChannelAndStationMapper.ServiceID2Name(service) + " - " + entry.StartTime.ToLocalTime().ToString());
+                                ConsoleOutputLogger.WriteLine("New Event " + newEventEntry.ShortDescription.Name + " on Channel " + ChannelAndStationMapper.ServiceID2Name(service) + " - " + entry.StartTime.ToLocalTime().ToString());
 
-                        }
-                        catch (Exception)
-                        {
-                            return;
+                            }
+                            catch (Exception)
+                            {
+                                return;
+                            }
                         }
                     }
                 }
-            }
+                else
+                {
+                    // this is an unknown channel...print it out for debugging reasons...
+                    ConsoleOutputLogger.WriteLine("*UNKNOWN* New Event " + newEventEntry.ShortDescription.Name+ "(" + newEventEntry.ShortDescription.Text + ") on unknown service ID" + service + " - " + entry.StartTime.ToLocalTime().ToString());
+                }
         }
         #endregion
     }
