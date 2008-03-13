@@ -33,7 +33,7 @@ namespace YAPS
                         foreach (EPG_Event_Entry entry in EPG_Processor.CurrentlyRunningEvents)
                         {
                             newbouquet.service[i] = new YAPS.tuxbox.service();
-                            newbouquet.service[i].name = entry.ShortDescription.Name;
+                            newbouquet.service[i].name = ChannelAndStationMapper.ServiceID2Name(entry.Service) +" - "+ entry.ShortDescription.Name;
                             //newbouquet.service[i].reference = "1:0:1:6d66:437:1:c00000:0:0:0:";
                             newbouquet.service[i].reference = ChannelAndStationMapper.ServiceID2Name(entry.Service);
                             newbouquet.service[i].provider = newbouquet.service[i].reference;
