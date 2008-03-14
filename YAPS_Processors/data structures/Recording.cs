@@ -42,6 +42,7 @@ namespace YAPS
 
         public bool isAutomaticEPGRecording;
         public List<String> AutomaticEPGRecordingKeywords;
+        public Int32 AutomaticRecordingLength;
 
         public bool isWeekly; // weekly
         public bool isDaily; // daily
@@ -95,6 +96,7 @@ namespace YAPS
             createdby = "";
             Week = new bool[7];
             LastStoppedPositions = new List<UserStopPosition>();
+            AutomaticEPGRecordingKeywords = new List<string>();
             HoldingTime = 0;
         }
 

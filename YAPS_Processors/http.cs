@@ -609,6 +609,16 @@ namespace YAPS
                                         case "HOLD":
                                             newTimer.HoldingTime = Convert.ToInt32(split_parameter[1]);
                                             break;
+                                        case "IA":
+                                            if (split_parameter[1].ToUpper() == "ON")
+                                                newTimer.isAutomaticEPGRecording = true;
+                                            break;
+                                        case "AK":
+                                            newTimer.AutomaticEPGRecordingKeywords.Add(HttpUtility.UrlDecode(split_parameter[1], Encoding.UTF8));
+                                            break;
+                                        case "ARL":
+                                            newTimer.AutomaticRecordingLength = Convert.ToInt32(split_parameter[1]);
+                                            break;
                                         default:
                                             // alles andere interessiert uns nicht
                                             break;

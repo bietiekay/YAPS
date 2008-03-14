@@ -13,6 +13,15 @@
 <!--[if lte IE 7]>
 <link href="skins/%skin%/css/explorer/iehacks_2col_left_vlines.css" rel="stylesheet" type="text/css" />
 <![endif]-->
+    <style type="text/css">
+        #Text1 {
+            width: 169px;
+        }
+        #AutomaticKeyword
+        {
+            width: 485px;
+        }
+    </style>
 </head>
 
 <body>
@@ -280,7 +289,13 @@
                     <br />                  <br />
 
                   Recording Hold Time: <input type="text" size="2" id="holdtime" name="hold" /> days.
-                </div>
+                    <br />
+                    <br />
+                    <input id="IA" name="IA" type="checkbox" />This is an 
+                    automatic recording<br />
+                    Keywords:
+                    <input id="AK" type="text" name="AK" /><br />
+                    Recording-Length in Minutes: <input id="ARL" type="text" name="ARL" /></div>
             </fieldset>
             <br />
             <input id="Senden" type="submit" value="submit" />

@@ -2,6 +2,8 @@
 + Recording data structure changed to reflect new "automatic epg based recording" feature
 + added automatic EPG recording feature; based on "AutomaticEPGRecordingKeywords"
 * changed Tuxbox Implementation to show channel ID on Xbox Media Center
++ changed addrecording.html and http vcr command handling (addrecording) to reflect automatic epg recording feature
+* implemented automatic epg based recording; just enter keywords + recordingtime + name + isAutomatic=true --> Automatic recording
 
 13.03.2008
 * changed EPG error handling to only stop listening to EPG events when 25 errors in a row occur
