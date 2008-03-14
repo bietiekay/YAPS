@@ -93,7 +93,27 @@ namespace YAPS
                                     #region Automatic Recordings
                                     foreach (EPG_Event_Entry currentlyRunningEvent in internal_http_server_object.EPGProcessor.CurrentlyRunningEvents)
                                     {
+                                        if (!currentlyRunningEvent.isRecorded)
+                                        {
+                                            // only handle this event if it's not already recorded...
+                                            foreach (String Keyword in recording_entry.AutomaticEPGRecordingKeywords)
+                                            {
+                                                if (currentlyRunningEvent.ShortDescription.Name.IndexOf(Keyword) != -1)
+                                                {
+                                                    // we found the substring
+                                                    ConsoleOutputLogger.WriteLine("Automatic Recording matched Keyword: " + Keyword);
+                                                    ConsoleOutputLogger.WriteLine("Creating new Recording " + currentlyRunningEvent.ShortDescription.Name + " on Channel " + ChannelAndStationMapper.ServiceID2Name(currentlyRunningEvent.Service));
+                                                    
+                                                    // we're recording this!
+                                                    currentlyRunningEvent.isRecorded = true;
 
+                                                    // since we don't know how long this recording will be, we set a maximum time of 4 hours (240 minutes9
+                                                    Recording newRecording = new Recording();
+
+                                                   // newRecording.Channel = 
+                                                }
+                                            }
+                                        }
                                     }
                                     #endregion
                                 }

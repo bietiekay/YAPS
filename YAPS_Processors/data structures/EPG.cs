@@ -57,6 +57,8 @@ namespace YAPS
         public DateTime StartTime;
         public DateTime EndTime;
 
+        public bool isRecorded;
+
         //public Table EIT_Table;
         public EventStatus Status;
 
@@ -65,6 +67,7 @@ namespace YAPS
 
         public EPG_Event_Entry()
         {
+            isRecorded = false;
             ShortDescription = new EPG_ShortEvent();
             Extended = new List<EPG_ExtendedEvent>();
         }
