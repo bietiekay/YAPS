@@ -95,7 +95,17 @@ namespace YAPS
                                     {
                                         if (!currentlyRunningEvent.isRecorded)
                                         {
-                                            // only handle this event if it's not already recorded...
+                                            // if a channel is set, only record if the new event is on that channel
+                                            if (recording_entry.Channel != "")
+                                            {
+                                                if (recording_entry.Channel != ChannelAndStationMapper.Name2Number(ChannelAndStationMapper.ServiceID2Name(currentlyRunningEvent.Service)).ToString())
+                                                {
+                                                    break;
+                                                }
+                                            }
+                                            // check if the time is right...
+
+                                            #region only handle this event if it's not already recorded...
                                             foreach (String Keyword in recording_entry.AutomaticEPGRecordingKeywords)
                                             {
                                                 if (currentlyRunningEvent.ShortDescription.Name.ToUpper().IndexOf(Keyword.ToUpper()) != -1)
@@ -103,6 +113,8 @@ namespace YAPS
                                                     // we found the substring
                                                     ConsoleOutputLogger.WriteLine("Automatic Recording matched Keyword: " + Keyword);
                                                     ConsoleOutputLogger.WriteLine("Creating new Recording " + currentlyRunningEvent.ShortDescription.Name + " on Channel " + ChannelAndStationMapper.ServiceID2Name(currentlyRunningEvent.Service));
+                                                    ConsoleOutputLogger.WriteLine("Debug: " + recording_entry.StartsAt.Ticks);
+                                                    ConsoleOutputLogger.WriteLine("Debug: " + recording_entry.EndsAt.Ticks);
 
                                                     // only record if either the channel is the channel of the automatic recording or the channel doesn't matter ("")
                                                     //if ( (recording_entry.Channel != "") || (recording_entry.Channel == ChannelAndStationMapper.Name2Number(ChannelAndStationMapper.ServiceID2Name(currentlyRunningEvent.Service)).ToString()))
@@ -152,6 +164,7 @@ namespace YAPS
                                                     //}
                                                 }
                                             }
+                                            #endregion
                                         }
                                     }
                                     #endregion
