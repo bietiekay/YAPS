@@ -18,13 +18,10 @@ namespace YAPS
      * For updates and more information visit the YAPS website: http://www.technology-ninja.com
      * 
      */
-    // TODO: cleanup the ChannelMapper and update it for future use (xmltv, epg, ...)
-    // TODO: implement repetitive events
     // TODO: Settings Page + Exportables
     // TODO: add the possibility to set the path where the recordings are stored (maybe set more than one path)
     // TOOD: reorganize Channel data structures to allow real IP adress and port numbers
     // TODO: allow Reencoding of recordings (Download-Archive-Upload) through a client software (using mencoder)
-    // TODO: add feature which auto-deletes old recordings after a specific number of recordings of that category is reached...
     // TODO: add feature which auto-deletes old recordings when we're running out of drive space
     // BUG: If the endtime of a recording is before it starts some things break...
 

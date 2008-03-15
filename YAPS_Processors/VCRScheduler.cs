@@ -280,7 +280,7 @@ namespace YAPS
                     // since I don't want to deal with this right now I am just going to ignore it..
                     // does work, you should try that in real life as well.
 
-                    ConsoleOutputLogger.WriteLine("Scheduler Error: " + e.Message);
+                    //ConsoleOutputLogger.WriteLine("Scheduler Error: " + e.Message);
                 }
             }
         }
