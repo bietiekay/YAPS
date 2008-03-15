@@ -3,6 +3,7 @@
 + automatig epg recordings are now looking for a timespan in which they are active
 + recorded listing template processor is now aware of automatic recordings (icon, time rendering)
 + added automatic epg wait icon on recordingslist html page
+* changed automatic epg recording to take the real name from the epg instead of the one that was entered
 
 14.03.2008
 + Recording data structure changed to reflect new "automatic epg based recording" feature

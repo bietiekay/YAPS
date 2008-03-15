@@ -164,7 +164,7 @@ namespace YAPS
                                                     newRecording.HoldingTime = recording_entry.HoldingTime;
                                                     newRecording.isAutomaticEPGRecording = false;
                                                     newRecording.wasAutomaticEPGRecording = true;
-                                                    newRecording.Recording_Name = recording_entry.Recording_Name;
+                                                    newRecording.Recording_Name = currentlyRunningEvent.ShortDescription.Name;
                                                     newRecording.Username = recording_entry.Username;
                                                     newRecording.Season = recording_entry.Season;
                                                     newRecording.Week = recording_entry.Week;
