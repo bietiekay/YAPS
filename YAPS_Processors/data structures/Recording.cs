@@ -41,6 +41,7 @@ namespace YAPS
         public bool CurrentlyRecording;
 
         public bool isAutomaticEPGRecording;
+        public bool wasAutomaticEPGRecording;
         public List<String> AutomaticEPGRecordingKeywords;
         public Int32 AutomaticRecordingLength;
 

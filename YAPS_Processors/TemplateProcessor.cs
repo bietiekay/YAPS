@@ -806,26 +806,64 @@ namespace YAPS
                     if ((recording_entry.isDaily) | (recording_entry.isMonthly) | (recording_entry.isWeekly))
                         newLine = newLine.Replace("%recording_status%", "<img src=\"images/waitbutton_repeat.png\" border=\"0\" alt=\"Status: wait\"/>");
                     else
-                        newLine = newLine.Replace("%recording_status%", "<img src=\"images/waitbutton.png\" border=\"0\" alt=\"Status: wait\"/>");
+                        if (recording_entry.isAutomaticEPGRecording)
+                            newLine = newLine.Replace("%recording_status%", "<img src=\"images/waitbutton_automatic.png\" border=\"0\" alt=\"Status: wait\"/>");
+                        else
+                            newLine = newLine.Replace("%recording_status%", "<img src=\"images/waitbutton.png\" border=\"0\" alt=\"Status: wait\"/>");
                 }
             }
 
             while (newLine.Contains("%starts_at%"))
             {
-                newLine = newLine.Replace("%starts_at%", recording_entry.StartsAt.ToShortDateString() + " " + recording_entry.StartsAt.ToShortTimeString());
+                if (!recording_entry.isAutomaticEPGRecording)
+                {
+                    newLine = newLine.Replace("%starts_at%", recording_entry.StartsAt.ToShortDateString() + " " + recording_entry.StartsAt.ToShortTimeString());
+                }
+                else
+                {
+                    if (recording_entry.StartsAt.Ticks == 0)
+                    {
+                        newLine = newLine.Replace("%starts_at%", "n/a");
+                    }
+                    else
+                    {
+                        newLine = newLine.Replace("%starts_at%", recording_entry.StartsAt.ToShortTimeString());
+                    }
+                }
             }
 
             while (newLine.Contains("%ends_at%"))
             {
-                newLine = newLine.Replace("%ends_at%", recording_entry.EndsAt.ToShortDateString() + " " + recording_entry.EndsAt.ToShortTimeString());
+                if (!recording_entry.isAutomaticEPGRecording)
+                {
+                    newLine = newLine.Replace("%ends_at%", recording_entry.EndsAt.ToShortDateString() + " " + recording_entry.EndsAt.ToShortTimeString());
+                }
+                else
+                {
+                    if (recording_entry.EndsAt.Ticks == 0)
+                    {
+                        newLine = newLine.Replace("%ends_at%", "n/a");
+                    }
+                    else
+                    {
+                        newLine = newLine.Replace("%ends_at%", recording_entry.EndsAt.ToShortTimeString());
+                    }
+                }
             }
 
             while (newLine.Contains("%runtime%"))
             {
-                // Runtime in Minutes
-                TimeSpan runtimeticks = new TimeSpan((recording_entry.EndsAt.Ticks - recording_entry.StartsAt.Ticks));
+                if (!recording_entry.isAutomaticEPGRecording)
+                {
+                    // Runtime in Minutes
+                    TimeSpan runtimeticks = new TimeSpan((recording_entry.EndsAt.Ticks - recording_entry.StartsAt.Ticks));
 
-                newLine = newLine.Replace("%runtime%", Convert.ToString(runtimeticks.TotalMinutes)+" mins");
+                    newLine = newLine.Replace("%runtime%", Convert.ToString(runtimeticks.TotalMinutes) + " mins");
+                }
+                else
+                {
+                    newLine = newLine.Replace("%runtime%", recording_entry.AutomaticRecordingLength + " mins");
+                }
             }
 
             while (newLine.Contains("%channel%"))

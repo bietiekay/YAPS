@@ -1,6 +1,7 @@
 15.03.2008
 + automatic epg recordings are now looking at the channel id and if it's set they only record events on that channel
 + automatig epg recordings are now looking for a timespan in which they are active
++ recorded listing template processor is now aware of automatic recordings (icon, time rendering)
 
 14.03.2008
 + Recording data structure changed to reflect new "automatic epg based recording" feature

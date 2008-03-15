@@ -162,7 +162,8 @@ namespace YAPS
                                                     newRecording.Episode = recording_entry.Episode;
                                                     newRecording.EpisodeTitle = recording_entry.EpisodeTitle;
                                                     newRecording.HoldingTime = recording_entry.HoldingTime;
-                                                    newRecording.isAutomaticEPGRecording = recording_entry.isAutomaticEPGRecording;
+                                                    newRecording.isAutomaticEPGRecording = false;
+                                                    newRecording.wasAutomaticEPGRecording = true;
                                                     newRecording.Recording_Name = recording_entry.Recording_Name;
                                                     newRecording.Username = recording_entry.Username;
                                                     newRecording.Season = recording_entry.Season;
