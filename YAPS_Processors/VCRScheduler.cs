@@ -100,67 +100,93 @@ namespace YAPS
                                             {
                                                 if (recording_entry.Channel != ChannelAndStationMapper.Name2Number(ChannelAndStationMapper.ServiceID2Name(currentlyRunningEvent.Service)).ToString())
                                                 {
-                                                    break;
+                                                    //ConsoleOutputLogger.WriteLine(recording_entry.Channel+" != "+ChannelAndStationMapper.Name2Number(ChannelAndStationMapper.ServiceID2Name(currentlyRunningEvent.Service)).ToString());
+                                                    continue;
                                                 }
                                             }
+                                            // 15.03.2008 - 10:07 Debug: 633411724556096250 (DateTime.Now)
+                                            // 15.03.2008 - 10:07 Debug: 633411690000000000 (DateTime.StartTime)
+                                            // if the start time is set, look if this is correct
+                                            if (recording_entry.StartsAt.Ticks != 0)
+                                            {
+                                                DateTime newStartsAt = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, recording_entry.StartsAt.Hour, recording_entry.StartsAt.Minute, DateTime.Now.Second, 0);
+
+                                                // if the recording hasn't even started yet
+                                                if (newStartsAt.Ticks >= DateTime.Now.Ticks)
+                                                {
+                                                    //ConsoleOutputLogger.WriteLine(newStartsAt.ToShortTimeString()+" >= "+DateTime.Now.ToShortTimeString());
+                                                    continue;
+                                                }
+                                            }
+                                            // if the end time is set, look if this is correct
+                                            if (recording_entry.EndsAt.Ticks != 0)
+                                            {
+                                                DateTime newEndsAt = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, recording_entry.EndsAt.Hour, recording_entry.EndsAt.Minute, DateTime.Now.Second, 0);
+
+                                                if (newEndsAt.Ticks <= DateTime.Now.Ticks)
+                                                {
+                                                    //ConsoleOutputLogger.WriteLine(newEndsAt.ToShortTimeString() + " <= " + DateTime.Now.ToShortTimeString());
+                                                    continue;
+                                                }
+                                            }
+
                                             // check if the time is right...
 
                                             #region only handle this event if it's not already recorded...
                                             foreach (String Keyword in recording_entry.AutomaticEPGRecordingKeywords)
                                             {
+                                                //ConsoleOutputLogger.WriteLine(Keyword +" -> "+currentlyRunningEvent.ShortDescription.Name);
                                                 if (currentlyRunningEvent.ShortDescription.Name.ToUpper().IndexOf(Keyword.ToUpper()) != -1)
                                                 {
                                                     // we found the substring
                                                     ConsoleOutputLogger.WriteLine("Automatic Recording matched Keyword: " + Keyword);
                                                     ConsoleOutputLogger.WriteLine("Creating new Recording " + currentlyRunningEvent.ShortDescription.Name + " on Channel " + ChannelAndStationMapper.ServiceID2Name(currentlyRunningEvent.Service));
-                                                    ConsoleOutputLogger.WriteLine("Debug: " + recording_entry.StartsAt.Ticks);
-                                                    ConsoleOutputLogger.WriteLine("Debug: " + recording_entry.EndsAt.Ticks);
 
                                                     // only record if either the channel is the channel of the automatic recording or the channel doesn't matter ("")
                                                     //if ( (recording_entry.Channel != "") || (recording_entry.Channel == ChannelAndStationMapper.Name2Number(ChannelAndStationMapper.ServiceID2Name(currentlyRunningEvent.Service)).ToString()))
                                                     //{
 
-                                                        // we're recording this!
-                                                        currentlyRunningEvent.isRecorded = true;
+                                                    // we're recording this!
+                                                    currentlyRunningEvent.isRecorded = true;
 
-                                                        // since we don't know how long this recording will be, we set a maximum time of 4 hours (240 minutes9
-                                                        Recording newRecording = new Recording();
+                                                    // since we don't know how long this recording will be, we set a maximum time of 4 hours (240 minutes9
+                                                    Recording newRecording = new Recording();
 
-                                                        newRecording.Channel = ChannelAndStationMapper.Name2Number(ChannelAndStationMapper.ServiceID2Name(currentlyRunningEvent.Service)).ToString();
-                                                        newRecording.createdby = recording_entry.createdby;
-                                                        newRecording.Comment = currentlyRunningEvent.ShortDescription.Text;
-                                                        newRecording.Categories = recording_entry.Categories;
-                                                        newRecording.AdInPosition = recording_entry.AdInPosition;
-                                                        newRecording.AdOutPosition = recording_entry.AdOutPosition;
-                                                        newRecording.EndPosition = recording_entry.EndPosition;
-                                                        newRecording.Episode = recording_entry.Episode;
-                                                        newRecording.EpisodeTitle = recording_entry.EpisodeTitle;
-                                                        newRecording.HoldingTime = recording_entry.HoldingTime;
-                                                        newRecording.isAutomaticEPGRecording = recording_entry.isAutomaticEPGRecording;
-                                                        newRecording.Recording_Name = recording_entry.Recording_Name;
-                                                        newRecording.Username = recording_entry.Username;
-                                                        newRecording.Season = recording_entry.Season;
-                                                        newRecording.Week = recording_entry.Week;
-                                                        newRecording.Year = recording_entry.Year;
-                                                        newRecording.StartsAt = DateTime.Now;
-                                                        newRecording.EndsAt = DateTime.Now.AddMinutes(recording_entry.AutomaticRecordingLength);
+                                                    newRecording.Channel = ChannelAndStationMapper.Name2Number(ChannelAndStationMapper.ServiceID2Name(currentlyRunningEvent.Service)).ToString();
+                                                    newRecording.createdby = recording_entry.createdby;
+                                                    newRecording.Comment = currentlyRunningEvent.ShortDescription.Text;
+                                                    newRecording.Categories = recording_entry.Categories;
+                                                    newRecording.AdInPosition = recording_entry.AdInPosition;
+                                                    newRecording.AdOutPosition = recording_entry.AdOutPosition;
+                                                    newRecording.EndPosition = recording_entry.EndPosition;
+                                                    newRecording.Episode = recording_entry.Episode;
+                                                    newRecording.EpisodeTitle = recording_entry.EpisodeTitle;
+                                                    newRecording.HoldingTime = recording_entry.HoldingTime;
+                                                    newRecording.isAutomaticEPGRecording = recording_entry.isAutomaticEPGRecording;
+                                                    newRecording.Recording_Name = recording_entry.Recording_Name;
+                                                    newRecording.Username = recording_entry.Username;
+                                                    newRecording.Season = recording_entry.Season;
+                                                    newRecording.Week = recording_entry.Week;
+                                                    newRecording.Year = recording_entry.Year;
+                                                    newRecording.StartsAt = DateTime.Now;
+                                                    newRecording.EndsAt = DateTime.Now.AddMinutes(recording_entry.AutomaticRecordingLength);
 
-                                                        lock (doneRecordings.SyncRoot)
-                                                        {
-                                                            doneRecordings.Add(newRecording.Recording_ID, newRecording);
-                                                        }
-                                                        // fire up the recorder... "true" because we're an recorder and not a streamer
-                                                        VCRandStreaming HReq = new VCRandStreaming(true, newRecording, internal_http_server_object);
+                                                    lock (doneRecordings.SyncRoot)
+                                                    {
+                                                        doneRecordings.Add(newRecording.Recording_ID, newRecording);
+                                                    }
+                                                    // fire up the recorder... "true" because we're an recorder and not a streamer
+                                                    VCRandStreaming HReq = new VCRandStreaming(true, newRecording, internal_http_server_object);
 
-                                                        // tell the console that we're going to record something right now...
-                                                        ConsoleOutputLogger.WriteLine("Record started at " + newRecording.StartsAt.ToShortTimeString() + " - Name: " + newRecording.Recording_Name);
-                                                        Settings.NumberOfRecordings++;
-                                                        // we're recording
-                                                        newRecording.CurrentlyRecording = true;
+                                                    // tell the console that we're going to record something right now...
+                                                    ConsoleOutputLogger.WriteLine("Record started at " + newRecording.StartsAt.ToShortTimeString() + " - Name: " + newRecording.Recording_Name);
+                                                    Settings.NumberOfRecordings++;
+                                                    // we're recording
+                                                    newRecording.CurrentlyRecording = true;
 
-                                                        // call the Handler and lets get back to our job of scheduling...
-                                                        HReq.HandleVCR(ChannelAndStationMapper.Number2Data(Convert.ToInt32(newRecording.Channel)), internal_http_server_object);
-                                                        break;
+                                                    // call the Handler and lets get back to our job of scheduling...
+                                                    HReq.HandleVCR(ChannelAndStationMapper.Number2Data(Convert.ToInt32(newRecording.Channel)), internal_http_server_object);
+                                                    continue;
                                                     //}
                                                 }
                                             }

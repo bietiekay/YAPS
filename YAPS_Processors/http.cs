@@ -657,8 +657,24 @@ namespace YAPS
                             // TODO: check if there are enough information given to actually create that timer
                             try
                             {
-                                newTimer.StartsAt = new DateTime(s_year, s_month, s_date, s_hour, s_minute, 0);
-                                newTimer.EndsAt = new DateTime(e_year, e_month, e_date, e_hour, e_minute, 0);
+                                if ((s_year + s_month + s_date != 0))
+                                {
+                                    newTimer.StartsAt = new DateTime(s_year, s_month, s_date, s_hour, s_minute, 0);
+                                    newTimer.EndsAt = new DateTime(e_year, e_month, e_date, e_hour, e_minute, 0);
+                                }
+                                else
+                                {
+                                    if (s_hour+s_minute+e_minute+e_hour != 0)
+                                    {
+                                        newTimer.StartsAt = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, s_hour, s_minute, 0);
+                                        newTimer.EndsAt = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, e_hour, e_minute, 0);
+                                    }
+                                    else
+                                    {
+                                        newTimer.StartsAt = new DateTime();
+                                        newTimer.EndsAt = new DateTime();
+                                    }
+                                }
                             }
                             catch (Exception e)
                             {
