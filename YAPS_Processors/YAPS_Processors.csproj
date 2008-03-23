@@ -58,20 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cassini\ByteParser.cs" />
-    <Compile Include="cassini\ByteString.cs" />
-    <Compile Include="cassini\Connection.cs" />
-    <Compile Include="cassini\Host.cs" />
-    <Compile Include="cassini\Messages.cs" />
-    <Compile Include="cassini\Request.cs" />
-    <Compile Include="cassini\Server.cs" />
     <Compile Include="CategoryProcessor.cs" />
     <Compile Include="ChannelAndStationMapper.cs" />
     <Compile Include="ConsoleOutputLogger.cs" />
     <Compile Include="data structures\Category.cs" />
     <Compile Include="data structures\Authentification.cs" />
     <Compile Include="data structures\EPG.cs" />
-    <Compile Include="Cassini Wrapper.cs" />
     <Compile Include="data structures\StationAndChannel.cs" />
     <Compile Include="data structures\TuxBoxBoxinfo.cs" />
     <Compile Include="data structures\TuxBoxCurrentServiceData.cs" />

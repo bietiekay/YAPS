@@ -133,6 +133,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\YAPS_Processors\Cassini\Cassini.csproj">
+      <Project>{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}</Project>
+      <Name>Cassini</Name>
+    </ProjectReference>
     <ProjectReference Include="..\YAPS_Processors\YAPS_Processors.csproj">
       <Project>{0D92E621-A2BD-4185-A1BA-D0EFBE5224F5}</Project>
       <Name>YAPS_Processors</Name>

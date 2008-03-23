@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaylistManager", "Playlist
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPG", "JMS\EPG\EPG.csproj", "{90D05FCC-70F9-4423-A79F-B8D31BFBC228}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassini", "YAPS_Processors\Cassini\Cassini.csproj", "{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug - MONO|Any CPU = Debug - MONO|Any CPU
@@ -152,6 +154,26 @@ Global
 		{90D05FCC-70F9-4423-A79F-B8D31BFBC228}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{90D05FCC-70F9-4423-A79F-B8D31BFBC228}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{90D05FCC-70F9-4423-A79F-B8D31BFBC228}.Release|Win32.ActiveCfg = Release|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Debug - MONO|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Debug - MONO|Any CPU.Build.0 = Debug|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Debug - MONO|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Debug - MONO|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Debug - MONO|Win32.ActiveCfg = Debug|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Release - MONO|Any CPU.ActiveCfg = Release|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Release - MONO|Any CPU.Build.0 = Release|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Release - MONO|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Release - MONO|Mixed Platforms.Build.0 = Release|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Release - MONO|Win32.ActiveCfg = Release|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A5406045-2A20-4DB7-9FCA-4F2E5EFFCEAC}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

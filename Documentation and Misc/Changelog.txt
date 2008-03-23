@@ -1,5 +1,6 @@
 23.03.2008
 + added feature that automatic EPG recordings end when they do end on the channel - Event EndTime is used now
+* rewrote Cassini Webserver integration
 
 15.03.2008
 + automatic epg recordings are now looking at the channel id and if it's set they only record events on that channel
