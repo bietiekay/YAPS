@@ -858,7 +858,7 @@ namespace YAPS
                     // Runtime in Minutes
                     TimeSpan runtimeticks = new TimeSpan((recording_entry.EndsAt.Ticks - recording_entry.StartsAt.Ticks));
 
-                    newLine = newLine.Replace("%runtime%", Convert.ToString(runtimeticks.TotalMinutes) + " mins");
+                    newLine = newLine.Replace("%runtime%", Convert.ToString(Convert.ToInt32(runtimeticks.TotalMinutes)) + " mins");
                 }
                 else
                 {
