@@ -170,7 +170,7 @@ namespace YAPS
                                                     newRecording.Week = recording_entry.Week;
                                                     newRecording.Year = recording_entry.Year;
                                                     newRecording.StartsAt = DateTime.Now;
-                                                    newRecording.EndsAt = DateTime.Now.AddMinutes(recording_entry.AutomaticRecordingLength);
+                                                    newRecording.EndsAt = currentlyRunningEvent.EndTime;//DateTime.Now.AddMinutes(recording_entry.AutomaticRecordingLength);
 
                                                     lock (doneRecordings.SyncRoot)
                                                     {
@@ -184,6 +184,8 @@ namespace YAPS
                                                     Settings.NumberOfRecordings++;
                                                     // we're recording
                                                     newRecording.CurrentlyRecording = true;
+
+                                                    currentlyRunningEvent.AssociatedRecording = newRecording;
 
                                                     // call the Handler and lets get back to our job of scheduling...
                                                     HReq.HandleVCR(ChannelAndStationMapper.Number2Data(Convert.ToInt32(newRecording.Channel)), internal_http_server_object);

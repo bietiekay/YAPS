@@ -307,56 +307,59 @@ namespace YAPS
                 else
                 {
                     #region Record it baby...
-                    // we're a recorder, but first we check if we're done with this recording
-                    if (internal_recording_info.EndsAt.Ticks >= DateTime.Now.Ticks)
+                    lock (internal_recording_info)
                     {
-                        // we want to cache some data before writing it to the file...
-                        if ((cache_length + length) > (cache_size))
+                        // we're a recorder, but first we check if we're done with this recording
+                        if (internal_recording_info.EndsAt.Ticks >= DateTime.Now.Ticks)
                         {
-                            //ConsoleOutputLogger.WriteLine("Cachesize: " + length + " Cachefill: " + cache_length);
-                            // write the cache to the drive
-                            
-                            //binary_recorder_writer.Write(cache, 0, cache_length);
+                            // we want to cache some data before writing it to the file...
+                            if ((cache_length + length) > (cache_size))
+                            {
+                                //ConsoleOutputLogger.WriteLine("Cachesize: " + length + " Cachefill: " + cache_length);
+                                // write the cache to the drive
 
-                            CachedThreadedWriter CacheWriter = new CachedThreadedWriter(binary_recorder_writer, cache, cache_length);
+                                //binary_recorder_writer.Write(cache, 0, cache_length);
 
-                            Thread writer_thread = new Thread(new ThreadStart(CacheWriter.WriterThread));
-                            writer_thread.Start();
+                                CachedThreadedWriter CacheWriter = new CachedThreadedWriter(binary_recorder_writer, cache, cache_length);
+
+                                Thread writer_thread = new Thread(new ThreadStart(CacheWriter.WriterThread));
+                                writer_thread.Start();
 
 
-                            // empty the cache and get everything up-n-running for the next cache-filling round...
-                            cache_length = 0;
-                            Array.ConstrainedCopy(Data, 0, cache, cache_length, length);
-                            cache_length = cache_length + length;
+                                // empty the cache and get everything up-n-running for the next cache-filling round...
+                                cache_length = 0;
+                                Array.ConstrainedCopy(Data, 0, cache, cache_length, length);
+                                cache_length = cache_length + length;
 
+                            }
+                            else
+                            {
+                                // add to the cache...
+                                Array.ConstrainedCopy(Data, 0, cache, cache_length, length);
+                                cache_length = cache_length + length;
+                            }
                         }
                         else
                         {
-                            // add to the cache...
-                            Array.ConstrainedCopy(Data, 0, cache, cache_length, length);
-                            cache_length = cache_length + length;
-                        }
-                    }
-                    else
-                    {
-                        // set the status bit that we're currently not recording anymore...
-                        internal_recording_info.CurrentlyRecording = false;
+                            // set the status bit that we're currently not recording anymore...
+                            internal_recording_info.CurrentlyRecording = false;
 
-                        // Save the new Configuration...
-                        //internal_HTTP_Server_Object.Configuration.SaveSettings();
+                            // Save the new Configuration...
+                            //internal_HTTP_Server_Object.Configuration.SaveSettings();
 
-                        // we're done and so is this vcr
-                        youreDone();
+                            // we're done and so is this vcr
+                            youreDone();
 
-                        lock (internal_Multicast_Processor_Object.ReceiverList.SyncRoot)
-                        {
-                            // check if there's no one left to watch or record
-                            if (internal_Multicast_Processor_Object.ReceiverList.Count == 1)
+                            lock (internal_Multicast_Processor_Object.ReceiverList.SyncRoot)
                             {
-                                lock (internal_HTTP_Server_Object.MulticastProcessorList.SyncRoot)
+                                // check if there's no one left to watch or record
+                                if (internal_Multicast_Processor_Object.ReceiverList.Count == 1)
                                 {
-                                    // remove the MulticastProcessor Object from the global list
-                                    internal_HTTP_Server_Object.MulticastProcessorList.Remove(myChannel.ServiceID);
+                                    lock (internal_HTTP_Server_Object.MulticastProcessorList.SyncRoot)
+                                    {
+                                        // remove the MulticastProcessor Object from the global list
+                                        internal_HTTP_Server_Object.MulticastProcessorList.Remove(myChannel.ServiceID);
+                                    }
                                 }
                             }
                         }

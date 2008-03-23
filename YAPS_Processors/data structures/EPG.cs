@@ -56,6 +56,7 @@ namespace YAPS
         public String EPG_Provider;
         public DateTime StartTime;
         public DateTime EndTime;
+        public Recording AssociatedRecording;
 
         public bool isRecorded;
 
