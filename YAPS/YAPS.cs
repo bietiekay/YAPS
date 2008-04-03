@@ -1,9 +1,11 @@
 using System;
+using System.ServiceModel;
 using System.IO;
 using System.Net;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Threading;
+using System.ServiceModel.Description;
 
 namespace YAPS
 {
@@ -40,7 +42,7 @@ namespace YAPS
 
             #region Logo
             ConsoleOutputLogger.WriteLine("Yet Another Proxy Server: UDP Multicast to TCP Unicast Proxy "+System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
-            ConsoleOutputLogger.WriteLine("(C) 2006-2008 Stephanie Götz, Daniel Kirstenpfad and the YAPS Team - http://www.technology-ninja.com");
+            ConsoleOutputLogger.WriteLine("(C) 2006-2008 Stephanie Götz, Daniel Kirstenpfad and the APS Team - http://www.technology-ninja.com");
             //ConsoleOutputLogger.verbose = false;
             #endregion
 
@@ -196,6 +198,21 @@ namespace YAPS
                 ConsoleOutputLogger.WriteLine("Starting Cassini HTTP Server...");
                 CassiniServer = new Cassini.Server(httpServer.Settings.Cassini_Port, httpServer.Settings.Cassini_VirtualDirectory, httpServer.Settings.Cassini_Root_Directory);
                 CassiniServer.Start();
+                #endregion
+
+                #region WCF Services
+                if (httpServer.Settings.WCFService_Enabled)
+                {
+                ServiceHost YAPSServiceHost = new ServiceHost(typeof(YAPS.WCF.YAPSService), new Uri[1] { new Uri(httpServer.Settings.WCFServiceURL) });
+                ConsoleOutputLogger.WriteLine("Starting YAPS WCF Service ...");
+                WSHttpBinding binding = new WSHttpBinding();
+                YAPSServiceHost.AddServiceEndpoint(typeof(YAPS.WCF.IYAPSService), binding, httpServer.Settings.WCFServiceURL);
+                ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
+                smb.HttpGetEnabled = true;
+                YAPSServiceHost.Description.Behaviors.Add(smb);
+                YAPSServiceHost.AddServiceEndpoint(typeof(IMetadataExchange), binding, httpServer.Settings.WCFServiceURL+"/mex");
+                YAPSServiceHost.Open();
+                }
                 #endregion
 
                 #region XBMC Sync

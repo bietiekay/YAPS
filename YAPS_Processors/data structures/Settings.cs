@@ -72,6 +72,11 @@ namespace YAPS
         }
         #endregion
 
+        #region WCF Service specific
+        public bool WCFService_Enabled;
+        public String WCFServiceURL;
+        #endregion
+
         #region multicast EPG specific
         public List<MulticastEPGSource> MulticastEPGSources;
         #endregion
@@ -94,6 +99,9 @@ namespace YAPS
             Cassini_Root_Directory = ".\\";
             HTTP_Root_Directory = ".\\asp.net";
             Cassini_VirtualDirectory = "/asp.net";
+            WCFService_Enabled = false;
+            WCFServiceURL = "http://0.0.0.0:1500/YAPSService";
+
             MulticastEPGSources = new List<MulticastEPGSource>();
         }
     }

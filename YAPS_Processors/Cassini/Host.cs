@@ -46,7 +46,6 @@ namespace Cassini {
 
         public void Configure(Server server, int port, string virtualPath, string physicalPath) {
             _server = server;
-
             _port = port;
             _installPath = null;
             _virtualPath = virtualPath;
@@ -65,6 +64,7 @@ namespace Cassini {
 
             try {
                 Request request = new Request(_server, this, conn);
+                //YAPS.ConsoleOutputLogger.WriteLine("Cassini - " + request.GetRawUrl());
                 request.Process();
             }
             finally {

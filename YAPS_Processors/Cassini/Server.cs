@@ -27,7 +27,6 @@ namespace Cassini {
 
         private WaitCallback _onStart;
         private WaitCallback _onSocketAccept;
-
         private bool _shutdownInProgress;
 
         private ApplicationManager _appManager;

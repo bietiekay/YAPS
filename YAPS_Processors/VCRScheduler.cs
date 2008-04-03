@@ -4,14 +4,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using System.Web;
+using System.Web.Hosting;
+using System.Security.Permissions;
+using System.Security.Principal;
+
 
 namespace YAPS
 {
     #region VCR Scheduler
-    /// <summary>
+    /// <summary
     /// Implements the scheduler which starts the recording...
     /// </summary>
-    public class VCRScheduler
+    public class VCRScheduler : IRegisteredObject
     {
         // a simple hashtable which holds all the recordings, done and todo...
         public Hashtable Recordings;
@@ -304,6 +309,15 @@ namespace YAPS
                 return 6;
             return 0;
         }
+
+        #region IRegisteredObject Members
+
+        public void Stop(bool immediate)
+        {
+            return;// throw new NotImplementedException();
+        }
+
+        #endregion
     }
     #endregion
 }
