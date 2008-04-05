@@ -1,0 +1,5 @@
+G:\YAPS\Design\YAPS\bin\YAPS.dll
+G:\YAPS\Design\YAPS\bin\YAPS.pdb
+G:\YAPS\Design\YAPS\obj\Debug\ResolveAssemblyReference.cache
+G:\YAPS\Design\YAPS\obj\Debug\YAPS.dll
+G:\YAPS\Design\YAPS\obj\Debug\YAPS.pdb
