@@ -1601,8 +1601,9 @@ namespace YAPS
                                 else
                                     if (filename.EndsWith(".html") | (filename.EndsWith(".htm")))
                                     {
+                                        ConsoleOutputLogger.WriteLine("[DEBUG] 1");
                                         String Output = HTTPServer.Template_Processor.ProcessHTMLTemplate(filename, querystring, HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString()));
-
+                                        ConsoleOutputLogger.WriteLine("[DEBUG] 2");
                                         //int left = new UnicodeEncoding().GetByteCount(Output);
                                         int left = new UTF8Encoding().GetByteCount(Output);
 

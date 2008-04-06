@@ -55,11 +55,12 @@ namespace YAPS
             }
             #endregion
 
+            ConsoleOutputLogger.WriteLine("[DEBUG] -3");
+
             #region replace the placeholders...
 
             // TODO: at the moment the placeholders must be lower case only to be detected - change that!
             // TODO: 3 times the same keyword... change that
-
             #region no need for querystring or optional
 
                 #region %include($templateURL)%
@@ -670,6 +671,7 @@ namespace YAPS
             #region the blue bar
             // Calculate how much minutes used all our recordings are
             TimeSpan RecordedTime = new TimeSpan(0);
+            ConsoleOutputLogger.WriteLine("[DEBUG] -4");
             lock (internal_vcrscheduler.doneRecordings)
             {
                 foreach (Recording recording_entry in internal_vcrscheduler.doneRecordings.Values)
@@ -681,7 +683,7 @@ namespace YAPS
             
             // Calculate how much minutes will be used by the scheduled recordings            
             TimeSpan ToBeRecordedTime = new TimeSpan(0);
-
+            ConsoleOutputLogger.WriteLine("[DEBUG] -5");
             lock (internal_vcrscheduler.Recordings)
             {
                 foreach (Recording recording_entry in internal_vcrscheduler.Recordings.Values)
@@ -978,6 +980,7 @@ namespace YAPS
                 if (internal_vcrscheduler.doneRecordings.Count > 0)
                 {
                     List<Recording> sortedDoneRecordingList;
+                    ConsoleOutputLogger.WriteLine("[DEBUG] -6");
                     lock (internal_vcrscheduler.doneRecordings.SyncRoot)
                     {
                         // TODO: add ascending/descending setting + reimplement the sorting algorithm
@@ -996,6 +999,8 @@ namespace YAPS
                 if (internal_vcrscheduler.doneRecordings.Count > 0)
                 {
                     List<Recording> sortedDoneRecordingList;
+                    ConsoleOutputLogger.WriteLine("[DEBUG] -7");
+
                     lock (internal_vcrscheduler.doneRecordings.SyncRoot)
                     {
                         // TODO: add ascending/descending setting + reimplement the sorting algorithm
@@ -1043,6 +1048,8 @@ namespace YAPS
             if (internal_vcrscheduler.doneRecordings.Count > 0)
             {
                 List<Recording> sortedDoneRecordingList;
+                ConsoleOutputLogger.WriteLine("[DEBUG] -8");
+
                 lock (internal_vcrscheduler.doneRecordings.SyncRoot)
                 {
                     // TODO: add ascending/descending setting + reimplement the sorting algorithm
@@ -1062,6 +1069,8 @@ namespace YAPS
             if (internal_vcrscheduler.Recordings.Count > 0)
             {
                 List<Recording> sortedDoneRecordingList;
+                ConsoleOutputLogger.WriteLine("[DEBUG] -9");
+
                 lock (internal_vcrscheduler.Recordings.SyncRoot)
                 {
                     // TODO: add ascending/descending setting + reimplement the sorting algorithm

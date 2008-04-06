@@ -81,6 +81,11 @@ namespace YAPS
         public List<MulticastEPGSource> MulticastEPGSources;
         #endregion
 
+        #region SAP/SDP specific
+        public Int32 SAP_Port = 9875;   // this is the default port of the Session Announcement Protocol multicast stream (default)
+        String SAP_IPAdress; // this is the default multicast IP adress of the Session Announcement Protocol multicast stream (fem-default)
+        #endregion
+
         #region Statistics
         public Int64 NumberOfRecordings;
         public Int64 NumberOfPlayedRecordings;
@@ -101,7 +106,8 @@ namespace YAPS
             Cassini_VirtualDirectory = "/asp.net";
             WCFService_Enabled = false;
             WCFServiceURL = "http://0.0.0.0:1500/YAPSService";
-
+            SAP_Port = 9875;
+            SAP_IPAdress = "239.255.255.255";
             MulticastEPGSources = new List<MulticastEPGSource>();
         }
     }
