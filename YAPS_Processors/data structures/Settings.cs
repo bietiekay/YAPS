@@ -82,8 +82,9 @@ namespace YAPS
         #endregion
 
         #region SAP/SDP specific
+        public bool SAP_Enabled;    // if the SAP Parsing is enabled
         public Int32 SAP_Port = 9875;   // this is the default port of the Session Announcement Protocol multicast stream (default)
-        String SAP_IPAdress; // this is the default multicast IP adress of the Session Announcement Protocol multicast stream (fem-default)
+        public String SAP_IPAdress; // this is the default multicast IP adress of the Session Announcement Protocol multicast stream (fem-default)
         #endregion
 
         #region Statistics
@@ -108,6 +109,7 @@ namespace YAPS
             WCFServiceURL = "http://0.0.0.0:1500/YAPSService";
             SAP_Port = 9875;
             SAP_IPAdress = "239.255.255.255";
+            SAP_Enabled = false;
             MulticastEPGSources = new List<MulticastEPGSource>();
         }
     }

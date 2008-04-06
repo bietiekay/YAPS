@@ -2,6 +2,7 @@
 + added Session Description Protocol parser
 + added Session Announcement Protocol setting data (SAP_IPAdress, SAP_Port)
 + added Session Announcement Protocol processor
+* bugfix attempt to fix a race condition that leads to no RecordingList rendering and no more recordings...
 
 03.04.2008
 + added WCF Service Host to allow self hosting of data

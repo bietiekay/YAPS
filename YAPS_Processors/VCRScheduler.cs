@@ -89,8 +89,6 @@ namespace YAPS
                 {
                     if (Recordings.Count > 0)
                     {
-                        lock (Recordings.SyncRoot)
-                        {
                             foreach (Recording recording_entry in Recordings.Values)
                             {
                                 if (recording_entry.isAutomaticEPGRecording)
@@ -276,7 +274,6 @@ namespace YAPS
                                     }
                                 }
                             }
-                        }
                     }
                     // wait another 1000 mseconds, then look again for recordings...
                     Thread.Sleep(1000);

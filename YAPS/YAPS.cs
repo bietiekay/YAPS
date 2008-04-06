@@ -68,51 +68,9 @@ namespace YAPS
             vcrScheduler.Configuration = Configuration;
             httpServer.Configuration = Configuration;
 
-            Configuration.LoadSettingsXML();
+            //Configuration.LoadSettingsXML();
 
             Configuration.SaveSettings();
-            #endregion
-
-            #region Testing
-
-            //List<Recording> blah = Sorter.SortRecordingTable(vcrScheduler.doneRecordings, true);
-            //ConsoleOutputLogger.WriteLine("Blah");
-
-            // set up testing recording data
-            /*Recording testRecording = new Recording();
-
-            testRecording.Channel = "13";
-            testRecording.StartsAt = DateTime.Now.AddHours(1);
-            testRecording.EndsAt = testRecording.StartsAt.AddMinutes(30);
-
-            testRecording.Recording_Filename = testRecording.Recording_ID.ToString();
-            testRecording.Recording_Name = "Das perfekte Dinner";
-
-            vcrScheduler.Recordings.Add(testRecording.Recording_ID, testRecording);
-            
-            testRecording = new Recording();
-
-            testRecording.Channel = "20";
-            testRecording.StartsAt = DateTime.Now.AddDays(1);
-            testRecording.EndsAt = testRecording.StartsAt.AddMinutes(30);
-
-            testRecording.Recording_Filename = testRecording.Recording_ID.ToString();
-            testRecording.Recording_Name = "testaufnahme";
-
-            vcrScheduler.Recordings.Add(testRecording.Recording_ID, testRecording);
-            */
-            /*
-            foreach (Recording aufnahme in vcrScheduler.Recordings.Values)
-            {
-                aufnahme.Categories = new List<Category>();
-            }
-            */
-            /*
-            foreach (Recording recording in vcrScheduler.doneRecordings.Values)
-            {
-                RecordingsThumbnail.CreateRecordingsThumbnail(recording, XBMCPlaylistFilesHelper.generateThumbnailFilename(recording));
-            }*/
-            
             #endregion
 
             #region channelmappinginit
@@ -144,33 +102,6 @@ namespace YAPS
             ChannelAndStationMapper.Add(30, "WDR", "/images/channels/wdr.png", 28395, "239.255.2.30", "5030");
             ChannelAndStationMapper.Add(31, "Tele5", "/images/channels/tele5.png", 4, "239.255.2.31", "5031");
             Configuration.SaveSettings();*/
-            #endregion
-
-            #region epg multicast source init
-            /*          
-            MulticastEPGSource epgsource = new MulticastEPGSource();
-
-            // I know this variant is ugly, but this way the epgsource is serializable
-            epgsource.EPGName = "EPG 1";
-            epgsource.IPAddress = "239.255.18.1";
-            epgsource.Portnumber = 1801;
-
-            httpServer.Settings.MulticastEPGSources.Add(epgsource);
-            
-            epgsource = new MulticastEPGSource();
-            epgsource.EPGName = "EPG 2";
-            epgsource.IPAddress = "239.255.18.2";
-            epgsource.Portnumber = 1802;
-            httpServer.Settings.MulticastEPGSources.Add(epgsource);
-
-            epgsource = new MulticastEPGSource();
-            epgsource.EPGName = "EPG 3";
-            epgsource.IPAddress = "239.255.18.3";
-            epgsource.Portnumber = 1803;
-            httpServer.Settings.MulticastEPGSources.Add(epgsource);
-
-            Configuration.SaveSettings();
-            */
             #endregion
 
             #region Authentification
@@ -237,7 +168,18 @@ namespace YAPS
                 Thread epg_processor_thread = new Thread(new ThreadStart(EPG_Processor.EPGProcessor));
                 epg_processor_thread.Start();
                 #endregion
+
+                #region SAP / SDP
+                if (httpServer.Settings.SAP_Enabled)
+                {
+                    SAPProcessor sapProcessor = new SAPProcessor(httpServer.Settings.SAP_IPAdress, httpServer.Settings.SAP_Port);
+
+                    Thread sap_processor_thread = new Thread(new ThreadStart(sapProcessor.SAPProcessorThread));
+
+                    sap_processor_thread.Start();
+                }
+                #endregion
             #endregion
-            }
+        }
 	}
 }
