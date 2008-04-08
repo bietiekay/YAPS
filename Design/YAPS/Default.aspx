@@ -10,6 +10,8 @@
     <form id="form1" runat="server">
     <div>
     
+        <asp:Label ID="WCFVersionNumber" runat="server"></asp:Label>
+    
     </div>
     </form>
 </body>

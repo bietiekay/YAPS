@@ -26,10 +26,10 @@ namespace YAPS.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://127.0.0.1:1500/YAPSService")]
-        public string YAPS_YAPSService_YAPSService {
+        [global::System.Configuration.DefaultSettingValueAttribute("http://141.24.54.39:1500/YAPSService")]
+        public string YAPS_YAPS_Service_YAPSService {
             get {
-                return ((string)(this["YAPS_YAPSService_YAPSService"]));
+                return ((string)(this["YAPS_YAPS_Service_YAPSService"]));
             }
         }
     }

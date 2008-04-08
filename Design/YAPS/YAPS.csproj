@@ -70,7 +70,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Web References\YAPSService\Reference.cs">
+    <Compile Include="Web References\YAPS_Service\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -83,30 +83,30 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://127.0.0.1:1500/YAPSService%3fwsdl">
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\YAPS_Service\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\YAPS_Service\YAPSService.wsdl" />
+    <None Include="Web References\YAPS_Service\YAPSService.xsd" />
+    <None Include="Web References\YAPS_Service\YAPSService0.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://141.24.54.39:1500/YAPSService%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\YAPSService\</RelPath>
-      <UpdateFromURL>http://127.0.0.1:1500/YAPSService%3fwsdl</UpdateFromURL>
+      <RelPath>Web References\YAPS_Service\</RelPath>
+      <UpdateFromURL>http://141.24.54.39:1500/YAPSService%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>YAPS_YAPSService_YAPSService</CachedSettingsPropName>
+      <CachedSettingsPropName>YAPS_YAPS_Service_YAPSService</CachedSettingsPropName>
     </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\YAPSService\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\YAPSService\YAPSService.wsdl" />
-    <None Include="Web References\YAPSService\YAPSService.xsd" />
-    <None Include="Web References\YAPSService\YAPSService0.xsd" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

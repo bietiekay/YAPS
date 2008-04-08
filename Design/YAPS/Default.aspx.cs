@@ -17,7 +17,9 @@ namespace YAPS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            YAPS_Service.YAPSService ServiceClient = new YAPS.YAPS_Service.YAPSService();
 
+            WCFVersionNumber.Text = ServiceClient.YAPSVersion();
         }
     }
 }
