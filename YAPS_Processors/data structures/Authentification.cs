@@ -27,6 +27,8 @@ namespace YAPS
 
         public bool canAccessLiveStream;
         public bool canAccessRecordings;
+        public bool canAccessHisRecordings;
+        public bool canAccessOthersRecordings;
         public bool canAccessThisServer;
         public bool canAccessTuxBox;
         public bool canCreateRecordings;
@@ -39,6 +41,7 @@ namespace YAPS
             //accessingIP = ClientIP;
             canAccessLiveStream = false;
             canAccessRecordings = false;
+            canAccessOthersRecordings = false;
             canAccessTuxBox = false;
             canAccessThisServer = false;
             canCreateRecordings = false;

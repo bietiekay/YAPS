@@ -130,6 +130,31 @@ namespace YAPS
             return false;
         }
         #endregion
+        #region CanAccessOthersRecordings
+        public static bool AllowedToAccessOthersRecordings(IPAddress accessingIP)
+        {
+            foreach (AuthentificationUser allowedUser in KnownClients)
+            {
+                foreach (AuthentificationEntry allowedClient in allowedUser.AuthEntry)
+                {
+                    if (accessingIP.ToString() == allowedClient.accessingIP.ToString())
+                    {
+                        if (allowedClient.isAdministrator) return true;
+                        if (allowedClient.canAccessOthersRecordings)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            ConsoleOutputLogger.WriteLine("HTTPAuthProcessor: " + accessingIP.ToString() + " is not allowed to access recordings of other users.");
+                            return false;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+        #endregion
         #region canAccessThisServer
         public static bool AllowedToAccessThisServer(IPAddress accessingIP)
         {

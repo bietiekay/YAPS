@@ -1,0 +1,13 @@
+<tr class="row_highlight">
+
+  <td>%starts_at%</td>
+
+  <td>%ends_at%</td>
+
+  <td>%channel%</td>
+
+  <td>%recording_name%</td>
+
+  <td>%comment%</td>
+
+</tr>

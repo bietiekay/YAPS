@@ -1,3 +1,9 @@
+13.04.2008
++ added %render_automatic_and_reoccuring_recording_table% keyword; the other recording table keywords don't display automatic/reoccuring events
++ added canAccessOthersRecordings capability and capability handling
++ added %holdingtime%, %comment%  and %elapsed_holdingtime% to the Recording/Recorded/AutomaticReoccuringRecording table
++ added %render_currently_running_epg_events_table% keyword
+
 06.04.2008
 + added Session Description Protocol parser
 + added Session Announcement Protocol setting data (SAP_IPAdress, SAP_Port)

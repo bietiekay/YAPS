@@ -16,7 +16,7 @@ namespace YAPS
     {
         #region internal Data
         private VCRScheduler internal_vcrscheduler;
-        //private HttpProcessor internal_httpprocessor;
+        private HttpServer internal_httpserver;
         #endregion
 
         #region Constructor
@@ -24,9 +24,10 @@ namespace YAPS
         /// Constructor of the Templace Processor
         /// </summary>
         /// <param name="vcrscheduler">the VCRScheduler...so we can get the </param>
-        public TemplateProcessor(VCRScheduler vcrscheduler)
+        public TemplateProcessor(VCRScheduler vcrscheduler, HttpServer httpserver)
         {
             internal_vcrscheduler = vcrscheduler;
+            internal_httpserver = httpserver;
         }
         #endregion
 
@@ -291,6 +292,89 @@ namespace YAPS
                 }
                 #endregion
 
+                #region %render_automatic_and_reoccuring_recording_table($line_templateURL)%
+                // first find the placeholder
+
+                // detect if we included a file again in the last 10 iterations
+                while (Output_HTML_Code.Contains("%render_automatic_and_reoccuring_recording_table("))
+                {
+
+                    // TODO: make a URL version to include http URLs as well
+                    // now this is the first placeholder that has a parameter, the next step would be to extract the parameter...
+                    try
+                    {
+                        #region Find and extract the parameter, then delete it with %include( in front of and ) behind
+                        int StartPosition = Output_HTML_Code.IndexOf("%render_automatic_and_reoccuring_recording_table(");
+
+                        // add the parameter...
+                        StartPosition = StartPosition + "%render_automatic_and_reoccuring_recording_table(".Length;
+
+                        // we need a working copy...it's easier...
+                        String parameters = Output_HTML_Code.Remove(0, StartPosition);
+
+                        // let's find the next ) and remove everything, including the ) afterwards
+                        StartPosition = parameters.IndexOf(')');
+                        // we got them!!!
+                        parameters = parameters.Remove(StartPosition);
+
+                        StartPosition = Output_HTML_Code.IndexOf("%render_automatic_and_reoccuring_recording_table(");
+                        // delete them from the original HTML_Code
+                        Output_HTML_Code = Output_HTML_Code.Remove(Output_HTML_Code.IndexOf("%render_automatic_and_reoccuring_recording_table("), "%render_automatic_and_reoccuring_recording_table(".Length + 2 + parameters.Length);
+                        Output_HTML_Code = Output_HTML_Code.Insert(StartPosition, "%render_recording_table_template%");
+                        #endregion
+
+                        String newTemplate = "";
+
+                        if (LoopDetection.Contains(parameters))
+                        {
+                            ConsoleOutputLogger.WriteLine("%render_automatic_and_reoccuring_recording_table%-Parser: possible loop found for " + parameters);
+                        }
+                        else
+                        {
+
+                            // this is just to make sure that this could not be used as a DoS attack vector
+                            if (LoopDetection.Count == 500)
+                            {
+                                LoopDetection.RemoveAt(0);
+                            }
+
+                            LoopDetection.Add(parameters);
+
+                            #region read the to be included template file
+                            try
+                            {
+                                using (StreamReader sr = File.OpenText(parameters))
+                                {
+                                    String buffer;
+
+                                    while ((buffer = sr.ReadLine()) != null)
+                                    {
+                                        newTemplate = newTemplate + buffer;
+                                        // read...
+                                    }
+                                    sr.Close();
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                ConsoleOutputLogger.WriteLine("%render_automatic_and_reoccuring_recording_table%-Parser: " + e.Message);
+                                // delete the include_template...
+                                Output_HTML_Code = Output_HTML_Code.Replace("%render_recording_table_template%", "");
+                            }
+                            #endregion
+
+                            // now pass the template code to the http generator...
+
+                            Output_HTML_Code = Output_HTML_Code.Replace("%render_recording_table_template%", Template_Automatic_And_Reoccuring_Recording_Listing(newTemplate, Username));
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        ConsoleOutputLogger.WriteLine("%render_automatic_and_reoccuring_recording_table%-Parser: " + e.Message);
+                    }
+                }
+                #endregion
+
                 #region %render_recording_table($line_templateURL)%
                 // first find the placeholder
 
@@ -373,6 +457,90 @@ namespace YAPS
                     }
                 }
                 #endregion
+
+                #region %render_currently_running_epg_events_table($line_templateURL)%
+                // first find the placeholder
+
+                // detect if we included a file again in the last 10 iterations
+                while (Output_HTML_Code.Contains("%render_currently_running_epg_events_table("))
+                {
+
+                    // TODO: make a URL version to include http URLs as well
+                    // now this is the first placeholder that has a parameter, the next step would be to extract the parameter...
+                    try
+                    {
+                        #region Find and extract the parameter, then delete it with %include( in front of and ) behind
+                        int StartPosition = Output_HTML_Code.IndexOf("%render_currently_running_epg_events_table(");
+
+                        // add the parameter...
+                        StartPosition = StartPosition + "%render_currently_running_epg_events_table(".Length;
+
+                        // we need a working copy...it's easier...
+                        String parameters = Output_HTML_Code.Remove(0, StartPosition);
+
+                        // let's find the next ) and remove everything, including the ) afterwards
+                        StartPosition = parameters.IndexOf(')');
+                        // we got them!!!
+                        parameters = parameters.Remove(StartPosition);
+
+                        StartPosition = Output_HTML_Code.IndexOf("%render_currently_running_epg_events_table(");
+                        // delete them from the original HTML_Code
+                        Output_HTML_Code = Output_HTML_Code.Remove(Output_HTML_Code.IndexOf("%render_currently_running_epg_events_table("), "%render_currently_running_epg_events_table(".Length + 2 + parameters.Length);
+                        Output_HTML_Code = Output_HTML_Code.Insert(StartPosition, "%render_currently_running_epg_events_table_template%");
+                        #endregion
+
+                        String newTemplate = "";
+
+                        if (LoopDetection.Contains(parameters))
+                        {
+                            ConsoleOutputLogger.WriteLine("%render_currently_running_epg_events_table%-Parser: possible loop found for " + parameters);
+                        }
+                        else
+                        {
+
+                            // this is just to make sure that this could not be used as a DoS attack vector
+                            if (LoopDetection.Count == 500)
+                            {
+                                LoopDetection.RemoveAt(0);
+                            }
+
+                            LoopDetection.Add(parameters);
+
+                            #region read the to be included template file
+                            try
+                            {
+                                using (StreamReader sr = File.OpenText(parameters))
+                                {
+                                    String buffer;
+
+                                    while ((buffer = sr.ReadLine()) != null)
+                                    {
+                                        newTemplate = newTemplate + buffer;
+                                        // read...
+                                    }
+                                    sr.Close();
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                ConsoleOutputLogger.WriteLine("%render_currently_running_epg_events_table%-Parser: " + e.Message);
+                                // delete the include_template...
+                                Output_HTML_Code = Output_HTML_Code.Replace("%render_currently_running_epg_events_table_template%", "");
+                            }
+                            #endregion
+
+                            // now pass the template code to the http generator...
+
+                            Output_HTML_Code = Output_HTML_Code.Replace("%render_currently_running_epg_events_table_template%", Template_EPG_Events_Listing(newTemplate, Username));
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        ConsoleOutputLogger.WriteLine("%render_currently_running_epg_events_table%-Parser: " + e.Message);
+                    }
+                }
+                #endregion
+
 
                 #region %console_output%
                 // first find the placeholder
@@ -769,6 +937,43 @@ namespace YAPS
         }
         #endregion
 
+        #region Template_EPG_Events_Listing
+        String Template_EPG_Events_Listing(string LineTemplate, String Username)
+        {
+            StringBuilder Output = new StringBuilder();
+
+            if (internal_httpserver.EPGProcessor.CurrentlyRunningEvents.Count == 0)
+            {
+                // no work to do
+                Output.Remove(0, Output.Length);
+                Output.Append("Currently there are no EPG Events available.");
+            }
+            else
+            {
+                // there's work to do...
+                foreach (EPG_Event_Entry epg_event in internal_httpserver.EPGProcessor.CurrentlyRunningEvents)
+                {
+                    Recording recording_entry = new Recording();
+
+                    if (epg_event.AssociatedRecording != null)
+                        recording_entry = epg_event.AssociatedRecording;
+                    else
+                    {
+                        recording_entry.StartsAt = epg_event.StartTime;
+                        recording_entry.EndsAt = epg_event.EndTime;
+                        recording_entry.Channel = ChannelAndStationMapper.Name2Number(ChannelAndStationMapper.ServiceID2Name(epg_event.Service)).ToString();
+                        recording_entry.Recording_Name = epg_event.ShortDescription.Name;
+                        recording_entry.Comment = epg_event.ShortDescription.Text;
+                    }
+
+                    Output = RenderOneLine_Template_Recorded_Listing(Output, recording_entry, LineTemplate, Username);
+                }
+            }
+
+            return Output.ToString();
+        }
+        #endregion
+
         #region RecordedListing
 
         #region Render One Line Listing
@@ -786,10 +991,39 @@ namespace YAPS
 
             // we take that one template line and fill in the placeholders...
 
+            while (newLine.Contains("%holdingtime%"))
+            {
+                if (recording_entry.HoldingTime == 0)
+                {
+                }
+                else
+                {
+                    newLine = newLine.Replace("%holdingtime%", recording_entry.HoldingTime.ToString());
+                }
+            }            
+            
+            while (newLine.Contains("%elapsed_holdingtime%"))
+            {
+                if (recording_entry.HoldingTime == 0)
+                {
+                }
+                else
+                {
+                    newLine = newLine.Replace("%elapsed_holdingtime%", HoldingTimeManager.HowOldIsThisRecordingInDays(recording_entry.StartsAt).ToString());
+                }
+            }            
+
+
             while (newLine.Contains("%createdby%"))
             {
                 newLine = newLine.Replace("%createdby%", recording_entry.createdby);
             }
+
+            while (newLine.Contains("%comment%"))
+            {
+                newLine = newLine.Replace("%comment%", recording_entry.Comment);
+            }
+
 
             while (newLine.Contains("%playcount%"))
             {
@@ -1060,7 +1294,11 @@ namespace YAPS
                 {
                     if (recording_entry.CurrentlyRecording == true)
                     {
-                        Output = RenderOneLine_Template_Recorded_Listing(Output, recording_entry, LineTemplate, Username);
+                        if (recording_entry.Username.ToUpper() != Username.ToUpper())
+                        {
+                            
+                        }
+                            Output = RenderOneLine_Template_Recorded_Listing(Output, recording_entry, LineTemplate, Username);
                     }
                 }
 
@@ -1081,8 +1319,10 @@ namespace YAPS
                     //Output.Append("<tr>            <td style=\"text-align: center; width: 60px;\">            <img src=\"images/waitbutton.png\" border=\"0\" /></td>            <td style=\"text-align: center; width: 169px;\">");
 
                     // OLD Output.Append("<tr style=\"background-color: #a29ca2;\"><td style=\"background-color:red;width:50px\"></td><td align=\"center\" style=\"width:150px\">");
-
-                    Output = RenderOneLine_Template_Recorded_Listing(Output, recording_entry, LineTemplate, Username);
+                    if ((!recording_entry.isDaily && !recording_entry.isMonthly && !recording_entry.isWeekly && !recording_entry.isAutomaticEPGRecording))
+                    {
+                        Output = RenderOneLine_Template_Recorded_Listing(Output, recording_entry, LineTemplate, Username);
+                    }
                 }
             }
 
@@ -1092,6 +1332,81 @@ namespace YAPS
             {
                 Output.Remove(0, Output.Length);
                 Output.Append("No Recordings...");
+            }
+
+            return Output.ToString();
+        }
+        #endregion
+
+        #region AutomaticAndReoccuringRecordingListing
+        /// <summary>
+        /// this generates the Record Listing HTML Sourcecode
+        /// </summary>
+        /// <returns>Record Listing Sourcecode</returns>
+        String Template_Automatic_And_Reoccuring_Recording_Listing(string LineTemplate, String Username)
+        {
+            StringBuilder Output = new StringBuilder();
+
+            // BUG: when there's nothing currently recording the header of the table alone is shown...fix that
+
+            // start the table
+
+            // TODO: add a progress bar to each Status
+            //Output.Append("<table id=\"TABLE1\" width=\"100%\" border=\"1\" cellpadding=\"0\" cellspacing=\"0\">	<tr>	    <td style=\"background-image: url(images/Table_Headerbar_Tile.png); background-repeat: repeat-x; height: 21px; text-align: center; width: 55px;\">            <strong>status</strong></td>	    <td style=\"background-image: url(images/Table_Headerbar_Tile.png); width: 169px; background-repeat: repeat-x; height: 21px; text-align: center\">            <strong>starts</strong></td>	    <td style=\"background-image: url(images/Table_Headerbar_Tile.png); width: 171px; background-repeat: repeat-x; height: 21px; text-align: center\">            <strong>ends</strong></td>	    <td style=\"background-image: url(images/Table_Headerbar_Tile.png); background-repeat: repeat-x; height: 21px; text-align: center; width: 106px;\">            <strong>channel</strong></td>	    <td style=\"background-image: url(images/Table_Headerbar_Tile.png); background-repeat: repeat-x; height: 21px; text-align: center; width: 277px;\">            <strong>name</strong></td>	    <td style=\"background-image: url(images/Table_Headerbar_Tile.png); background-repeat: repeat-x; height: 21px; text-align: center; width: 79px;\">            <strong>category</strong></td>        <td style=\"background-image: url(images/Table_Headerbar_Tile.png); background-repeat: repeat-x;            height: 21px; text-align: center; width: 60px;\"></td>	</tr>");
+            // OLD Output.Append("<table width=\"90%\"><tr style=\"background-color: #93939a;\"><td style=\"width:50px\" align=\"center\">Status</td><td align=\"center\">Time</td><td align=\"center\">Sender</td><td align=\"center\">Name</td></tr>");
+
+            if (internal_vcrscheduler.doneRecordings.Count > 0)
+            {
+                List<Recording> sortedDoneRecordingList;
+                ConsoleOutputLogger.WriteLine("[DEBUG] -8");
+
+                lock (internal_vcrscheduler.doneRecordings.SyncRoot)
+                {
+                    // TODO: add ascending/descending setting + reimplement the sorting algorithm
+                    sortedDoneRecordingList = Sorter.SortRecordingTable(internal_vcrscheduler.doneRecordings, true);
+                }
+
+                foreach (Recording recording_entry in sortedDoneRecordingList)
+                {
+                    if (recording_entry.CurrentlyRecording == true)
+                    {
+                        if ((recording_entry.isDaily | recording_entry.isMonthly | recording_entry.isWeekly | recording_entry.isAutomaticEPGRecording))
+                        {
+                            Output = RenderOneLine_Template_Recorded_Listing(Output, recording_entry, LineTemplate, Username);
+                        }
+                    }
+                }
+
+            }
+            // just work when there is work to do...
+            if (internal_vcrscheduler.Recordings.Count > 0)
+            {
+                List<Recording> sortedDoneRecordingList;
+                ConsoleOutputLogger.WriteLine("[DEBUG] -9");
+
+                lock (internal_vcrscheduler.Recordings.SyncRoot)
+                {
+                    // TODO: add ascending/descending setting + reimplement the sorting algorithm
+                    sortedDoneRecordingList = Sorter.SortRecordingTable(internal_vcrscheduler.Recordings, true);
+                }
+                foreach (Recording recording_entry in sortedDoneRecordingList)
+                {
+                    //Output.Append("<tr>            <td style=\"text-align: center; width: 60px;\">            <img src=\"images/waitbutton.png\" border=\"0\" /></td>            <td style=\"text-align: center; width: 169px;\">");
+
+                    // OLD Output.Append("<tr style=\"background-color: #a29ca2;\"><td style=\"background-color:red;width:50px\"></td><td align=\"center\" style=\"width:150px\">");
+                    if ((recording_entry.isDaily | recording_entry.isMonthly | recording_entry.isWeekly | recording_entry.isAutomaticEPGRecording))
+                    {
+                        Output = RenderOneLine_Template_Recorded_Listing(Output, recording_entry, LineTemplate, Username);
+                    }
+                }
+            }
+
+            //Output.Append("</table>");
+
+            if ((internal_vcrscheduler.Recordings.Count == 0) && (internal_vcrscheduler.doneRecordings.Count == 0))
+            {
+                Output.Remove(0, Output.Length);
+                Output.Append("No Automatic or Reoccuring Recordings...");
             }
 
             return Output.ToString();

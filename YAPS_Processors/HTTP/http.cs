@@ -1556,6 +1556,17 @@ namespace YAPS
                                         ns.Flush();
                                         return;
                                     }
+                                    // check if this recording is the Recording of another user
+                                    if (HTTPAuthProcessor.IPtoUsername(AC_endpoint.Address.ToString()).ToUpper() != recording.Username.ToUpper())
+                                    {
+                                        if (HTTPAuthProcessor.AllowedToAccessOthersRecordings(AC_endpoint.Address))
+                                        {
+                                            // now give the user a 403 and break...
+                                            writeForbidden();
+                                            ns.Flush();
+                                            return;
+                                        }
+                                    }
                                     #endregion
 
                                     currentlyPlaying = recording;
@@ -1903,8 +1914,6 @@ namespace YAPS
             {
                 Thread.Sleep(10);
             }
-            // create the Template Processor
-            Template_Processor = new TemplateProcessor(internal_vcr_scheduler);
             Socket listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             ipaddress = IPAddress.Parse(Settings.HTTP_IPAdress);
             IPEndPoint endpoint = new IPEndPoint(ipaddress, Settings.HTTP_Port);
@@ -1925,6 +1934,9 @@ namespace YAPS
 
                         // Create a new processor for this request
                         HttpProcessor processor = new HttpProcessor(docRoot, s, this);
+
+                        // create the Template Processor
+                        Template_Processor = new TemplateProcessor(internal_vcr_scheduler,this);
 
                         // Dispatch that processor in its own thread
                         Thread thread = new Thread(new ThreadStart(processor.process));

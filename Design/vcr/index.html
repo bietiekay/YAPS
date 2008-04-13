@@ -27,6 +27,7 @@
 		<li id="current"><a href="index.html">Home</a></li>
 		<li><a href="addrecording.html">Add Recording</a></li>
 		<li><a href="recordings.html">Recordings</a></li>
+		<li><a href="currentlyrunning.html">Currently Running</a></li>
 		<li><a href="console.html">Console</a></li>
 		<li><a href="settings.html">Settings</a></li>
 		<li><a href="help.html">Help</a></li>
@@ -58,7 +59,12 @@
 	    <table>
 	        <tr><th>status</th><th>starts</th><th>ends</th><th>channel</th><th>name</th><th>category</th><th>user</th><th></th></tr>
 	    %render_recording_table(recording_line.template)%
+	    </table><p>
+	    <table>
+	        <tr><th>status</th><th>starts</th><th>ends</th><th>channel</th><th>name</th><th>category</th><th>user</th><th></th></tr>
+	    %render_automatic_and_reoccuring_recording_table(automatic_recording_line.template)%
 	    </table>
+
 	   </div>
 </div>
     <div id="col3" class="single_colum">
