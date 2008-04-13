@@ -541,7 +541,6 @@ namespace YAPS
                 }
                 #endregion
 
-
                 #region %console_output%
                 // first find the placeholder
                 while (Output_HTML_Code.Contains("%console_output%"))
@@ -995,6 +994,7 @@ namespace YAPS
             {
                 if (recording_entry.HoldingTime == 0)
                 {
+                    newLine = newLine.Replace("%holdingtime%", "&infin;");
                 }
                 else
                 {
@@ -1006,6 +1006,7 @@ namespace YAPS
             {
                 if (recording_entry.HoldingTime == 0)
                 {
+                    newLine = newLine.Replace("%elapsed_holdingtime%", "0");
                 }
                 else
                 {
@@ -1294,11 +1295,7 @@ namespace YAPS
                 {
                     if (recording_entry.CurrentlyRecording == true)
                     {
-                        if (recording_entry.Username.ToUpper() != Username.ToUpper())
-                        {
-                            
-                        }
-                            Output = RenderOneLine_Template_Recorded_Listing(Output, recording_entry, LineTemplate, Username);
+                       Output = RenderOneLine_Template_Recorded_Listing(Output, recording_entry, LineTemplate, Username);
                     }
                 }
 
