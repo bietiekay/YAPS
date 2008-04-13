@@ -2,6 +2,8 @@
 
     <td>%playcount%</td>
 
+    <td>%elapsed_holdingtime% / %holdingtime%</td>
+
     <td>%starts_at%</td>
 
     <td>

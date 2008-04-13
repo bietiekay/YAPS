@@ -2,6 +2,8 @@
 
   <td>%recording_status%</td>
 
+  <td>%holdingtime%</td>
+
   <td>%starts_at%</td>
 
   <td>%ends_at%</td>
