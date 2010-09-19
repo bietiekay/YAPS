@@ -1,0 +1,11 @@
+YAPS
+
+for more information visit: http://www.schrankmonster.de/?s=yaps
+
+We are using multicast to deliver more than 20 MPEG-2 encoded video+audio streams in our network. The advantages of using multicasting in a network of more than 2000 machines are well known. But there are several scenarios when multicasting is not the right choice.
+
+For example: in wireless environments you have to use some sort of multicast group management which is not always as flexible as a more simple solution. You would end up multicasting all 20 streams into the wireless network – which would just explode or something. (our multicasting traffic volume is around 125 Mbit/s…which is… quite much)
+
+I started writing such a solution two days ago and now I want to make the first lines of code available for everybody to try out.
+
+To speak simple: it’s just another proxy server. It’s a HTTP Server that can be triggered to join a multicast group (hardcoded in this version) and forward the traffic from that multicast group directly to the client that asked for it. It’s as simple as it can get and to be more technical: the proxy receives udp multicast packets and sends them as tcp unicast packets.
